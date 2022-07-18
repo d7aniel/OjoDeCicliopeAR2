@@ -216,10 +216,10 @@ async function setupObjects(longitude, latitude) {
     }
   }
   let offset = [
-    { x: 0, y: oneDegAsRad * 0.15, z: 100 },
-    { x: 0, y: oneDegAsRad * -0.15, z: 150 },
-    { x: oneDegAsRad * 0.15, y: 0, z: 200 },
-    { x: oneDegAsRad * 0.15, y: 0, z: 150 },
+    { x: 0, y: oneDegAsRad * 0.15, z: 25 },
+    { x: 0, y: oneDegAsRad * -0.15, z: 25 },
+    { x: oneDegAsRad * 0.15, y: 0, z: 40 },
+    { x: oneDegAsRad * 0.15, y: 0, z: 50 },
     { x: 0, y: 0, z: 100 },
   ];
   // threex.add(objeto, lista[indice].lg + oneDegAsRad, lista[indice].lt);
