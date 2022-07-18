@@ -170,8 +170,8 @@ async function setupObjects(longitude, latitude) {
   }
   let rot = [
     { x: 0, y: 0, z: 0 },
-    { x: 0, y: Math.PI, z: 0 },
-    { x: 0, y: -Math.PI * 0.5, z: 0 },
+    { x: 0, y: 0, z: 0 },
+    { x: 0, y: -Math.PI, z: 0 },
     { x: 0, y: Math.PI * 0.5, z: 0 },
   ];
 
@@ -193,8 +193,8 @@ async function setupObjects(longitude, latitude) {
   }
 
   let lista = [
-    { lt: -34.884448, lg: -58.004633 },
-    { lt: -34.885768, lg: -58.006596 },
+    { lt: -34.884448, lg: -58.004633 }, //entrada
+    { lt: -34.885768, lg: -58.006596 }, //curva
     { lt: -34.886895, lg: -58.006344 },
     { lt: -34.887775, lg: -58.004397 },
     { lt: -34.885989, lg: -58.002729 },
@@ -216,11 +216,11 @@ async function setupObjects(longitude, latitude) {
     }
   }
   let offset = [
-    { x: 0, y: oneDegAsRad * 0.15, z: 0 },
-    { x: 0, y: oneDegAsRad * -0.15, z: 0 },
-    { x: oneDegAsRad * 0.15, y: 0, z: 0 },
-    { x: oneDegAsRad * 0.15, y: 0, z: 0 },
-    { x: 0, y: 0, z: 1 },
+    { x: 0, y: oneDegAsRad * 0.15, z: 100 },
+    { x: 0, y: oneDegAsRad * -0.15, z: 150 },
+    { x: oneDegAsRad * 0.15, y: 0, z: 200 },
+    { x: oneDegAsRad * 0.15, y: 0, z: 150 },
+    { x: 0, y: 0, z: 100 },
   ];
   // threex.add(objeto, lista[indice].lg + oneDegAsRad, lista[indice].lt);
   // threex.add(objeto, lista[indice].lg - oneDegAsRad, lista[indice].lt);
