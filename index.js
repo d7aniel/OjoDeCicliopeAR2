@@ -16,7 +16,7 @@ var poss = [
   new THREE.Vector2(0, d),
 ];
 
-let tamPanuelo = 70;
+let tamPanuelo = 12;
 console.log(texto);
 
 function isMobile() {
