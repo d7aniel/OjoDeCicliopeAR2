@@ -157,7 +157,7 @@ function resizeUpdate() {
 // let particulas = [];
 let modelos = []; //new THREE.Object3D();
 let cuenta = 0;
-let listaModelos = ["./modelo/cuadroVacio1.glb"];
+let listaModelos = ["./modelo/cuadroVacio2.glb"];
 let listaTexturas = ["./imagenes/img1.jpg", "./imagenes/img2.JPG", "./imagenes/img3.JPG", "./imagenes/img4.jpg"];
 async function setupObjects(longitude, latitude) {
   // Use position of first GPS update (fake or real)

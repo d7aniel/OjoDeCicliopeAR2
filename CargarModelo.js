@@ -73,7 +73,8 @@ export function setTextura(texturaArchivo, objeto, rotX, rotY, rotZ) {
         map: texture,
       });
       for (let obj of objeto.children[0].children) {
-        if (obj.name === "capa1") {
+        let nombre = obj.name.split("_")[0];
+        if (nombre === "capa1") {
           obj.material = capa1;
         }
       }
