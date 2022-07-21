@@ -158,7 +158,7 @@ function resizeUpdate() {
 let modelos = []; //new THREE.Object3D();
 let cuenta = 0;
 let listaModelos = ["./modelo/cuadroVacio2.glb"];
-let listaTexturas = ["./imagenes/img1.jpg", "./imagenes/img2.JPG", "./imagenes/img3.JPG", "./imagenes/img4.jpg"];
+let listaTexturas = ["./imagenes/img1.jpg", "./imagenes/img2.JPG", "./imagenes/img3.JPG", "./imagenes/img4.jpg", "./imagenes/img5.jpg"];
 async function setupObjects(longitude, latitude) {
   // Use position of first GPS update (fake or real)
   if (first) {
@@ -172,6 +172,7 @@ async function setupObjects(longitude, latitude) {
     { x: 0, y: 0, z: 0 },
     { x: 0, y: 0, z: 0 },
     { x: 0, y: -Math.PI, z: 0 },
+    { x: 0, y: Math.PI * 0.2, z: Math.PI * 0.4 },
     { x: 0, y: Math.PI * 0.5, z: 0 },
   ];
 
@@ -193,11 +194,16 @@ async function setupObjects(longitude, latitude) {
   }
 
   let lista = [
-    { lt: -34.884448, lg: -58.004633 }, //entrada
-    { lt: -34.885768, lg: -58.006596 }, //curva
-    { lt: -34.886895, lg: -58.006344 },
-    { lt: -34.887775, lg: -58.004397 },
-    { lt: -34.885989, lg: -58.002729 },
+    { lt: -37.892693, lg: -58.273934 },
+    { lt: -37.894304, lg: -58.275456 },
+    { lt: -37.894473, lg: -58.273593 },
+    { lt: -37.894269, lg: -58.271683 },
+    { lt: -37.896414, lg: -58.275124 },
+    //{ lt: -34.884448, lg: -58.004633 }, //entrada
+    //{ lt: -34.885768, lg: -58.006596 }, //curva
+    //{ lt: -34.886895, lg: -58.006344 },
+    //{ lt: -34.887775, lg: -58.004397 },
+    //{ lt: -34.885989, lg: -58.002729 },
     // { lt: -34.910839, lg: -57.950701 },
     // { lt: -34.902403, lg: -57.969982 },
     // { lt: -34.9031455, lg: -57.9682734 },
@@ -206,15 +212,15 @@ async function setupObjects(longitude, latitude) {
     // { lt: -34.88683, lg: -58.006339 },
     // { lt: -34.88294313919044, lg: -58.00682050422973 },
   ];
-  let distMin = -1;
-  let indice = -1;
-  for (let i = 0; i < lista.length; i++) {
-    let distancia = Math.sqrt(Math.pow(lista[i].lt - latitude, 2) + Math.pow(lista[i].lg - longitude, 2));
-    if (distMin < 0 || distancia < distMin) {
-      distMin = distancia;
-      indice = i;
-    }
-  }
+  // let distMin = -1;
+  // let indice = -1;
+  // for (let i = 0; i < lista.length; i++) {
+  //   let distancia = Math.sqrt(Math.pow(lista[i].lt - latitude, 2) + Math.pow(lista[i].lg - longitude, 2));
+  //   if (distMin < 0 || distancia < distMin) {
+  //     distMin = distancia;
+  //     indice = i;
+  //   }
+  // }
   let offset = [
     { x: 0, y: oneDegAsRad * 0.15, z: 25 },
     { x: 0, y: oneDegAsRad * -0.15, z: 25 },
