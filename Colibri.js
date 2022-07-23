@@ -10,6 +10,7 @@ export async function cargarColibri(objetoVacio) {
       }
       objetoVacio.add(gltf.scene);
       objetoVacio.scale.set(3, 3, 3);
+      objetoVacio.rotation.set(0, Math.PI * 0.5, 0);
     });
   });
 }
