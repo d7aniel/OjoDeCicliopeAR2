@@ -2,6 +2,7 @@ import * as THREE from "https://unpkg.com/three@0.122.0/build/three.module.js";
 // import { lista } from "./lista.js";
 import { texto } from "./texto.js";
 import { cargarModelo, setTextura } from "./CargarModelo.js";
+import { cargarColibri } from "./Colibri.js";
 // import { Particula } from "./Particula.js";
 let d = 60;
 var poss = [
@@ -185,6 +186,8 @@ async function setupObjects(longitude, latitude) {
       modelos[i].scale.set(tamPanuelo, tamPanuelo, tamPanuelo);
     }
   });
+  let colibri = new THREE.Object3D();
+  cargarColibri(colibri);
   // puerta.rotation.set(puerta.rotation.x, puerta.rotation.y + 90, puerta.rotation.z);
 
   let objeto = new THREE.Object3D();
@@ -199,28 +202,7 @@ async function setupObjects(longitude, latitude) {
     { lt: -37.894473, lg: -58.273593 },
     { lt: -37.894269, lg: -58.271683 },
     { lt: -37.896414, lg: -58.275124 },
-    //{ lt: -34.884448, lg: -58.004633 }, //entrada
-    //{ lt: -34.885768, lg: -58.006596 }, //curva
-    //{ lt: -34.886895, lg: -58.006344 },
-    //{ lt: -34.887775, lg: -58.004397 },
-    //{ lt: -34.885989, lg: -58.002729 },
-    // { lt: -34.910839, lg: -57.950701 },
-    // { lt: -34.902403, lg: -57.969982 },
-    // { lt: -34.9031455, lg: -57.9682734 },
-    // { lt: -37.89719, lg: -58.278938 },
-    // { lt: -34.860122, lg: -58.078047 },
-    // { lt: -34.88683, lg: -58.006339 },
-    // { lt: -34.88294313919044, lg: -58.00682050422973 },
   ];
-  // let distMin = -1;
-  // let indice = -1;
-  // for (let i = 0; i < lista.length; i++) {
-  //   let distancia = Math.sqrt(Math.pow(lista[i].lt - latitude, 2) + Math.pow(lista[i].lg - longitude, 2));
-  //   if (distMin < 0 || distancia < distMin) {
-  //     distMin = distancia;
-  //     indice = i;
-  //   }
-  // }
   let offset = [
     { x: 0, y: oneDegAsRad * 0.15, z: 25 },
     { x: 0, y: oneDegAsRad * -0.15, z: 25 },
@@ -228,27 +210,10 @@ async function setupObjects(longitude, latitude) {
     { x: oneDegAsRad * 0.15, y: 0, z: 50 },
     { x: 0, y: 0, z: 100 },
   ];
-  // threex.add(objeto, lista[indice].lg + oneDegAsRad, lista[indice].lt);
-  // threex.add(objeto, lista[indice].lg - oneDegAsRad, lista[indice].lt);
   for (let m = 0; m < modelos.length; m++) {
-    //for (let i = 0; i < offset.length; i++) {
-    // threex.add(modelos[i], lista[m].lg + offset[i].x, lista[m].lt + offset[i].y, offset[i].z);
     threex.add(modelos[m], lista[m].lg, lista[m].lt, offset[m].z);
-    //}
   }
-  // threex.add(objeto, lista[indice].lg, lista[indice].lt - oneDegAsRad);
-
-  // threex.add(objeto, -57.969982, -34.902403); // slightly north
-  // // },
-  // threex.add(objeto, -58.278938, -37.89719); // slightly north
-  // threex.add(objeto, -58.078047, -34.860122); // slightly north
-  // const material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
-  // const material2 = new THREE.MeshBasicMaterial({ color: 0xffff00 });
-  // const material3 = new THREE.MeshBasicMaterial({ color: 0x0000ff });
-  // const material4 = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
-  // threex.add(new THREE.Mesh(geom, material), lista[indice].lg, lista[indice].lt); // slightly south
-  // threex.add(new THREE.Mesh(geom, material3), -58.004916, -34.887014); // slightly west
-  // threex.add(new THREE.Mesh(geom, material4), longitude + 0.001, latitude); // slightly east
+  threex.add(colibri, -57.968722, -34.903066, 0); //mi casa
 }
 
 // var download = function () {
