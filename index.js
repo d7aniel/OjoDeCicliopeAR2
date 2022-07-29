@@ -226,7 +226,7 @@ async function setupObjects(longitude, latitude) {
   // threex.add(colibri, -58.078173, -34.860005, 0); //casa marcela
   // threex.add(flor, -58.006153, -34.886712, -20); //flor ciop
   // threex.add(flor, -58.077909, -34.860097 - 20); //flor casa marcela
-  threex.add(flor, -59.089383, -35.172388 - 20); //flor casa lobos
+  threex.add(flor, -59.089383, -35.172388, -20); //flor casa lobos
   // threex.add(colibri, -58.006153, -34.886712, 0); //ciop
 }
 
