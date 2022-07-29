@@ -3,6 +3,7 @@ import * as THREE from "https://unpkg.com/three@0.122.0/build/three.module.js";
 import { texto } from "./texto.js";
 import { cargarModelo, setTextura } from "./CargarModelo.js";
 import { cargarColibri } from "./Colibri.js";
+import { cargarFlor } from "./Flor.js";
 // import { Particula } from "./Particula.js";
 let d = 60;
 var poss = [
@@ -17,6 +18,7 @@ var poss = [
   new THREE.Vector2(0, d),
 ];
 
+let flores = {};
 let tamPanuelo = 12;
 console.log(texto);
 
@@ -113,7 +115,12 @@ function render(time) {
   //     }
   //   }
   // }
-
+  // console.log(flores.objetos);
+  if (flores.objetos != undefined) {
+    for (let f = 0; f < flores.objetos.length; f++) {
+      flores.objetos[f].rotarPetalos();
+    }
+  }
   resizeUpdate();
   if (orientationControls) orientationControls.update();
   cam.update();
@@ -188,6 +195,8 @@ async function setupObjects(longitude, latitude) {
   });
   let colibri = new THREE.Object3D();
   cargarColibri(colibri);
+  let flor = new THREE.Object3D();
+  cargarFlor(flor, flores);
   // puerta.rotation.set(puerta.rotation.x, puerta.rotation.y + 90, puerta.rotation.z);
 
   let objeto = new THREE.Object3D();
@@ -214,7 +223,8 @@ async function setupObjects(longitude, latitude) {
     threex.add(modelos[m], lista[m].lg, lista[m].lt, offset[m].z);
   }
   // threex.add(colibri, -57.968722, -34.903066, 0); //mi casa
-  threex.add(colibri, -58.078173, -34.860005, 0); //casa marcela
+  // threex.add(colibri, -58.078173, -34.860005, 0); //casa marcela
+  threex.add(flor, -58.006153, -34.886712, -20); //casa marcela
   // threex.add(colibri, -58.006153, -34.886712, 0); //ciop
 }
 
