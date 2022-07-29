@@ -18,7 +18,7 @@ class Texto {
     this.titulo.style.textAlign = "center";
     this.subtitulo.style.textAlign = "center";
 
-    this.titulo.innerText = "El ojo del ciclope v10 Lobos";
+    this.titulo.innerText = "El ojo del ciclope v11 Lobos";
     this.subtitulo.innerText = "version flores 1";
 
     this.texto.append(this.titulo);
