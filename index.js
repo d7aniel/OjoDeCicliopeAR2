@@ -4,6 +4,7 @@ import { texto } from "./texto.js";
 import { cargarModelo, setTextura } from "./CargarModelo.js";
 import { cargarColibri } from "./Colibri.js";
 import { cargarFlor } from "./Flor.js";
+import { cargarGotas, actualizarGotas } from "./Gotas.js";
 // import { Particula } from "./Particula.js";
 let d = 60;
 var poss = [
@@ -19,9 +20,12 @@ var poss = [
 ];
 
 let flores = {};
+let gotasCubes;
 let tamPanuelo = 12;
+let tiempo = 0;
 console.log(texto);
 
+const clock = new THREE.Clock();
 function isMobile() {
   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
     // true for mobile device
@@ -121,6 +125,11 @@ function render(time) {
       flores.objetos[f].rotarPetalos();
     }
   }
+  if (gotasCubes != null && gotasCubes != undefined) {
+    const delta = clock.getDelta();
+    tiempo += delta * 0.5;
+    actualizarGotas(gotasCubes, tiempo, 10, false, false, false);
+  }
   resizeUpdate();
   if (orientationControls) orientationControls.update();
   cam.update();
@@ -197,6 +206,8 @@ async function setupObjects(longitude, latitude) {
   cargarColibri(colibri);
   let flor = new THREE.Object3D();
   cargarFlor(flor, flores);
+  let gotas = new THREE.Object3D();
+  gotasCubes = cargarGotas(gotas);
   // puerta.rotation.set(puerta.rotation.x, puerta.rotation.y + 90, puerta.rotation.z);
 
   let objeto = new THREE.Object3D();
@@ -227,7 +238,9 @@ async function setupObjects(longitude, latitude) {
   // threex.add(flor, -58.006153, -34.886712, -20); //flor ciop
   // threex.add(flor, -58.077909, -34.860097 - 20); //flor casa marcela
   // threex.add(flor, -59.089383, -35.172388, -20); //flor casa lobos
-  threex.add(flor, -57.968123, -34.903145, -20); //flor mi casa
+  // threex.add(flor, -57.968123, -34.903145, -20); //flor mi casa
+  threex.add(gotas, -58.006153, -34.886712, 0); //gotas ciop
+
   // threex.add(colibri, -58.006153, -34.886712, 0); //ciop
 }
 
@@ -303,6 +316,16 @@ function iluminarConFoto(archivo) {
     texture.dispose();
     iluminador.dispose();
   });
+  let light = new THREE.DirectionalLight(0xffffff);
+  light.position.set(0.5, 0.5, 1);
+  scene.add(light);
+
+  let pointLight = new THREE.PointLight(0xff3300);
+  pointLight.position.set(0, 0, 100);
+  scene.add(pointLight);
+
+  let ambientLight = new THREE.AmbientLight(0x080808);
+  scene.add(ambientLight);
 }
 
 function aumentarTam() {
