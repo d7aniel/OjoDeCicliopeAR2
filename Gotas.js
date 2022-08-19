@@ -16,7 +16,7 @@ export function cargarGotas(objetoVacio) {
   const material = new THREE.MeshLambertMaterial({ color: 0xffffff, envMap: textureEquirec, refractionRatio: 0.85 });
   let effect = new MarchingCubes(30, material, true, true, 100000);
   effect.position.set(0, 0, 0);
-  effect.scale.set(700, 700, 700);
+  effect.scale.set(300, 300, 300);
 
   effect.enableUvs = false;
   effect.enableColors = false;
