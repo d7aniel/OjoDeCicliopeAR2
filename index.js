@@ -128,7 +128,7 @@ function render(time) {
   if (gotasCubes != null && gotasCubes != undefined) {
     const delta = clock.getDelta();
     tiempo += delta * 0.5;
-    actualizarGotas(gotasCubes, tiempo, 10, false, false, false);
+    actualizarGotas(gotasCubes, tiempo, 20, false, false, false);
   }
   resizeUpdate();
   if (orientationControls) orientationControls.update();
@@ -207,6 +207,8 @@ async function setupObjects(longitude, latitude) {
   let flor = new THREE.Object3D();
   cargarFlor(flor, flores);
   let gotas = new THREE.Object3D();
+
+  // const texture = new THREE.VideoTexture(video);
   gotasCubes = cargarGotas(gotas);
   // puerta.rotation.set(puerta.rotation.x, puerta.rotation.y + 90, puerta.rotation.z);
 
@@ -233,13 +235,23 @@ async function setupObjects(longitude, latitude) {
   for (let m = 0; m < modelos.length; m++) {
     threex.add(modelos[m], lista[m].lg, lista[m].lt, offset[m].z);
   }
+
+  // const video = document.getElementById( 'video' );
+  // 			video.play();
   // threex.add(colibri, -57.968722, -34.903066, 0); //mi casa
   // threex.add(colibri, -58.078173, -34.860005, 0); //casa marcela
   // threex.add(flor, -58.006153, -34.886712, -20); //flor ciop
   // threex.add(flor, -58.077909, -34.860097 - 20); //flor casa marcela
   // threex.add(flor, -59.089383, -35.172388, -20); //flor casa lobos
   // threex.add(flor, -57.968123, -34.903145, -20); //flor mi casa
-  threex.add(gotas, -58.0068, -34.886712, 0); //gotas ciop
+  // threex.add(gotas, -58.0068, -34.886712, 0); //gotas ciop
+  let lat = -34.90301;
+  let lon = -57.968123;
+  console.log("distancia");
+  console.log(latitude - lat);
+  console.log(longitude - lon);
+  console.log(Math.sqrt(Math.pow(latitude - lat, 2), Math.pow(longitude - lon, 2)));
+  threex.add(gotas, lon, lat, 0); //gotas mi casa
 
   // threex.add(colibri, -58.006153, -34.886712, 0); //ciop
 }
