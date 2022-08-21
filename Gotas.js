@@ -46,21 +46,28 @@ export function actualizarGotas(object, time, numblobs, floor, wallx, wallz) {
   //   new THREE.Color(0x4b0082),
   //   new THREE.Color(0x9400d3),
   // ];
-  const subtract = 12;
-  const strength = 1.3 / ((Math.sqrt(numblobs) - 1) / 4 + 1);
+  const subtract = 15;
+  const strength = 0.9 / ((Math.sqrt(numblobs) - 1) / 4 + 1);
 
   for (let i = 0; i < numblobs; i++) {
     // const ballx = Math.sin(i + 1.26 * time * (1.03 + 0.5 * Math.cos(0.21 * i))) * 0.27 + 0.5;
     // const bally = Math.abs(Math.cos(i + 1.12 * time * Math.cos(1.22 + 0.1424 * i))) * 0.77; // dip into the floor
     // const ballz = Math.cos(i + 1.32 * time * 0.1 * Math.sin(0.92 + 0.53 * i)) * 0.27 + 0.5;
 
-    let ti = (1 + i / numblobs) * time * 1.2;
-    const ballx = mapRange(Math.abs(Math.sin(0.98 * ti) - Math.sin(0.25 * ti)), 0, 2, 0.2, 0.8); //(i / numblobs) * 0.9;
-    const bally = mapRange(Math.abs(Math.sin(0.72 * ti) - Math.sin(0.43 * ti)), 0, 2, 0.2, 0.8); //Math.sin(i); // dip into the floor
-    const ballz = mapRange(Math.abs(Math.sin(0.21 * ti) - Math.sin(0.74 * ti)), 0, 2, 0.2, 0.8); //(Math.cos(i * 7.8526) / 2 + 0.5) * 0.3; //Math.cos(i + 1.32 * time * 0.1 * Math.sin(0.92 + 0.53 * i)) * 0.27 + 0.5;
-    // if (maxX < ballx) {
-    //   maxX = ballx;
-    //   // console.log("Max x", maxX);
+    let ti = (1 + i / numblobs) * time * 0.01;
+    // const ballx = mapRange(Math.abs(Math.sin(0.98 * ti) - Math.sin(0.25 * ti)), 0, 2, 0.2, 0.8); //(i / numblobs) * 0.9;
+    // const bally = mapRange(Math.abs(Math.sin(0.72 * ti) - Math.sin(0.43 * ti)), 0, 2, 0.2, 0.8); //Math.sin(i); // dip into the floor
+    // const ballz = mapRange(Math.abs(Math.sin(0.21 * ti) - Math.sin(0.74 * ti)), 0, 2, 0.2, 0.8); //(Math.cos(i * 7.8526) / 2 + 0.5) * 0.3; //Math.cos(i + 1.32 * time * 0.1 * Math.sin(0.92 + 0.53 * i)) * 0.27 + 0.5;
+
+    const ballx = mapRange(Math.abs(1 * Math.cos(80 * ti) - Math.cos(1 * ti) * Math.sin(2 * ti)), 0, 1.768, 0.2, 0.8); //(i / numblobs) * 0.9;
+    const bally = 1 - mapRange((1 + i) / numblobs, 0, 1, 0.2, 0.8); //mapRange(Math.abs(Math.sin(0.72 * ti) - Math.sin(0.43 * ti)), 0, 2, 0.2, 0.8); //Math.sin(i); // dip into the floor
+    const ballz = mapRange(Math.abs(2 * Math.sin(1 * ti) - Math.sin(80 * ti)), 0, 2.999, 0.2, 0.8); //(Math.cos(i * 7.8526) / 2 + 0.5) * 0.3; //Math.cos(i + 1.32 * time * 0.1 * Math.sin(0.92 + 0.53 * i)) * 0.27 + 0.5;
+    // const ballz = 0.1;
+
+    let x = Math.abs(2 * Math.sin(1 * ti) - Math.sin(80 * ti));
+    // if (maxX < x) {
+    //   maxX = x;
+    //   console.log("Max x", maxX);
     // }
     // if (maxY < bally) {
     //   maxY = bally;
