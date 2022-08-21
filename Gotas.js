@@ -1,7 +1,7 @@
 import { GLTFLoader } from "./three/GLTFLoader.js";
 import { MarchingCubes } from "./three/MarchingCubes.js";
 
-export function cargarGotas(objetoVacio) {
+export async function cargarGotas(objetoVacio) {
   //envMap: refractionCube, refractionRatio: 0.85
   // new THREE.TextureLoader().load("../hdr/fondoRedu.png", function (texture) {
   //   var texturaCielo = iluminador.fromEquirectangular(texture);
@@ -14,7 +14,7 @@ export function cargarGotas(objetoVacio) {
   // let textureEquirec = new THREE.TextureLoader().load("../hdr/fondoRedu.png");
 
   // let video = document.getElementById("video1");
-  const textureEquirec = new THREE.TextureLoader().load("../hdr/rainforest_trail_2k.png");
+  const textureEquirec = await new THREE.TextureLoader().load("../hdr/rainforest_trail_2k.png");
   textureEquirec.mapping = THREE.EquirectangularReflectionMapping;
   // textureEquirec.encoding = THREE.sRGBEncoding;
   const material = new THREE.MeshLambertMaterial({ opacity: 0.647, transparent: true, color: 0xffffff, envMap: textureEquirec, refractionRatio: 0.85 });

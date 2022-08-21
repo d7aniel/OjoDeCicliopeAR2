@@ -209,7 +209,7 @@ async function setupObjects(longitude, latitude) {
   let gotas = new THREE.Object3D();
 
   // const texture = new THREE.VideoTexture(video);
-  gotasCubes = cargarGotas(gotas);
+  gotasCubes = await cargarGotas(gotas);
   // puerta.rotation.set(puerta.rotation.x, puerta.rotation.y + 90, puerta.rotation.z);
 
   let objeto = new THREE.Object3D();
