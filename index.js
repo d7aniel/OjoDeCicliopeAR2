@@ -183,7 +183,7 @@ async function setupObjects(longitude, latitude) {
     // t += "Longitud: " + longitude + "\n";
     // t += "Laditude: " + latitude + "\n";
     // texto.setSubtitulo(t);
-    // texto.remove();
+    texto.remove();
   }
   let rot = [
     { x: 0, y: 0, z: 0 },

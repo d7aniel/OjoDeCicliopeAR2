@@ -14,7 +14,7 @@ export async function cargarGotas(objetoVacio) {
   // let textureEquirec = new THREE.TextureLoader().load("../hdr/fondoRedu.png");
 
   // let video = document.getElementById("video1");
-  const textureEquirec = await new THREE.TextureLoader().load("../hdr/rainforest_trail_2k.png");
+  const textureEquirec = await new THREE.TextureLoader().load("./hdr/rainforest_trail_2k.png");
   textureEquirec.mapping = THREE.EquirectangularReflectionMapping;
   // textureEquirec.encoding = THREE.sRGBEncoding;
   const material = new THREE.MeshLambertMaterial({ opacity: 0.647, transparent: true, color: 0xffffff, envMap: textureEquirec, refractionRatio: 0.85 });
@@ -55,9 +55,9 @@ export function actualizarGotas(object, time, numblobs, floor, wallx, wallz) {
     // const ballz = Math.cos(i + 1.32 * time * 0.1 * Math.sin(0.92 + 0.53 * i)) * 0.27 + 0.5;
 
     let ti = (1 + i / numblobs) * time * 1.2;
-    const ballx = mapRange(Math.abs(Math.sin(0.98 * ti) - Math.sin(0.25 * ti)), 0, 2, 0.1, 0.9); //(i / numblobs) * 0.9;
-    const bally = mapRange(Math.abs(Math.sin(0.72 * ti) - Math.sin(0.43 * ti)), 0, 2, 0.1, 0.9); //Math.sin(i); // dip into the floor
-    const ballz = mapRange(Math.abs(Math.sin(0.21 * ti) - Math.sin(0.74 * ti)), 0, 2, 0.1, 0.9); //(Math.cos(i * 7.8526) / 2 + 0.5) * 0.3; //Math.cos(i + 1.32 * time * 0.1 * Math.sin(0.92 + 0.53 * i)) * 0.27 + 0.5;
+    const ballx = mapRange(Math.abs(Math.sin(0.98 * ti) - Math.sin(0.25 * ti)), 0, 2, 0.2, 0.8); //(i / numblobs) * 0.9;
+    const bally = mapRange(Math.abs(Math.sin(0.72 * ti) - Math.sin(0.43 * ti)), 0, 2, 0.2, 0.8); //Math.sin(i); // dip into the floor
+    const ballz = mapRange(Math.abs(Math.sin(0.21 * ti) - Math.sin(0.74 * ti)), 0, 2, 0.2, 0.8); //(Math.cos(i * 7.8526) / 2 + 0.5) * 0.3; //Math.cos(i + 1.32 * time * 0.1 * Math.sin(0.92 + 0.53 * i)) * 0.27 + 0.5;
     // if (maxX < ballx) {
     //   maxX = ballx;
     //   // console.log("Max x", maxX);
