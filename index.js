@@ -175,6 +175,53 @@ function resizeUpdate() {
 let modelos = []; //new THREE.Object3D();
 let cuenta = 0;
 let listaModelos = ["./modelo/cuadroVacio2.glb"];
+let listaCuadros = [
+  { nombre: "Primavera en la sierra", tipo: "óleo sobre tela", tam: "80x59", artista: "Erbeta", archivo: "cuadro1.png", rotacion: 0 },
+  { nombre: "Trigal", tipo: "óleo sobre tela", tam: "67x49", artista: "Erbeta", archivo: "cuadro1.png", rotacion: 0 },
+  { nombre: "Puerta del abra", tipo: "óleo sobre tela", tam: "67x49", artista: "Erbeta", archivo: "cuadro1.png", rotacion: 0 },
+  { nombre: "Campo don Francisco", tipo: "óleo sobre tela", tam: "35x45", artista: "Lobato", archivo: "cuadro1.png", rotacion: 0 },
+  { nombre: "Sierra chata II", tipo: "óleo sobre tela", tam: "40x60", artista: "Lobato", archivo: "cuadro1.png", rotacion: 0 },
+  { nombre: "Sierra del monte", tipo: "óleo sobre tela", tam: "40x60", artista: "Lobato", archivo: "cuadro1.png", rotacion: 0 },
+  { nombre: "Laguna brava", tipo: "óleo sobre tela", tam: "80x59", artista: "Manzanares", archivo: "cuadro1.png", rotacion: 0 },
+  { nombre: "Ranchito", tipo: "óleo sobre tela", tam: "80x59", artista: "Manzanares", archivo: "cuadro1.png", rotacion: 0 },
+  { nombre: "Volver", tipo: "óleo sobre tela", tam: "80x59", artista: "Manzanares", archivo: "cuadro1.png", rotacion: 0 },
+  { nombre: "Copia de Cerro el Paulino", tipo: "óleo sobre tela", tam: "1x1", artista: "Miquelarena", archivo: "cuadro1.png", rotacion: 0 },
+  { nombre: "Copia de La Capilla del Cerro", tipo: "óleo sobre tela", tam: "1x1", artista: "Miquelarena", archivo: "cuadro1.png", rotacion: 0 },
+  { nombre: "Copia de Laguna brava", tipo: "óleo sobre tela", tam: "1x1", artista: "Miquelarena", archivo: "cuadro1.png", rotacion: 0 },
+  // { nombre: "Primavera en la sierra", tipo: "óleo sobre tela", tam: "80x59", artista: "Erbeta", archivo: "cuadro1.png", rotacion: 0 },
+];
+let listaDePosiciones = [
+  { lat: -37.89309, lon: -58.273678, rot: 0 },
+  { lat: -37.894784, lon: -58.275958, rot: 2.237 },
+  { lat: -37.895227, lon: -58.273308, rot: 5.982 },
+  { lat: -37.894275, lon: -58.271919, rot: 3.845 }, //claro
+  { lat: -37.896478, lon: -58.275049, rot: 2.237 },
+  { lat: -37.898115, lon: -58.277343, rot: 2.237 },
+  { lat: -37.898779, lon: -58.278456, rot: 2.237 }, //punto
+  { lat: -37.900977, lon: -58.2798, rot: 0 },
+  { lat: -37.902247, lon: -58.278526, rot: 1.47 }, // mirador
+  { lon: -58.27863, lat: -37.896355, rot: -2.237 },
+];
+let posGaleria = { lon: -58.27863, lat: -37.896355, rot: -2.237 };
+// let geoJson = {
+//   type: "FeatureCollection",
+//   features: [],
+// };
+// for (let p of listaDePosiciones) {
+//   geoJson.features.push({
+//     type: "Feature",
+//     properties: {},
+//     geometry: {
+//       type: "Point",
+//       coordinates: [p.lon, p.lat],
+//     },
+//   });
+// }
+console.log("v1*****************************");
+// console.log(JSON.stringify(geoJson));
+
+// let txt = JSON.stringify(geoJson);
+// navigator.clipboard.writeText(txt);
 let listaTexturas = ["./imagenes/img1.jpg", "./imagenes/img2.JPG", "./imagenes/img3.JPG", "./imagenes/img4.jpg", "./imagenes/img5.jpg"];
 async function setupObjects(longitude, latitude) {
   // Use position of first GPS update (fake or real)
@@ -245,13 +292,14 @@ async function setupObjects(longitude, latitude) {
   // threex.add(flor, -59.089383, -35.172388, -20); //flor casa lobos
   // threex.add(flor, -57.968123, -34.903145, -20); //flor mi casa
   // threex.add(gotas, -58.0068, -34.886712, 0); //gotas ciop
-  let lat = -34.90301;
-  let lon = -57.968123;
-  console.log("distancia");
-  console.log(latitude - lat);
-  console.log(longitude - lon);
-  console.log(Math.sqrt(Math.pow(latitude - lat, 2), Math.pow(longitude - lon, 2)));
-  threex.add(gotas, lon, lat, 0); //gotas mi casa
+  // let lat = -34.90301;
+  // let lon = -57.968123;
+  // console.log("distancia");
+  // console.log(latitude - lat);
+  // console.log(longitude - lon);
+  // console.log(Math.sqrt(Math.pow(latitude - lat, 2), Math.pow(longitude - lon, 2)));
+  // threex.add(gotas, lon, lat, 0); //gotas mi casa
+  threex.add(gotas, -58.077909, -34.860097, 0); //gotas casa marcela
 
   // threex.add(colibri, -58.006153, -34.886712, 0); //ciop
 }
