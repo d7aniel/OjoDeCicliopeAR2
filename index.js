@@ -299,7 +299,8 @@ async function setupObjects(longitude, latitude) {
   // console.log(longitude - lon);
   // console.log(Math.sqrt(Math.pow(latitude - lat, 2), Math.pow(longitude - lon, 2)));
   // threex.add(gotas, lon, lat, 0); //gotas mi casa
-  threex.add(gotas, -58.077909, -34.860097, 0); //gotas casa marcela
+  // -34.859931, -58.077947;
+  threex.add(gotas, -58.077947, -34.859931, 10); //gotas casa marcela
 
   // threex.add(colibri, -58.006153, -34.886712, 0); //ciop
 }
