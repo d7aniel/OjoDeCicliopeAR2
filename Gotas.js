@@ -32,6 +32,10 @@ export async function cargarGotas(objetoVacio) {
 let maxX = 0;
 let maxY = 0;
 let maxZ = 0;
+let blobsBasicos = [];
+for (let i = 0; i < 50; i++) {
+  blobsBasicos[i] = { x: 0.2 + Math.random() * 0.6, y: Math.random() * -1, z: 0.2 + Math.random() * 0.6, v: 0.5 + Math.random() * 0.5 };
+}
 export function actualizarGotas(object, time, numblobs, floor, wallx, wallz) {
   object.reset();
 
@@ -53,15 +57,20 @@ export function actualizarGotas(object, time, numblobs, floor, wallx, wallz) {
     // const ballx = Math.sin(i + 1.26 * time * (1.03 + 0.5 * Math.cos(0.21 * i))) * 0.27 + 0.5;
     // const bally = Math.abs(Math.cos(i + 1.12 * time * Math.cos(1.22 + 0.1424 * i))) * 0.77; // dip into the floor
     // const ballz = Math.cos(i + 1.32 * time * 0.1 * Math.sin(0.92 + 0.53 * i)) * 0.27 + 0.5;
-
+    let base = blobsBasicos[i];
     let ti = (1 + i / numblobs) * time * 0.01;
     // const ballx = mapRange(Math.abs(Math.sin(0.98 * ti) - Math.sin(0.25 * ti)), 0, 2, 0.2, 0.8); //(i / numblobs) * 0.9;
     // const bally = mapRange(Math.abs(Math.sin(0.72 * ti) - Math.sin(0.43 * ti)), 0, 2, 0.2, 0.8); //Math.sin(i); // dip into the floor
     // const ballz = mapRange(Math.abs(Math.sin(0.21 * ti) - Math.sin(0.74 * ti)), 0, 2, 0.2, 0.8); //(Math.cos(i * 7.8526) / 2 + 0.5) * 0.3; //Math.cos(i + 1.32 * time * 0.1 * Math.sin(0.92 + 0.53 * i)) * 0.27 + 0.5;
-
-    const ballx = mapRange(Math.abs(1 * Math.cos(80 * ti) - Math.cos(1 * ti) * Math.sin(2 * ti)), 0, 1.768, 0.2, 0.8); //(i / numblobs) * 0.9;
-    const bally = 1 - mapRange((1 + i) / numblobs, 0, 1, 0.2, 0.8); //mapRange(Math.abs(Math.sin(0.72 * ti) - Math.sin(0.43 * ti)), 0, 2, 0.2, 0.8); //Math.sin(i); // dip into the floor
-    const ballz = mapRange(Math.abs(2 * Math.sin(1 * ti) - Math.sin(80 * ti)), 0, 2.999, 0.2, 0.8); //(Math.cos(i * 7.8526) / 2 + 0.5) * 0.3; //Math.cos(i + 1.32 * time * 0.1 * Math.sin(0.92 + 0.53 * i)) * 0.27 + 0.5;
+    if (i == 0) {
+      console.log(base.y);
+    }
+    base.y = base.y < 0 ? 2 : base.y;
+    base.y = ti * 47 * base.v;
+    base.y = base.y % 2;
+    const ballx = base.x; //mapRange(Math.abs(1 * Math.cos(80 * ti) - Math.cos(1 * ti) * Math.sin(2 * ti)), 0, 1.768, 0.2, 0.8); //(i / numblobs) * 0.9;
+    const bally = 1 - base.y; //1 - mapRange((1 + i) / numblobs, 0, 1, 0.2, 0.8); //mapRange(Math.abs(Math.sin(0.72 * ti) - Math.sin(0.43 * ti)), 0, 2, 0.2, 0.8); //Math.sin(i); // dip into the floor
+    const ballz = base.z; //mapRange(Math.abs(2 * Math.sin(1 * ti) - Math.sin(80 * ti)), 0, 2.999, 0.2, 0.8); //(Math.cos(i * 7.8526) / 2 + 0.5) * 0.3; //Math.cos(i + 1.32 * time * 0.1 * Math.sin(0.92 + 0.53 * i)) * 0.27 + 0.5;
     // const ballz = 0.1;
 
     let x = Math.abs(2 * Math.sin(1 * ti) - Math.sin(80 * ti));

@@ -292,15 +292,15 @@ async function setupObjects(longitude, latitude) {
   // threex.add(flor, -59.089383, -35.172388, -20); //flor casa lobos
   // threex.add(flor, -57.968123, -34.903145, -20); //flor mi casa
   // threex.add(gotas, -58.0068, -34.886712, 0); //gotas ciop
-  // let lat = -34.90301;
-  // let lon = -57.968123;
   // console.log("distancia");
   // console.log(latitude - lat);
   // console.log(longitude - lon);
   // console.log(Math.sqrt(Math.pow(latitude - lat, 2), Math.pow(longitude - lon, 2)));
-  // threex.add(gotas, lon, lat, 0); //gotas mi casa
+  let lat = -34.90301;
+  let lon = -57.968123;
+  threex.add(gotas, lon, lat, 0); //gotas mi casa
   // -34.859931, -58.077947;
-  threex.add(gotas, -58.077947, -34.859931, 10); //gotas casa marcela
+  // threex.add(gotas, -58.077947, -34.859931, 10); //gotas casa marcela
 
   // threex.add(colibri, -58.006153, -34.886712, 0); //ciop
 }
@@ -381,7 +381,7 @@ function iluminarConFoto(archivo) {
   light.position.set(0.5, 0.5, 1);
   scene.add(light);
 
-  let pointLight = new THREE.PointLight(0xff3300);
+  let pointLight = new THREE.PointLight(0xffffff);
   pointLight.position.set(0, 0, 100);
   scene.add(pointLight);
 
