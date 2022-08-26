@@ -302,7 +302,8 @@ async function setupObjects(longitude, latitude) {
   // -34.859931, -58.077947;
   // threex.add(gotas, -58.077947, -34.859931, 10); //gotas casa marcela
   // -54.813582, -68.323999
-  threex.add(gotas, -68.323999, -54.813582, 10); //gotas ushuaia
+  // -54.813590, -68.324806
+  threex.add(gotas, -68.324806, -54.81359, 10); //gotas ushuaia
 
   // threex.add(colibri, -58.006153, -34.886712, 0); //ciop
 }
