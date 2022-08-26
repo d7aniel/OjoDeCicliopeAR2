@@ -217,7 +217,7 @@ let posGaleria = { lon: -58.27863, lat: -37.896355, rot: -2.237 };
 //     },
 //   });
 // }
-console.log("v1*****************************");
+console.log("v2*****************************");
 // console.log(JSON.stringify(geoJson));
 
 // let txt = JSON.stringify(geoJson);
@@ -303,7 +303,8 @@ async function setupObjects(longitude, latitude) {
   // threex.add(gotas, -58.077947, -34.859931, 10); //gotas casa marcela
   // -54.813582, -68.323999
   // -54.813590, -68.324806
-  threex.add(gotas, -68.324806, -54.81359, 10); //gotas ushuaia
+  // -54.813572, -68.325321
+  threex.add(gotas, -68.325321, -54.813572, 10); //gotas ushuaia
 
   // threex.add(colibri, -58.006153, -34.886712, 0); //ciop
 }
