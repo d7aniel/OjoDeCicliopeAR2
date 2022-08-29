@@ -427,29 +427,39 @@ class MarchingCubes extends Mesh {
       if (min_y < 1) min_y = 1;
       let max_y = Math.floor(ys + radius);
       if (max_y > this.size - 1) max_y = this.size - 1;
-      let min_x = Math.floor(xs - radius);
+      let min_x = Math.floor(xs - radius * 1.5);
       if (min_x < 1) min_x = 1;
-      let max_x = Math.floor(xs + radius);
+      let max_x = Math.floor(xs + radius * 1.5);
       if (max_x > this.size - 1) max_x = this.size - 1;
-
       // Don't polygonize in the outer layer because normals aren't
       // well-defined there.
 
       let x, y, z, y_offset, z_offset, fx, fy, fz, fz2, fy2, val;
-
+      let efectoX, efectoY, efectoZ;
       for (z = min_z; z < max_z; z++) {
         z_offset = this.size2 * z;
         fz = z / this.size - ballz;
         fz2 = fz * fz;
-
+        // efectoZ = Math.pow(1 - z / max_z, 1.5);
+        efectoZ = 10 * Math.pow(0.5 - z / max_z, 2);
+        // efectoZ = 1.8*sin((y/max_y)*PI+0.6)-0.63;
+        // efectoZ = efectoZ <= 0 ? 0.001 : efectoZ;
         for (y = min_y; y < max_y; y++) {
           y_offset = z_offset + this.size * y;
           fy = y / this.size - bally;
           fy2 = fy * fy;
-
+          efectoY = Math.pow(1 - y / max_y, 1.5);
+          // efectoY = 10 * Math.pow(0.5 - y / max_y, 2);
+          // efectoY = 1.8*sin((y/max_y)*PI+0.6)-0.63;
+          // efectoY = efectoY <= 0 ? 0.001 : efectoY;
           for (x = min_x; x < max_x; x++) {
             fx = x / this.size - ballx;
-            val = strength / (0.000001 + fx * fx + fy2 + fz2) - subtract;
+
+            // efectoX = Math.pow(1 - x / max_x, 1.5);
+            efectoX = 10 * Math.pow(0.5 - x / max_x, 2);
+            val = strength / (0.000001 + fx * fx + fy2 + fz2 + efectoX * efectoZ * efectoY * 0.7) - subtract; // / (0.000001 + fx * fx + fy2 ) - subtract;
+
+            // val = strength / (0.000001 + fx * fx + fy2 + fz2) - subtract;
             if (val > 0.0) {
               this.field[y_offset + x] += val * sign;
 

@@ -19,7 +19,7 @@ export async function cargarGotas(objetoVacio) {
   // textureEquirec.encoding = THREE.sRGBEncoding;
   const material = new THREE.MeshLambertMaterial({ opacity: 0.647, transparent: true, color: 0xffffff, envMap: textureEquirec, refractionRatio: 0.85 });
   console.log(material);
-  let effect = new MarchingCubes(30, material, true, true, 100000);
+  let effect = new MarchingCubes(32, material, true, true, 100000);
   effect.position.set(0, 0, 0);
   effect.scale.set(12, 12, 12);
 
@@ -50,18 +50,15 @@ export function actualizarGotas(object, time, numblobs, floor, wallx, wallz) {
   //   new THREE.Color(0x4b0082),
   //   new THREE.Color(0x9400d3),
   // ];
-  const subtract = 15;
-  const strength = 0.9 / ((Math.sqrt(numblobs) - 1) / 4 + 1);
+  const subtract = 0.8;
+  const strength = 0.65 / ((Math.sqrt(numblobs) - 1) / 4 + 1);
 
   for (let i = 0; i < numblobs; i++) {
     // const ballx = Math.sin(i + 1.26 * time * (1.03 + 0.5 * Math.cos(0.21 * i))) * 0.27 + 0.5;
     // const bally = Math.abs(Math.cos(i + 1.12 * time * Math.cos(1.22 + 0.1424 * i))) * 0.77; // dip into the floor
     // const ballz = Math.cos(i + 1.32 * time * 0.1 * Math.sin(0.92 + 0.53 * i)) * 0.27 + 0.5;
     let base = blobsBasicos[i];
-    let ti = (1 + i / numblobs) * time * 0.01;
-    // const ballx = mapRange(Math.abs(Math.sin(0.98 * ti) - Math.sin(0.25 * ti)), 0, 2, 0.2, 0.8); //(i / numblobs) * 0.9;
-    // const bally = mapRange(Math.abs(Math.sin(0.72 * ti) - Math.sin(0.43 * ti)), 0, 2, 0.2, 0.8); //Math.sin(i); // dip into the floor
-    // const ballz = mapRange(Math.abs(Math.sin(0.21 * ti) - Math.sin(0.74 * ti)), 0, 2, 0.2, 0.8); //(Math.cos(i * 7.8526) / 2 + 0.5) * 0.3; //Math.cos(i + 1.32 * time * 0.1 * Math.sin(0.92 + 0.53 * i)) * 0.27 + 0.5;
+    let ti = (1 + i / numblobs) * time * 0.025;
     if (i == 0) {
       console.log(base.y);
     }
@@ -71,9 +68,10 @@ export function actualizarGotas(object, time, numblobs, floor, wallx, wallz) {
     const ballx = base.x; //mapRange(Math.abs(1 * Math.cos(80 * ti) - Math.cos(1 * ti) * Math.sin(2 * ti)), 0, 1.768, 0.2, 0.8); //(i / numblobs) * 0.9;
     const bally = 1 - base.y; //1 - mapRange((1 + i) / numblobs, 0, 1, 0.2, 0.8); //mapRange(Math.abs(Math.sin(0.72 * ti) - Math.sin(0.43 * ti)), 0, 2, 0.2, 0.8); //Math.sin(i); // dip into the floor
     const ballz = base.z; //mapRange(Math.abs(2 * Math.sin(1 * ti) - Math.sin(80 * ti)), 0, 2.999, 0.2, 0.8); //(Math.cos(i * 7.8526) / 2 + 0.5) * 0.3; //Math.cos(i + 1.32 * time * 0.1 * Math.sin(0.92 + 0.53 * i)) * 0.27 + 0.5;
+    const bally2 = bally + 0.1; //1 - mapRange((1 + i) / numblobs, 0, 1, 0.2, 0.8); //mapRange(Math.abs(Math.sin(0.72 * ti) - Math.sin(0.43 * ti)), 0, 2, 0.2, 0.8); //Math.sin(i); // dip into the floor
     // const ballz = 0.1;
 
-    let x = Math.abs(2 * Math.sin(1 * ti) - Math.sin(80 * ti));
+    // let x = Math.abs(2 * Math.sin(1 * ti) - Math.sin(80 * ti));
     // if (maxX < x) {
     //   maxX = x;
     //   console.log("Max x", maxX);
@@ -89,6 +87,7 @@ export function actualizarGotas(object, time, numblobs, floor, wallx, wallz) {
     // if (current_material === "multiColors") {
     // object.addBall(ballx, bally, ballz, strength, subtract, rainbow[i % 7]);
     // } else {
+    object.addBall(ballx, bally2, ballz, strength * 0.4, subtract);
     object.addBall(ballx, bally, ballz, strength, subtract);
     // }
   }

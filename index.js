@@ -128,7 +128,7 @@ function render(time) {
   if (gotasCubes != null && gotasCubes != undefined) {
     const delta = clock.getDelta();
     tiempo += delta * 0.5;
-    actualizarGotas(gotasCubes, tiempo, 20, false, false, false);
+    actualizarGotas(gotasCubes, tiempo, 13, false, false, false);
   }
   resizeUpdate();
   if (orientationControls) orientationControls.update();
