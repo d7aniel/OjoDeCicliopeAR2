@@ -14,17 +14,19 @@ export async function cargarGotas(objetoVacio) {
   // let textureEquirec = new THREE.TextureLoader().load("../hdr/fondoRedu.png");
 
   // let video = document.getElementById("video1");
-  const textureEquirec = await new THREE.TextureLoader().load("./hdr/rainforest_trail_2k.png");
-  textureEquirec.mapping = THREE.EquirectangularReflectionMapping;
+  const textureEquirec = await new THREE.TextureLoader().load("./hdr/reflejo.png");
+  // textureEquirec.mapping = THREE.EquirectangularReflectionMapping;
   // textureEquirec.encoding = THREE.sRGBEncoding;
-  const material = new THREE.MeshLambertMaterial({ opacity: 0.647, transparent: true, color: 0xffffff, envMap: textureEquirec, refractionRatio: 0.85 });
+  const material = new THREE.MeshPhongMaterial({ opacity: 0.647, color: 0xffffff, transparent: true, specular: 0x111111, shininess: 1, map: textureEquirec });
+  // const material = new THREE.MeshLambertMaterial({ opacity: 0.647, transparent: true, color: 0xffffff, envMap: textureEquirec, refractionRatio: 0.85 });
   console.log(material);
   let effect = new MarchingCubes(32, material, true, true, 100000);
   effect.position.set(0, 0, 0);
   effect.scale.set(12, 12, 12);
 
-  effect.enableUvs = false;
+  effect.enableUvs = true;
   effect.enableColors = false;
+  // effect.enableUvs
 
   objetoVacio.add(effect);
   return effect;
