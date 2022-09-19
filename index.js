@@ -20,6 +20,7 @@ var poss = [
 ];
 
 let flores = {};
+let galeria = new THREE.Object3D();
 let gotasCubes;
 let tamPanuelo = 12;
 let tiempo = 0;
@@ -46,7 +47,43 @@ const threex = new THREEx.LocationBased(scene, camera);
 //const threex = new THREEx.LocationBased(scene, camera. { gpsMinAccuracy: 30 } );
 const cam = new THREEx.WebcamRenderer(renderer, "#video1");
 
+let raycaster;
+var descCuadro = document.getElementById("descripcionCuadro");
+var artistaCuadro = document.getElementById("artistaCuadro");
+var nombreCuadro = document.getElementById("nombreCuadro");
+var tamCuadro = document.getElementById("tamCuadro");
+var tipoCuadro = document.getElementById("tipoCuadro");
+const pointer = new THREE.Vector2();
+raycaster = new THREE.Raycaster();
+function onPointerMove(event) {
+  pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
+  pointer.y = -(event.clientY / window.innerHeight) * 2 + 1;
+}
+document.addEventListener("mousemove", onPointerMove);
+document.addEventListener("click", (e) => {
+  raycaster.setFromCamera(pointer, camera);
+  const intersects = raycaster.intersectObjects(scene.children, true);
+  // console.log(scene.children);
+  // console.log(intersects);
+  const cuadros = intersects.filter((e) => e.object.parent.parent.name.split("_")[0] === "Cuadro");
+  if (cuadros.length > 0) {
+    let nombre = cuadros[0].object.parent.parent.name.split("_")[1];
+    let cuadro = listaCuadros.filter((e) => e.nombre == nombre)[0];
+
+    descCuadro.style.display = "flex";
+    artistaCuadro.innerText = cuadro.artista;
+    nombreCuadro.innerText = cuadro.nombre;
+    tamCuadro.innerText = cuadro.tam;
+    tipoCuadro.innerText = cuadro.tipo;
+    // artista: "Erbeta"
+    // nombre: "Puerta del abra"
+    // tam: "67x49"
+    // tipo: "óleo sobre tela"
+  }
+});
+
 iluminarConFoto("./hdr/fondoRedu.png", false);
+
 let orientationControls;
 if (isMobile()) {
   orientationControls = new THREEx.DeviceOrientationControls(camera);
@@ -94,12 +131,12 @@ if (!isMobile()) {
   window.addEventListener("mousemove", (e) => {
     if (!mousedown) return;
     if (e.clientX < lastX) {
-      camera.rotation.y -= oneDegAsRad;
+      camera.rotation.y -= oneDegAsRad * 4;
       if (camera.rotation.y < 0) {
         camera.rotation.y += 2 * Math.PI;
       }
     } else if (e.clientX > lastX) {
-      camera.rotation.y += oneDegAsRad;
+      camera.rotation.y += oneDegAsRad * 4;
       if (camera.rotation.y > 2 * Math.PI) {
         camera.rotation.y -= 2 * Math.PI;
       }
@@ -108,19 +145,28 @@ if (!isMobile()) {
   });
 }
 
+let tamGaleriaAjustado = false;
 function render(time) {
-  // if (panuelo.children.length > 0) {
-  //   for (let i = 0; i < particulas.length; i++) {
-  //     if (particulas[i].sinModelo) {
-  //       particulas[i].modelo.add(panuelo.clone());
-  //       let escala = particulas[i].random(0.7, 1.2);
-  //       particulas[i].modelo.scale.set(escala, escala, escala);
-  //       particulas[i].sinModelo = false;
-  //     }
-  //   }
-  // }
-  // console.log(flores.objetos);
+  if (galeria.children[0] && !tamGaleriaAjustado) {
+    let capaTex = galeria.children.filter((e) => e.name.split("_")[0] === "Cuadro")[0].children[0].children.filter((e) => e.name.split("_")[0] === "capa1")[0];
+    if (capaTex && capaTex.material) {
+      if (capaTex.material.map) {
+        tamGaleriaAjustado = true;
+        let objetos = galeria.children.filter((e) => e.name.split("_")[0] === "Cuadro");
+        let sum = 0;
+        for (let i = 1; i < objetos.length; i++) {
+          sum += objetos[i - 1].children[0].scale.x * 0.5 + objetos[i].children[0].scale.x * 0.5;
+          objetos[i].children[0].position.set(3 * sum, 0, 0);
+        }
+      }
+    }
+  }
+  // if (galeria.children[0])
   if (flores.objetos != undefined) {
+    // modeloTmp.position.set(tamPanuelo * proporcion, 0, 0);
+    // proporcion += prop * 2.5;
+    // console.log(proporcion);
+
     for (let f = 0; f < flores.objetos.length; f++) {
       flores.objetos[f].rotarPetalos();
     }
@@ -176,112 +222,114 @@ let modelos = []; //new THREE.Object3D();
 let cuenta = 0;
 let listaModelos = ["./modelo/cuadroVacio2.glb"];
 let listaCuadros = [
-  { nombre: "Primavera en la sierra", tipo: "óleo sobre tela", tam: "80x59", artista: "Erbeta", archivo: "cuadro1.png", rotacion: 0 },
-  { nombre: "Trigal", tipo: "óleo sobre tela", tam: "67x49", artista: "Erbeta", archivo: "cuadro1.png", rotacion: 0 },
-  { nombre: "Puerta del abra", tipo: "óleo sobre tela", tam: "67x49", artista: "Erbeta", archivo: "cuadro1.png", rotacion: 0 },
-  { nombre: "Campo don Francisco", tipo: "óleo sobre tela", tam: "35x45", artista: "Lobato", archivo: "cuadro1.png", rotacion: 0 },
-  { nombre: "Sierra chata II", tipo: "óleo sobre tela", tam: "40x60", artista: "Lobato", archivo: "cuadro1.png", rotacion: 0 },
-  { nombre: "Sierra del monte", tipo: "óleo sobre tela", tam: "40x60", artista: "Lobato", archivo: "cuadro1.png", rotacion: 0 },
-  { nombre: "Laguna brava", tipo: "óleo sobre tela", tam: "80x59", artista: "Manzanares", archivo: "cuadro1.png", rotacion: 0 },
-  { nombre: "Ranchito", tipo: "óleo sobre tela", tam: "80x59", artista: "Manzanares", archivo: "cuadro1.png", rotacion: 0 },
-  { nombre: "Volver", tipo: "óleo sobre tela", tam: "80x59", artista: "Manzanares", archivo: "cuadro1.png", rotacion: 0 },
-  { nombre: "Copia de Cerro el Paulino", tipo: "óleo sobre tela", tam: "1x1", artista: "Miquelarena", archivo: "cuadro1.png", rotacion: 0 },
-  { nombre: "Copia de La Capilla del Cerro", tipo: "óleo sobre tela", tam: "1x1", artista: "Miquelarena", archivo: "cuadro1.png", rotacion: 0 },
-  { nombre: "Copia de Laguna brava", tipo: "óleo sobre tela", tam: "1x1", artista: "Miquelarena", archivo: "cuadro1.png", rotacion: 0 },
+  { nombre: "Primavera en la sierra", tipo: "óleo sobre tela", tam: "80x59", artista: "Erbeta", archivo: "c1r.png", rotacion: 0 },
+  { nombre: "Trigal", tipo: "óleo sobre tela", tam: "67x49", artista: "Erbeta", archivo: "c2r.png", rotacion: 0 },
+  { nombre: "Puerta del abra", tipo: "óleo sobre tela", tam: "67x49", artista: "Erbeta", archivo: "c3r.png", rotacion: 0 },
+  { nombre: "Campo don Francisco", tipo: "óleo sobre tela", tam: "35x45", artista: "Lobato", archivo: "c4r.png", rotacion: 0 },
+  { nombre: "Sierra chata II", tipo: "óleo sobre tela", tam: "40x60", artista: "Lobato", archivo: "c5r.png", rotacion: 0 },
+  { nombre: "Sierra del monte", tipo: "óleo sobre tela", tam: "40x60", artista: "Lobato", archivo: "c6r.png", rotacion: 0 },
+  { nombre: "Laguna brava", tipo: "óleo sobre tela", tam: "80x59", artista: "Manzanares", archivo: "c7r.png", rotacion: 0 },
+  { nombre: "Ranchito", tipo: "óleo sobre tela", tam: "80x59", artista: "Manzanares", archivo: "c8r.png", rotacion: 0 },
+  { nombre: "Volver", tipo: "óleo sobre tela", tam: "80x59", artista: "Manzanares", archivo: "c9r.png", rotacion: 0 },
+  { nombre: "Copia de Cerro el Paulino", tipo: "óleo sobre tela", tam: "1x1", artista: "Miquelarena", archivo: "c10r.jpg", rotacion: 0 },
+  { nombre: "Copia de La Capilla del Cerro", tipo: "óleo sobre tela", tam: "1x1", artista: "Miquelarena", archivo: "c11r.jpg", rotacion: 0 },
+  { nombre: "Copia de Laguna brava", tipo: "óleo sobre tela", tam: "1x1", artista: "Miquelarena", archivo: "c12r.jpg", rotacion: 0 },
   // { nombre: "Primavera en la sierra", tipo: "óleo sobre tela", tam: "80x59", artista: "Erbeta", archivo: "cuadro1.png", rotacion: 0 },
 ];
-let listaDePosiciones = [
-  { lat: -37.89309, lon: -58.273678, rot: 0 },
-  { lat: -37.894784, lon: -58.275958, rot: 2.237 },
-  { lat: -37.895227, lon: -58.273308, rot: 5.982 },
-  { lat: -37.894275, lon: -58.271919, rot: 3.845 }, //claro
-  { lat: -37.896478, lon: -58.275049, rot: 2.237 },
-  { lat: -37.898115, lon: -58.277343, rot: 2.237 },
-  { lat: -37.898779, lon: -58.278456, rot: 2.237 }, //punto
-  { lat: -37.900977, lon: -58.2798, rot: 0 },
-  { lat: -37.902247, lon: -58.278526, rot: 1.47 }, // mirador
-  { lon: -58.27863, lat: -37.896355, rot: -2.237 },
-];
-let posGaleria = { lon: -58.27863, lat: -37.896355, rot: -2.237 };
-// let geoJson = {
-//   type: "FeatureCollection",
-//   features: [],
-// };
-// for (let p of listaDePosiciones) {
-//   geoJson.features.push({
-//     type: "Feature",
-//     properties: {},
-//     geometry: {
-//       type: "Point",
-//       coordinates: [p.lon, p.lat],
-//     },
-//   });
-// }
-console.log("v2*****************************");
-// console.log(JSON.stringify(geoJson));
+//---- POSICIONES REALES
+// let listaDePosiciones = [
+//   { lat: -37.89309, lon: -58.273678, rot: 0, alto: 0 },
+//   { lat: -37.894784, lon: -58.275958, rot: 2.237, alto: 0 },
+//   { lat: -37.895227, lon: -58.273308, rot: 5.982, alto: 0 },
+//   { lat: -37.896478, lon: -58.275049, rot: 2.237, alto: 0 },
+//   { lat: -37.898115, lon: -58.277343, rot: 2.237, alto: 0 },
+//   { lat: -37.900977, lon: -58.2798, rot: 0, alto: 0 },
+//   { lon: -58.27863, lat: -37.896355, rot: -2.237, alto: 0 },
+// ];
+// let posGaleria = { lon: -58.27863, lat: -37.896355, rot: -2.237 };
+// let posGotas = { lat: -37.894275, lon: -58.271919, rot: 3.845 }; //claro
+// let posFlor = { lat: -37.898779, lon: -58.278456, rot: 2.237 }; //punto
+// let posColibri = { lat: -37.902247, lon: -58.278526, rot: 1.47 }; // mirador
 
-// let txt = JSON.stringify(geoJson);
-// navigator.clipboard.writeText(txt);
-let listaTexturas = ["./imagenes/img1.jpg", "./imagenes/img2.JPG", "./imagenes/img3.JPG", "./imagenes/img4.jpg", "./imagenes/img5.jpg"];
+//----- POSICIONES DEBUG
+let listaDePosiciones = [
+  { lat: -34.90372802363926, lon: -57.9690654097589, rot: 0, alto: 0 },
+  { lat: -34.90230074689099, lon: -57.96912342091018, rot: 2.237, alto: 0 },
+  { lat: -37.895227, lon: -58.273308, rot: 5.982, alto: 0 },
+  { lat: -37.896478, lon: -58.275049, rot: 2.237, alto: 0 },
+  { lat: -37.898115, lon: -58.277343, rot: 2.237, alto: 0 },
+  { lat: -37.900977, lon: -58.2798, rot: 0, alto: 0 },
+  { lon: -58.27863, lat: -37.896355, rot: -2.237, alto: 0 },
+];
+let posGaleria = { lon: -57.967385704463226, lat: -34.90210983270162, rot: -2.237 };
+let posGotas = { lat: -34.90368254422792, lon: -57.967111173282994, rot: 3.845 }; //claro
+let posFlor = { lat: -37.898779, lon: -58.278456, rot: 2.237 }; //punto
+let posColibri = { lat: -37.902247, lon: -58.278526, rot: 1.47 }; // mirador
+
 async function setupObjects(longitude, latitude) {
-  // Use position of first GPS update (fake or real)
   if (first) {
-    // let t = "";
-    // t += "Longitud: " + longitude + "\n";
-    // t += "Laditude: " + latitude + "\n";
-    // texto.setSubtitulo(t);
     texto.remove();
   }
-  let rot = [
-    { x: 0, y: 0, z: 0 },
-    { x: 0, y: 0, z: 0 },
-    { x: 0, y: -Math.PI, z: 0 },
-    { x: 0, y: Math.PI * 0.2, z: Math.PI * 0.4 },
-    { x: 0, y: Math.PI * 0.5, z: 0 },
-  ];
 
+  //--- cuadros aislados
+  let listaTexturasAisladas = [];
+  let listaTexturasGaleria = [];
+  for (let i = 0; i < listaCuadros.length; i++) {
+    if (i < 5) {
+      listaTexturasGaleria.push(listaCuadros[i]);
+    } else {
+      listaTexturasAisladas.push(listaCuadros[i]);
+    }
+  }
   let modeloBase = new THREE.Object3D();
+
   await cargarModelo(listaModelos[0], modeloBase).then((resultado) => {
-    console.log(resultado);
-    for (let i = 0; i < listaTexturas.length; i++) {
+    for (let i = 0; i < listaTexturasAisladas.length; i++) {
       modelos[i] = modeloBase.clone();
-      setTextura(listaTexturas[i], modelos[i], rot[i].x, rot[i].y, rot[i].z);
+      modelos[i].name = `Cuadro_${listaTexturasAisladas[i].nombre}`;
+      setTextura(listaTexturasAisladas[i], modelos[i], 0, listaDePosiciones[i].rot, 0);
       modelos[i].scale.set(tamPanuelo, tamPanuelo, tamPanuelo);
     }
+    for (let i = 0; i < listaTexturasGaleria.length; i++) {
+      let modeloTmp = modeloBase.clone();
+      modeloTmp.name = `Cuadro_${listaTexturasGaleria[i].nombre}`;
+      setTextura(listaTexturasGaleria[i], modeloTmp, 0, 0, 0, 0.1);
+      modeloTmp.scale.set(tamPanuelo, tamPanuelo, tamPanuelo);
+      galeria.add(modeloTmp);
+    }
+    // let indice = 0;
+    // console.log(galeria.children.filter((e) => e.name.split("_")[0] === "Cuadro")[indice].children[0].children.filter((e) => e.name.split("_")[0] === "capa1")[0].material.map);
+    // console.log(galeria.children[0].children[0].material);
   });
   let colibri = new THREE.Object3D();
   cargarColibri(colibri);
   let flor = new THREE.Object3D();
   cargarFlor(flor, flores);
   let gotas = new THREE.Object3D();
-
-  // const texture = new THREE.VideoTexture(video);
   gotasCubes = await cargarGotas(gotas);
-  // puerta.rotation.set(puerta.rotation.x, puerta.rotation.y + 90, puerta.rotation.z);
 
-  let objeto = new THREE.Object3D();
-
-  for (let i = 0; i < modelos.length; i++) {
-    objeto.add(modelos[i]);
+  for (let m = 0; m < listaDePosiciones.length; m++) {
+    threex.add(modelos[m], listaDePosiciones[m].lg, listaDePosiciones[m].lt, listaDePosiciones[m].alto);
   }
+  threex.add(galeria, posGaleria.lon, posGaleria.lat, posGaleria.alto); //galeria mi casa
+  threex.add(gotas, posGotas.lon, posGotas.lat, posGotas.alto); //galeria mi casa
+  threex.add(flor, posFlor.lon, posFlor.lat, posFlor.alto); //galeria mi casa
+  threex.add(colibri, posColibri.lon, posColibri.lat, posColibri.alto); //galeria mi casa
 
-  let lista = [
-    { lt: -37.892693, lg: -58.273934 },
-    { lt: -37.894304, lg: -58.275456 },
-    { lt: -37.894473, lg: -58.273593 },
-    { lt: -37.894269, lg: -58.271683 },
-    { lt: -37.896414, lg: -58.275124 },
-  ];
-  let offset = [
-    { x: 0, y: oneDegAsRad * 0.15, z: 25 },
-    { x: 0, y: oneDegAsRad * -0.15, z: 25 },
-    { x: oneDegAsRad * 0.15, y: 0, z: 40 },
-    { x: oneDegAsRad * 0.15, y: 0, z: 50 },
-    { x: 0, y: 0, z: 100 },
-  ];
-  for (let m = 0; m < modelos.length; m++) {
-    threex.add(modelos[m], lista[m].lg, lista[m].lt, offset[m].z);
-  }
+  // let lista = [
+  //   { lt: -37.892693, lg: -58.273934 },
+  //   { lt: -37.894304, lg: -58.275456 },
+  //   { lt: -37.894473, lg: -58.273593 },
+  //   { lt: -37.894269, lg: -58.271683 },
+  //   { lt: -37.896414, lg: -58.275124 },
+  // ];
+  // let offset = [
+  //   { x: 0, y: oneDegAsRad * 0.15, z: 25 },
+  //   { x: 0, y: oneDegAsRad * -0.15, z: 25 },
+  //   { x: oneDegAsRad * 0.15, y: 0, z: 40 },
+  //   { x: oneDegAsRad * 0.15, y: 0, z: 50 },
+  //   { x: 0, y: 0, z: 100 },
+  // ];
 
   // const video = document.getElementById( 'video' );
   // 			video.play();
@@ -304,9 +352,15 @@ async function setupObjects(longitude, latitude) {
   // -54.813582, -68.323999
   // -54.813590, -68.324806
   // -54.813572, -68.325321
-  threex.add(gotas, -68.325321, -54.813572, 10); //gotas ushuaia
+  // threex.add(gotas, -68.325321, -54.813572, 10); //gotas ushuaia
 
+  // threex.add(gotas, -57.968023, -34.903245, 10); //gotas mi casa
   // threex.add(colibri, -58.006153, -34.886712, 0); //ciop
+
+  // threex.add(modelos[0], -57.968023, -34.903245, 1); //galeria mi casa
+  // if (i == 0) {
+  //   threex.add(modelos[0], -57.968023, -34.903245, 1); //galeria mi casa
+  // }
 }
 
 // var download = function () {
@@ -381,15 +435,15 @@ function iluminarConFoto(archivo) {
     texture.dispose();
     iluminador.dispose();
   });
-  let light = new THREE.DirectionalLight(0xffffff);
-  light.position.set(0.5, 0.5, 1);
-  scene.add(light);
+  // let light = new THREE.DirectionalLight(0xffffff);
+  // light.position.set(0.5, 0.5, -10);
+  // scene.add(light);
 
-  let pointLight = new THREE.PointLight(0xffffff);
-  pointLight.position.set(0, 0, 100);
-  scene.add(pointLight);
+  // let pointLight = new THREE.PointLight(0xffffff);
+  // pointLight.position.set(0, 0, 100);
+  // scene.add(pointLight);
 
-  let ambientLight = new THREE.AmbientLight(0x080808);
+  let ambientLight = new THREE.AmbientLight(0x111111);
   scene.add(ambientLight);
 }
 

@@ -3,6 +3,7 @@ import { BufferAttribute, BufferGeometry, Color, DynamicDrawUsage, Mesh } from "
 /**
  * Port of http://webglsamples.org/blob/blob.html
  */
+
 class MarchingCubes extends Mesh {
   constructor(resolution, material, enableUvs = false, enableColors = false, maxPolyCount = 10000) {
     const geometry = new BufferGeometry();
@@ -34,15 +35,21 @@ class MarchingCubes extends Mesh {
       this.isolation = 80.0;
 
       // size of field, 32 is pushing it in Javascript :)
-
-      this.size = resolution;
-      this.size2 = this.size * this.size;
-      this.size3 = this.size2 * this.size;
-      this.halfsize = this.size / 2.0;
+      this.sizeX = parseInt(resolution);
+      this.sizeY = parseInt(resolution / 3); //parseInt(resolution / 3);
+      this.sizeZ = 20; //parseInt(resolution / 3);
+      this.size = this.sizeX;
+      this.size2 = this.sizeX * this.sizeY;
+      this.size3 = this.size2 * this.sizeZ;
+      this.halfsizeX = this.sizeX / 2.0;
+      this.halfsizeY = this.sizeY / 2.0;
+      this.halfsizeZ = this.sizeZ / 2.0;
 
       // deltas
 
-      this.delta = 2.0 / this.size;
+      this.deltaX = 2.0 / this.sizeX;
+      this.deltaY = 2.0 / this.sizeY;
+      this.deltaZ = 2.0 / this.sizeZ;
       this.yd = this.size;
       this.zd = this.size2;
 
@@ -93,7 +100,7 @@ class MarchingCubes extends Mesh {
       const mu = (isol - valp1) / (valp2 - valp1),
         nc = scope.normal_cache;
 
-      vlist[offset + 0] = x + mu * scope.delta;
+      vlist[offset + 0] = x + mu * scope.deltaX;
       vlist[offset + 1] = y;
       vlist[offset + 2] = z;
 
@@ -111,7 +118,7 @@ class MarchingCubes extends Mesh {
         nc = scope.normal_cache;
 
       vlist[offset + 0] = x;
-      vlist[offset + 1] = y + mu * scope.delta;
+      vlist[offset + 1] = y + mu * scope.deltaY;
       vlist[offset + 2] = z;
 
       const q2 = q + scope.yd * 3;
@@ -131,7 +138,7 @@ class MarchingCubes extends Mesh {
 
       vlist[offset + 0] = x;
       vlist[offset + 1] = y;
-      vlist[offset + 2] = z + mu * scope.delta;
+      vlist[offset + 2] = z + mu * scope.deltaZ;
 
       const q2 = q + scope.zd * 3;
 
@@ -191,10 +198,12 @@ class MarchingCubes extends Mesh {
       const bits = edgeTable[cubeindex];
       if (bits === 0) return 0;
 
-      const d = scope.delta,
-        fx2 = fx + d,
-        fy2 = fy + d,
-        fz2 = fz + d;
+      const dx = scope.deltaX,
+        dy = scope.deltaY,
+        dz = scope.deltaZ,
+        fx2 = fx + dx,
+        fy2 = fy + dy,
+        fz2 = fz + dz;
 
       // top of the cube
 
@@ -414,41 +423,51 @@ class MarchingCubes extends Mesh {
       // radius = sqrt(strength / subtract)
 
       const radius = this.size * Math.sqrt(strength / subtract),
-        zs = ballz * this.size,
-        ys = bally * this.size,
-        xs = ballx * this.size;
+        zs = ballz * this.sizeZ,
+        ys = bally * this.sizeY,
+        xs = ballx * this.sizeX;
 
       let min_z = Math.floor(zs - radius);
       if (min_z < 1) min_z = 1;
       let max_z = Math.floor(zs + radius);
-      if (max_z > this.size - 1) max_z = this.size - 1;
+      if (max_z > this.sizeZ - 1) max_z = this.sizeZ - 1;
       let min_y = Math.floor(ys - radius);
       if (min_y < 1) min_y = 1;
       let max_y = Math.floor(ys + radius);
-      if (max_y > this.size - 1) max_y = this.size - 1;
-      let min_x = Math.floor(xs - radius);
+      if (max_y > this.sizeY - 1) max_y = this.sizeY - 1;
+      let min_x = Math.floor(xs - radius * 1.5);
       if (min_x < 1) min_x = 1;
-      let max_x = Math.floor(xs + radius);
-      if (max_x > this.size - 1) max_x = this.size - 1;
-
+      let max_x = Math.floor(xs + radius * 1.5);
+      if (max_x > this.sizeX - 1) max_x = this.sizeX - 1;
       // Don't polygonize in the outer layer because normals aren't
       // well-defined there.
 
       let x, y, z, y_offset, z_offset, fx, fy, fz, fz2, fy2, val;
-
+      let efectoX, efectoY, efectoZ;
       for (z = min_z; z < max_z; z++) {
         z_offset = this.size2 * z;
-        fz = z / this.size - ballz;
+        fz = z / this.sizeZ - ballz;
         fz2 = fz * fz;
-
+        // efectoZ = Math.pow(1 - z / max_z, 1.5);
+        efectoZ = 10 * Math.pow(0.5 - z / max_z, 2);
+        // efectoZ = 1.8*sin((y/max_y)*PI+0.6)-0.63;
+        // efectoZ = efectoZ <= 0 ? 0.001 : efectoZ;
         for (y = min_y; y < max_y; y++) {
           y_offset = z_offset + this.size * y;
-          fy = y / this.size - bally;
+          fy = y / this.sizeY - bally;
           fy2 = fy * fy;
-
+          efectoY = Math.pow(1 - y / max_y, 1.5);
+          // efectoY = 10 * Math.pow(0.5 - y / max_y, 2);
+          // efectoY = 1.8*sin((y/max_y)*PI+0.6)-0.63;
+          // efectoY = efectoY <= 0 ? 0.001 : efectoY;
           for (x = min_x; x < max_x; x++) {
-            fx = x / this.size - ballx;
-            val = strength / (0.000001 + fx * fx + fy2 + fz2) - subtract;
+            fx = x / this.sizeX - ballx;
+
+            // efectoX = Math.pow(1 - x / max_x, 1.5);
+            efectoX = 10 * Math.pow(0.5 - x / max_x, 2);
+            val = strength / (0.000001 + fx * fx + fy2 + fz2 + efectoX * efectoZ * efectoY * 0.7) - subtract; // / (0.000001 + fx * fx + fy2 ) - subtract;
+
+            // val = strength / (0.000001 + fx * fx + fy2 + fz2) - subtract;
             if (val > 0.0) {
               this.field[y_offset + x] += val * sign;
 
@@ -460,113 +479,6 @@ class MarchingCubes extends Mesh {
               this.palette[(y_offset + x) * 3 + 1] += ballColor.g * contrib;
               this.palette[(y_offset + x) * 3 + 2] += ballColor.b * contrib;
             }
-          }
-        }
-      }
-    };
-
-    this.addPlaneX = function (strength, subtract) {
-      // cache attribute lookups
-      const size = this.size,
-        yd = this.yd,
-        zd = this.zd,
-        field = this.field;
-
-      let x,
-        y,
-        z,
-        xx,
-        val,
-        xdiv,
-        cxy,
-        dist = size * Math.sqrt(strength / subtract);
-
-      if (dist > size) dist = size;
-
-      for (x = 0; x < dist; x++) {
-        xdiv = x / size;
-        xx = xdiv * xdiv;
-        val = strength / (0.0001 + xx) - subtract;
-
-        if (val > 0.0) {
-          for (y = 0; y < size; y++) {
-            cxy = x + y * yd;
-
-            for (z = 0; z < size; z++) {
-              field[zd * z + cxy] += val;
-            }
-          }
-        }
-      }
-    };
-
-    this.addPlaneY = function (strength, subtract) {
-      // cache attribute lookups
-      const size = this.size,
-        yd = this.yd,
-        zd = this.zd,
-        field = this.field;
-
-      let x,
-        y,
-        z,
-        yy,
-        val,
-        ydiv,
-        cy,
-        cxy,
-        dist = size * Math.sqrt(strength / subtract);
-
-      if (dist > size) dist = size;
-
-      for (y = 0; y < dist; y++) {
-        ydiv = y / size;
-        yy = ydiv * ydiv;
-        val = strength / (0.0001 + yy) - subtract;
-
-        if (val > 0.0) {
-          cy = y * yd;
-
-          for (x = 0; x < size; x++) {
-            cxy = cy + x;
-
-            for (z = 0; z < size; z++) field[zd * z + cxy] += val;
-          }
-        }
-      }
-    };
-
-    this.addPlaneZ = function (strength, subtract) {
-      // cache attribute lookups
-
-      const size = this.size,
-        yd = this.yd,
-        zd = this.zd,
-        field = this.field;
-
-      let x,
-        y,
-        z,
-        zz,
-        val,
-        zdiv,
-        cz,
-        cyz,
-        dist = size * Math.sqrt(strength / subtract);
-
-      if (dist > size) dist = size;
-
-      for (z = 0; z < dist; z++) {
-        zdiv = z / size;
-        zz = zdiv * zdiv;
-        val = strength / (0.0001 + zz) - subtract;
-        if (val > 0.0) {
-          cz = zd * z;
-
-          for (y = 0; y < size; y++) {
-            cyz = cz + y * yd;
-
-            for (x = 0; x < size; x++) field[cyz + x] += val;
           }
         }
       }
@@ -640,18 +552,20 @@ class MarchingCubes extends Mesh {
 
       // Triangulate. Yeah, this is slow.
 
-      const smin2 = this.size - 2;
+      const smin2X = this.sizeX - 2;
+      const smin2Y = this.sizeY - 2;
+      const smin2Z = this.sizeZ - 2;
 
-      for (let z = 1; z < smin2; z++) {
+      for (let z = 1; z < smin2Z; z++) {
         const z_offset = this.size2 * z;
-        const fz = (z - this.halfsize) / this.halfsize; //+ 1
+        const fz = (z - this.halfsizeZ) / this.halfsizeZ; //+ 1
 
-        for (let y = 1; y < smin2; y++) {
+        for (let y = 1; y < smin2Y; y++) {
           const y_offset = z_offset + this.size * y;
-          const fy = (y - this.halfsize) / this.halfsize; //+ 1
+          const fy = (y - this.halfsizeY) / this.halfsizeY; //+ 1
 
-          for (let x = 1; x < smin2; x++) {
-            const fx = (x - this.halfsize) / this.halfsize; //+ 1
+          for (let x = 1; x < smin2X; x++) {
+            const fx = (x - this.halfsizeX) / this.halfsizeX; //+ 1
             const q = y_offset + x;
 
             polygonize(fx, fy, fz, q, this.isolation);

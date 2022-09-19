@@ -21,7 +21,7 @@ export async function cargarFlor(objetoVacio, floresOut) {
         flores[off] = new Flor();
         for (let obj of gltf.scene.children) {
           let nombre = obj.name.split("_")[0];
-          console.log(nombre);
+          // console.log(nombre);
           if (nombre === "Caliz") {
             let calizClon = obj.clone();
             calizClon.scale.set(2, 2, 2);

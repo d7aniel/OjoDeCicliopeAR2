@@ -56,32 +56,31 @@ export async function cargarModelo(archivo, objetoVacio) {
   });
 }
 
-export function setTextura(texturaArchivo, objeto, rotX, rotY, rotZ) {
-  // // instantiate a loader
+export function setTextura(texturaArchivo, objeto, rotX, rotY, rotZ, randmSize = 0) {
   const loader = new THREE.TextureLoader();
-  // let material = new THREE.MeshBasicMaterial({});
-  // // load a resource
+  // `./imagenes/cuadros/${texturaArchivo.archivo}`;
   loader.load(
-    // resource URL
-    texturaArchivo,
-    // onLoad callback
+    `./imagenes/cuadros/${texturaArchivo.archivo}`,
     (texture) => {
-      const proporcion = texture.image.naturalWidth / texture.image.naturalHeight;
-      objeto.children[0].scale.set(proporcion, 1, 1);
+      let modificacionRandom = 1.0 + Math.random(randmSize);
+      let textoDimension = texturaArchivo.tam.split("x");
+      let tx = parseInt(textoDimension[0]);
+      let ty = parseInt(textoDimension[1]);
+      const proporcion = (texture.image.naturalWidth * tx) / (texture.image.naturalHeight * ty);
+      objeto.children[0].scale.set(proporcion * modificacionRandom, 1 * modificacionRandom, 1 * modificacionRandom);
       objeto.children[0].rotation.set(rotX, rotY, rotZ);
       let capa1 = new THREE.MeshBasicMaterial({
         map: texture,
       });
       for (let obj of objeto.children[0].children) {
         let nombre = obj.name.split("_")[0];
+        // console.log(nombre);
         if (nombre === "capa1") {
           obj.material = capa1;
         }
       }
     },
-    // onProgress callback currently not supported
     undefined,
-    // onError callback
     function (err) {
       console.error("An error happened.");
     }

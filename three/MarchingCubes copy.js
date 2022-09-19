@@ -3,6 +3,7 @@ import { BufferAttribute, BufferGeometry, Color, DynamicDrawUsage, Mesh } from "
 /**
  * Port of http://webglsamples.org/blob/blob.html
  */
+
 class MarchingCubes extends Mesh {
   constructor(resolution, material, enableUvs = false, enableColors = false, maxPolyCount = 10000) {
     const geometry = new BufferGeometry();
@@ -426,29 +427,39 @@ class MarchingCubes extends Mesh {
       if (min_y < 1) min_y = 1;
       let max_y = Math.floor(ys + radius);
       if (max_y > this.size - 1) max_y = this.size - 1;
-      let min_x = Math.floor(xs - radius);
+      let min_x = Math.floor(xs - radius * 1.5);
       if (min_x < 1) min_x = 1;
-      let max_x = Math.floor(xs + radius);
+      let max_x = Math.floor(xs + radius * 1.5);
       if (max_x > this.size - 1) max_x = this.size - 1;
-
       // Don't polygonize in the outer layer because normals aren't
       // well-defined there.
 
       let x, y, z, y_offset, z_offset, fx, fy, fz, fz2, fy2, val;
-
+      let efectoX, efectoY, efectoZ;
       for (z = min_z; z < max_z; z++) {
         z_offset = this.size2 * z;
         fz = z / this.size - ballz;
         fz2 = fz * fz;
-
+        // efectoZ = Math.pow(1 - z / max_z, 1.5);
+        efectoZ = 10 * Math.pow(0.5 - z / max_z, 2);
+        // efectoZ = 1.8*sin((y/max_y)*PI+0.6)-0.63;
+        // efectoZ = efectoZ <= 0 ? 0.001 : efectoZ;
         for (y = min_y; y < max_y; y++) {
           y_offset = z_offset + this.size * y;
           fy = y / this.size - bally;
           fy2 = fy * fy;
-
+          efectoY = Math.pow(1 - y / max_y, 1.5);
+          // efectoY = 10 * Math.pow(0.5 - y / max_y, 2);
+          // efectoY = 1.8*sin((y/max_y)*PI+0.6)-0.63;
+          // efectoY = efectoY <= 0 ? 0.001 : efectoY;
           for (x = min_x; x < max_x; x++) {
             fx = x / this.size - ballx;
-            val = strength / (0.000001 + fx * fx + fy2 + fz2) - subtract;
+
+            // efectoX = Math.pow(1 - x / max_x, 1.5);
+            efectoX = 10 * Math.pow(0.5 - x / max_x, 2);
+            val = strength / (0.000001 + fx * fx + fy2 + fz2 + efectoX * efectoZ * efectoY * 0.7) - subtract; // / (0.000001 + fx * fx + fy2 ) - subtract;
+
+            // val = strength / (0.000001 + fx * fx + fy2 + fz2) - subtract;
             if (val > 0.0) {
               this.field[y_offset + x] += val * sign;
 
@@ -460,113 +471,6 @@ class MarchingCubes extends Mesh {
               this.palette[(y_offset + x) * 3 + 1] += ballColor.g * contrib;
               this.palette[(y_offset + x) * 3 + 2] += ballColor.b * contrib;
             }
-          }
-        }
-      }
-    };
-
-    this.addPlaneX = function (strength, subtract) {
-      // cache attribute lookups
-      const size = this.size,
-        yd = this.yd,
-        zd = this.zd,
-        field = this.field;
-
-      let x,
-        y,
-        z,
-        xx,
-        val,
-        xdiv,
-        cxy,
-        dist = size * Math.sqrt(strength / subtract);
-
-      if (dist > size) dist = size;
-
-      for (x = 0; x < dist; x++) {
-        xdiv = x / size;
-        xx = xdiv * xdiv;
-        val = strength / (0.0001 + xx) - subtract;
-
-        if (val > 0.0) {
-          for (y = 0; y < size; y++) {
-            cxy = x + y * yd;
-
-            for (z = 0; z < size; z++) {
-              field[zd * z + cxy] += val;
-            }
-          }
-        }
-      }
-    };
-
-    this.addPlaneY = function (strength, subtract) {
-      // cache attribute lookups
-      const size = this.size,
-        yd = this.yd,
-        zd = this.zd,
-        field = this.field;
-
-      let x,
-        y,
-        z,
-        yy,
-        val,
-        ydiv,
-        cy,
-        cxy,
-        dist = size * Math.sqrt(strength / subtract);
-
-      if (dist > size) dist = size;
-
-      for (y = 0; y < dist; y++) {
-        ydiv = y / size;
-        yy = ydiv * ydiv;
-        val = strength / (0.0001 + yy) - subtract;
-
-        if (val > 0.0) {
-          cy = y * yd;
-
-          for (x = 0; x < size; x++) {
-            cxy = cy + x;
-
-            for (z = 0; z < size; z++) field[zd * z + cxy] += val;
-          }
-        }
-      }
-    };
-
-    this.addPlaneZ = function (strength, subtract) {
-      // cache attribute lookups
-
-      const size = this.size,
-        yd = this.yd,
-        zd = this.zd,
-        field = this.field;
-
-      let x,
-        y,
-        z,
-        zz,
-        val,
-        zdiv,
-        cz,
-        cyz,
-        dist = size * Math.sqrt(strength / subtract);
-
-      if (dist > size) dist = size;
-
-      for (z = 0; z < dist; z++) {
-        zdiv = z / size;
-        zz = zdiv * zdiv;
-        val = strength / (0.0001 + zz) - subtract;
-        if (val > 0.0) {
-          cz = zd * z;
-
-          for (y = 0; y < size; y++) {
-            cyz = cz + y * yd;
-
-            for (x = 0; x < size; x++) field[cyz + x] += val;
           }
         }
       }
