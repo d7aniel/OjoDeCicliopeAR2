@@ -12,6 +12,9 @@
         body {
             height: 100%;
             background-color: black;
+            /* display: flex;
+            align-items: center;
+            justify-content: center; */
         }
             
         button {
@@ -31,7 +34,7 @@
             border-radius: 50%;
             border: 1px solid grey;
             /* padding: 10px; */
-            margin-top: 15px;
+            /* margin-top: 15px; */
             display: flex;
             align-items: center;
             justify-content: center;
@@ -42,15 +45,23 @@
             border: 2px solid rgb(94, 92, 92);
             border-radius: 40px;
             background-color: rgb(42, 39, 39);
-            width: 90%;
-            height: 80%;
+            /* width: 90%;
+            height: 80%; */
             position: absolute;
             flex-direction: column;
             display: flex;
-            top: 0px;
-            left: 0px;
-            margin: 5% 5%;
+            /* top: 0px;
+            left: 0px; */
+            /* margin: 5% 5%; */
             align-items: center;
+
+            min-height: 100px;
+            overflow: hidden;
+            padding: 2%;
+
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
         }
         .descripcion {   
             display: flex;
