@@ -16,7 +16,7 @@
             
         button {
             background-color: rgb(219, 219, 219);
-            font-size: 35px;
+          
             /* margin-left: 5px;
             margin-right: 1px; */
         }
@@ -32,6 +32,11 @@
             border: 1px solid grey;
             /* padding: 10px; */
             margin-top: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* height: 180px;
+                width: 180px; */
         }
         #descripcionCuadro {
             border: 2px solid rgb(94, 92, 92);
@@ -65,19 +70,44 @@
             font-weight: bold;
             margin-right:10px;
         }
+        .icono{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
         @media screen and (orientation:portrait) {
-            .button{        
+            button{        
                 height: 180px;
                 width: 180px;
             }
-        }
-        @media screen and (orientation:landscape) {
-            .button{        
-                height: 60px;
-                width: 60px;
+            i {
+                height: 90px;
+                width: 90px;
+            }
+            .icono{
+                font-size: 45px;
             }
         }
+        @media screen and (orientation:landscape) {
+            button{        
+                height: 60px;
+                width: 60px;
+               
+            }
+            i {
+                height: 25px;
+                width: 25px;
+            }
+            .icono{
+                font-size: 24px;
+            }
+        }
+        /* @media only screen and (orientation: landscape) {
+            button {
+                background-color: lightblue;
+            }
+        } */
     </style>
 </head>
 
@@ -87,7 +117,7 @@
 
     <div id="descripcionCuadro" style="display:none;">
         <div class="titulo"> 
-            <button id="cerrarDesc"><i  class="material-icons">close</i></button>
+            <button id="cerrarDesc"><i  class="material-icons icono">close</i></button>
         </div>
         <div class="descripcion"> 
             <div class="linea"> 
@@ -138,8 +168,8 @@
         }
     </script>
     <a style="position: absolute;top: 40; display: flex; justify-content: center; bottom: 40px; width: 100%;">
-        <button type="button" onClick="downloadCanvasAsPng()"><i class="material-icons">photo_camera</i></button>
-        <button id="goFS"><i id="iconoPantalla" class="material-icons">fullscreen</i></button>
+        <button type="button" onClick="downloadCanvasAsPng()"><i class="material-icons icono">photo_camera</i></button>
+        <button id="goFS"><i id="iconoPantalla" class="material-icons icono">fullscreen</i></button>
     </a>;
     <!-- <a style="position: absolute;top: 40; display: flex; justify-content: center; bottom: 40px; width: 100%;">
     
