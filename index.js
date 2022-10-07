@@ -325,7 +325,7 @@ async function setupObjects(longitude, latitude) {
     threex.add(modelos[m], listaDePosiciones[m].lon, listaDePosiciones[m].lat, listaDePosiciones[m].alto);
   }
   threex.add(galeria, posGaleria.lon, posGaleria.lat, posGaleria.alto); //galeria mi casa
-  threex.add(gotas, posGotas.lon, posGotas.lat, posGotas.alto); //galeria mi casa
+  threex.add(gotas, posGotas.lon, posGotas.lat, 35); //galeria mi casa
   threex.add(flor, posFlor.lon, posFlor.lat, -30); //galeria mi casa
   threex.add(colibri, posColibri.lon, posColibri.lat, posColibri.alto); //galeria mi casa
 
