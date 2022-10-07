@@ -251,20 +251,32 @@ let listaCuadros = [
 // let posFlor = { lat: -37.898779, lon: -58.278456, rot: 2.237 }; //punto
 // let posColibri = { lat: -37.902247, lon: -58.278526, rot: 1.47 }; // mirador
 
+// -34.859884, -58.070084 //entrada
+// -34.861081, -58.071994 // cruce camino del encuentro
+// -34.864848, -58.074397 //arbol grandotote
+// -34.860557, -58.070826 //camino 1
+// -34.861402, -58.072457 //camino 2
+// -34.862722, -58.073874 //camino 3
+// -34.864746, -58.075545 //camino 4
+// -34.866241, -58.074888 //camino 5
+// -34.862690, -58.070715 //camino encuentro bosque
+// -34.868863, -58.076021 //cancha
+// -34.864368, -58.071961 //medio de la nada
+// -34.867738, -58.078479 //camino atras de la cancha
 //----- POSICIONES DEBUG
 let listaDePosiciones = [
-  { lat: -34.90372802363926, lon: -57.9690654097589, rot: 0, alto: 0 },
-  { lat: -34.90230074689099, lon: -57.96912342091018, rot: 2.237, alto: 0 },
-  { lat: -37.895227, lon: -58.273308, rot: 5.982, alto: 0 },
-  { lat: -37.896478, lon: -58.275049, rot: 2.237, alto: 0 },
-  { lat: -37.898115, lon: -58.277343, rot: 2.237, alto: 0 },
-  { lat: -37.900977, lon: -58.2798, rot: 0, alto: 0 },
-  { lon: -58.27863, lat: -37.896355, rot: -2.237, alto: 0 },
+  { lat: -34.860557, lon: -58.070826, rot: 0, alto: 0 },
+  { lat: -34.861402, lon: -58.072457, rot: 2.237, alto: 0 },
+  { lat: -37.862722, lon: -58.073874, rot: 5.982, alto: 0 },
+  { lat: -37.864746, lon: -58.075545, rot: 2.237, alto: 0 },
+  { lat: -34.866241, lon: -58.074888, rot: 2.237, alto: 0 },
+  { lat: -34.859884, lon: -58.070084, rot: 0, alto: 0 },
+  { lat: -34.86269, lon: -58.070715, rot: -2.237, alto: 0 },
 ];
-let posGaleria = { lon: -57.967385704463226, lat: -34.90210983270162, rot: -2.237 };
-let posGotas = { lat: -34.90368254422792, lon: -57.967111173282994, rot: 3.845 }; //claro
-let posFlor = { lat: -37.898779, lon: -58.278456, rot: 2.237 }; //punto
-let posColibri = { lat: -37.902247, lon: -58.278526, rot: 1.47 }; // mirador
+let posGaleria = { lat: -34.867738, lon: -58.078479, rot: -2.237 };
+let posGotas = { lat: -34.868863, lon: -58.076021, rot: 3.845 }; //claro
+let posFlor = { lat: -34.864848, lon: -58.074397, rot: 2.237 }; //punto
+let posColibri = { lat: -34.861081, lon: -58.071994, rot: 1.47 }; // mirador
 
 async function setupObjects(longitude, latitude) {
   if (first) {
@@ -308,8 +320,8 @@ async function setupObjects(longitude, latitude) {
   let gotas = new THREE.Object3D();
   gotasCubes = await cargarGotas(gotas);
 
-  for (let m = 0; m < listaDePosiciones.length; m++) {
-    threex.add(modelos[m], listaDePosiciones[m].lg, listaDePosiciones[m].lt, listaDePosiciones[m].alto);
+  for (let m = 0; m < listaTexturasAisladas.length; m++) {
+    threex.add(modelos[m], listaDePosiciones[m].lon, listaDePosiciones[m].lat, listaDePosiciones[m].alto);
   }
   threex.add(galeria, posGaleria.lon, posGaleria.lat, posGaleria.alto); //galeria mi casa
   threex.add(gotas, posGotas.lon, posGotas.lat, posGotas.alto); //galeria mi casa
