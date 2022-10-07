@@ -6,6 +6,7 @@ import { cargarColibri } from "./Colibri.js";
 import { cargarFlor } from "./Flor.js";
 import { cargarGotas, actualizarGotas } from "./Gotas.js";
 // import { Particula } from "./Particula.js";
+console.log("v.1");
 let d = 60;
 var poss = [
   new THREE.Vector2(0, 0),
