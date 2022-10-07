@@ -266,13 +266,13 @@ let listaCuadros = [
 // -34.867738, -58.078479 //camino atras de la cancha
 //----- POSICIONES DEBUG
 let listaDePosiciones = [
-  { lat: -34.860557, lon: -58.070826, rot: 0, alto: 2 },
-  { lat: -34.861402, lon: -58.072457, rot: 2.237, alto: 11 },
-  { lat: -37.862722, lon: -58.073874, rot: 5.982, alto: 10 },
-  { lat: -37.864746, lon: -58.075545, rot: 2.237, alto: 5 },
-  { lat: -34.866241, lon: -58.074888, rot: 2.237, alto: 7 },
-  { lat: -34.859884, lon: -58.070084, rot: 0, alto: 3 },
-  { lat: -34.86269, lon: -58.070715, rot: -2.237, alto: 1 },
+  { lat: -34.860557, lon: -58.070826, rot: 0, alto: 20 },
+  { lat: -34.861402, lon: -58.072457, rot: 2.237, alto: 25 },
+  { lat: -37.862722, lon: -58.073874, rot: 5.982, alto: 20 },
+  { lat: -37.864746, lon: -58.075545, rot: 2.237, alto: 15},
+  { lat: -34.866241, lon: -58.074888, rot: 2.237, alto: 20 },
+  { lat: -34.859884, lon: -58.070084, rot: 0, alto: 30 },
+  { lat: -34.86269, lon: -58.070715, rot: -2.237, alto: 15 },
 ];
 let posGaleria = { lat: -34.867738, lon: -58.078479, rot: -2.237 };
 let posGotas = { lat: -34.868863, lon: -58.076021, rot: 3.845 }; //claro
@@ -326,7 +326,7 @@ async function setupObjects(longitude, latitude) {
   }
   threex.add(galeria, posGaleria.lon, posGaleria.lat, posGaleria.alto); //galeria mi casa
   threex.add(gotas, posGotas.lon, posGotas.lat, posGotas.alto); //galeria mi casa
-  threex.add(flor, posFlor.lon, posFlor.lat, -10); //galeria mi casa
+  threex.add(flor, posFlor.lon, posFlor.lat, -30); //galeria mi casa
   threex.add(colibri, posColibri.lon, posColibri.lat, posColibri.alto); //galeria mi casa
 
   // let lista = [
