@@ -267,10 +267,10 @@ let listaCuadros = [
 //----- POSICIONES DEBUG
 let listaDePosiciones = [
   { lat: -34.860557, lon: -58.070826, rot: 0, alto: 2 },
-  { lat: -34.861402, lon: -58.072457, rot: 2.237, alto: 1 },
-  { lat: -37.862722, lon: -58.073874, rot: 5.982, alto: 3 },
-  { lat: -37.864746, lon: -58.075545, rot: 2.237, alto: 2 },
-  { lat: -34.866241, lon: -58.074888, rot: 2.237, alto: 1 },
+  { lat: -34.861402, lon: -58.072457, rot: 2.237, alto: 11 },
+  { lat: -37.862722, lon: -58.073874, rot: 5.982, alto: 10 },
+  { lat: -37.864746, lon: -58.075545, rot: 2.237, alto: 5 },
+  { lat: -34.866241, lon: -58.074888, rot: 2.237, alto: 7 },
   { lat: -34.859884, lon: -58.070084, rot: 0, alto: 3 },
   { lat: -34.86269, lon: -58.070715, rot: -2.237, alto: 1 },
 ];
