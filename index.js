@@ -264,8 +264,36 @@ let listaCuadros = [
 // -34.868863, -58.076021 //cancha
 // -34.864368, -58.071961 //medio de la nada
 // -34.867738, -58.078479 //camino atras de la cancha
-//----- POSICIONES DEBUG
+//----- POSICIONES DEBUG PARQUE ECOLOGICO
+// let listaDePosiciones = [
+//   { lat: -34.860557, lon: -58.070826, rot: 0, alto: 0 },
+//   { lat: -34.861402, lon: -58.072457, rot: 2.237, alto: 0 },
+//   { lat: -37.862722, lon: -58.073874, rot: 5.982, alto: 0 },
+//   { lat: -37.864746, lon: -58.075545, rot: 2.237, alto: 0 },
+//   { lat: -34.866241, lon: -58.074888, rot: 2.237, alto: 0 },
+//   { lat: -34.859884, lon: -58.070084, rot: 0, alto: 0 },
+//   { lat: -34.86269, lon: -58.070715, rot: -2.237, alto: 0 },
+// ];
+// let posGaleria = { lat: -34.867738, lon: -58.078479, rot: -2.237 };
+// let posGotas = { lat: -34.868863, lon: -58.076021, rot: 3.845 }; //claro
+// let posFlor = { lat: -34.864848, lon: -58.074397, rot: 2.237 }; //punto
+// let posColibri = { lat: -34.861081, lon: -58.071994, rot: 1.47 }; // mirador
+
+//----- POSICIONES DEBUG CIRCUNVALACION
 let listaDePosiciones = [
+  // -34.895982, -57.964274
+  // -34.896786, -57.965229
+  // -34.897413, -57.965891
+  // -34.897893, -57.966437
+  // -34.898479, -57.967096
+  // -34.899327, -57.968007
+  // -34.899836, -57.968580
+  // -34.901211, -57.970010
+  // -34.901761, -57.970671
+  // -34.904855, -57.974063
+  // -34.905778, -57.975101
+
+  // -34.903076, -57.968118
   { lat: -34.860557, lon: -58.070826, rot: 0, alto: 0 },
   { lat: -34.861402, lon: -58.072457, rot: 2.237, alto: 0 },
   { lat: -37.862722, lon: -58.073874, rot: 5.982, alto: 0 },
@@ -274,10 +302,15 @@ let listaDePosiciones = [
   { lat: -34.859884, lon: -58.070084, rot: 0, alto: 0 },
   { lat: -34.86269, lon: -58.070715, rot: -2.237, alto: 0 },
 ];
-let posGaleria = { lat: -34.867738, lon: -58.078479, rot: -2.237 };
-let posGotas = { lat: -34.868863, lon: -58.076021, rot: 3.845 }; //claro
-let posFlor = { lat: -34.864848, lon: -58.074397, rot: 2.237 }; //punto
-let posColibri = { lat: -34.861081, lon: -58.071994, rot: 1.47 }; // mirador
+
+for (let l of listaDePosiciones) {
+  l.lat = -34.903076;
+  l.lon = -57.968118;
+}
+let posGaleria = { lat: -34.903076, lon: -57.968118, rot: -2.237 };
+let posGotas = { lat: -34.903076, lon: -57.968118, rot: 3.845 }; //claro
+let posFlor = { lat: -34.903076, lon: -57.968118, rot: 2.237 }; //punto
+let posColibri = { lat: -34.903076, lon: -57.968118, rot: 1.47 }; // mirador
 
 async function setupObjects(longitude, latitude) {
   if (first) {
