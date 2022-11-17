@@ -61,27 +61,27 @@ function onPointerMove(event) {
   pointer.y = -(event.clientY / window.innerHeight) * 2 + 1;
 }
 document.addEventListener("mousemove", onPointerMove);
-document.addEventListener("click", (e) => {
-  raycaster.setFromCamera(pointer, camera);
-  const intersects = raycaster.intersectObjects(scene.children, true);
-  // console.log(scene.children);
-  // console.log(intersects);
-  const cuadros = intersects.filter((e) => e.object.parent.parent.name.split("_")[0] === "Cuadro");
-  if (cuadros.length > 0) {
-    let nombre = cuadros[0].object.parent.parent.name.split("_")[1];
-    let cuadro = listaCuadros.filter((e) => e.nombre == nombre)[0];
+// document.addEventListener("click", (e) => {
+//   raycaster.setFromCamera(pointer, camera);
+//   const intersects = raycaster.intersectObjects(scene.children, true);
+//   // console.log(scene.children);
+//   // console.log(intersects);
+//   const cuadros = intersects.filter((e) => e.object.parent.parent.name.split("_")[0] === "Cuadro");
+//   if (cuadros.length > 0) {
+//     let nombre = cuadros[0].object.parent.parent.name.split("_")[1];
+//     let cuadro = listaCuadros.filter((e) => e.nombre == nombre)[0];
 
-    descCuadro.style.display = "flex";
-    artistaCuadro.innerText = cuadro.artista;
-    nombreCuadro.innerText = cuadro.nombre;
-    tamCuadro.innerText = cuadro.tam;
-    tipoCuadro.innerText = cuadro.tipo;
-    // artista: "Erbeta"
-    // nombre: "Puerta del abra"
-    // tam: "67x49"
-    // tipo: "óleo sobre tela"
-  }
-});
+//     descCuadro.style.display = "flex";
+//     artistaCuadro.innerText = cuadro.artista;
+//     nombreCuadro.innerText = cuadro.nombre;
+//     tamCuadro.innerText = cuadro.tam;
+//     tipoCuadro.innerText = cuadro.tipo;
+//     // artista: "Erbeta"
+//     // nombre: "Puerta del abra"
+//     // tam: "67x49"
+//     // tipo: "óleo sobre tela"
+//   }
+// });
 
 iluminarConFoto("./hdr/fondoRedu.png", false);
 
