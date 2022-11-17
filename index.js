@@ -23,7 +23,7 @@ var poss = [
 let flores = {};
 let galeria = new THREE.Object3D();
 let gotasCubes;
-let tamPanuelo = 12;
+let tamPanuelo = 3;
 let tiempo = 0;
 console.log(texto);
 
@@ -281,6 +281,7 @@ let listaCuadros = [
 
 //----- POSICIONES DEBUG CIRCUNVALACION
 let listaDePosiciones = [
+<<<<<<< HEAD
   // -34.895982, -57.964274
   // -34.896786, -57.965229
   // -34.897413, -57.965891
@@ -301,6 +302,15 @@ let listaDePosiciones = [
   { lat: -34.866241, lon: -58.074888, rot: 2.237, alto: 0 },
   { lat: -34.859884, lon: -58.070084, rot: 0, alto: 0 },
   { lat: -34.86269, lon: -58.070715, rot: -2.237, alto: 0 },
+=======
+  { lat: -34.860557, lon: -58.070826, rot: 0, alto: 20 },
+  { lat: -34.861402, lon: -58.072457, rot: 2.237, alto: 25 },
+  { lat: -37.862722, lon: -58.073874, rot: 5.982, alto: 20 },
+  { lat: -37.864746, lon: -58.075545, rot: 2.237, alto: 15},
+  { lat: -34.866241, lon: -58.074888, rot: 2.237, alto: 20 },
+  { lat: -34.859884, lon: -58.070084, rot: 0, alto: 30 },
+  { lat: -34.86269, lon: -58.070715, rot: -2.237, alto: 15 },
+>>>>>>> 895a2b66dcf966e9276bae0239b33eab8c66817e
 ];
 
 for (let l of listaDePosiciones) {
@@ -358,8 +368,8 @@ async function setupObjects(longitude, latitude) {
     threex.add(modelos[m], listaDePosiciones[m].lon, listaDePosiciones[m].lat, listaDePosiciones[m].alto);
   }
   threex.add(galeria, posGaleria.lon, posGaleria.lat, posGaleria.alto); //galeria mi casa
-  threex.add(gotas, posGotas.lon, posGotas.lat, posGotas.alto); //galeria mi casa
-  threex.add(flor, posFlor.lon, posFlor.lat, posFlor.alto); //galeria mi casa
+  threex.add(gotas, posGotas.lon, posGotas.lat, 35); //galeria mi casa
+  threex.add(flor, posFlor.lon, posFlor.lat, -30); //galeria mi casa
   threex.add(colibri, posColibri.lon, posColibri.lat, posColibri.alto); //galeria mi casa
 
   // let lista = [
