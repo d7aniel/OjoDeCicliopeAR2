@@ -20,13 +20,13 @@ export async function cargarGotas(objetoVacio) {
   // textureEquirec.mapping = THREE.EquirectangularReflectionMapping;
   // textureEquirec.encoding = THREE.sRGBEncoding;
   // const material = new THREE.MeshPhongMaterial({ opacity: 0.647, color: 0xffffff, transparent: true, map: textureEquirec });
-  const material = new THREE.MeshPhongMaterial({ opacity: 0.647, transparent: true, shininess: 2, vertexColors: true }); //new THREE.MeshPhongMaterial({ opacity: 0.647, color: 0xffffff, transparent: true, map: textureEquirec });
+  const material = new THREE.MeshPhongMaterial({ opacity: 0.647, transparent: false, shininess: 10, vertexColors: true }); //new THREE.MeshPhongMaterial({ opacity: 0.647, color: 0xffffff, transparent: true, map: textureEquirec });
   // const material = new THREE.MeshLambertMaterial({ opacity: 0.647, transparent: true, color: 0xffffff, envMap: textureEquirec, refractionRatio: 0.85 });
   // console.log(material);
-  let effect = new MarchingCubes(32, material, false, true, 100000);
+  let effect = new MarchingCubes(40, material, false, true, 100000);
   effect.position.set(0, 0, 0);
   // effect.scale.set(1, 1, 3);
-  effect.scale.set(12, 12, 12);
+  effect.scale.set(15, 15, 15);
 
   // effect.enableUvs = false;
   // effect.enableColors = true;
@@ -64,7 +64,7 @@ export function actualizarGotas(object, time, numblobs, floor, wallx, wallz) {
     new THREE.Color(0x0000df),
     new THREE.Color(0x000000),
     new THREE.Color(0xffffff),
-    new THREE.Color(0x00aaff),
+    new THREE.Color(0x00bbff),
     new THREE.Color(0xaaff00),
     new THREE.Color(0x00ee00),
   ];
@@ -84,7 +84,7 @@ export function actualizarGotas(object, time, numblobs, floor, wallx, wallz) {
     const ballx = base.x; //mapRange(Math.abs(1 * Math.cos(80 * ti) - Math.cos(1 * ti) * Math.sin(2 * ti)), 0, 1.768, 0.2, 0.8); //(i / numblobs) * 0.9;
     const bally = 1 - base.y; //1 - mapRange((1 + i) / numblobs, 0, 1, 0.2, 0.8); //mapRange(Math.abs(Math.sin(0.72 * ti) - Math.sin(0.43 * ti)), 0, 2, 0.2, 0.8); //Math.sin(i); // dip into the floor
     const ballz = base.z; //mapRange(Math.abs(2 * Math.sin(1 * ti) - Math.sin(80 * ti)), 0, 2.999, 0.2, 0.8); //(Math.cos(i * 7.8526) / 2 + 0.5) * 0.3; //Math.cos(i + 1.32 * time * 0.1 * Math.sin(0.92 + 0.53 * i)) * 0.27 + 0.5;
-    const bally2 = bally + 0.1; //1 - mapRange((1 + i) / numblobs, 0, 1, 0.2, 0.8); //mapRange(Math.abs(Math.sin(0.72 * ti) - Math.sin(0.43 * ti)), 0, 2, 0.2, 0.8); //Math.sin(i); // dip into the floor
+    const bally2 = bally + 0.05; //1 - mapRange((1 + i) / numblobs, 0, 1, 0.2, 0.8); //mapRange(Math.abs(Math.sin(0.72 * ti) - Math.sin(0.43 * ti)), 0, 2, 0.2, 0.8); //Math.sin(i); // dip into the floor
     // const ballz = 0.1;
 
     let multStrg = bally < 0.5 ? mapRange(bally, 0, 0.5, 0, 1) : mapRange(bally, 0.5, 1, 1, 0);

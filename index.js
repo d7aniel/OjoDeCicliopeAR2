@@ -294,20 +294,20 @@ let listaDePosiciones = [
   // -34.905778, -57.975101
 
   // -34.903076, -57.968118
-  { lat: -34.860557, lon: -58.070826, rot: 0, alto: 0 },
-  { lat: -34.861402, lon: -58.072457, rot: 2.237, alto: 10 },
-  { lat: -37.862722, lon: -58.073874, rot: 5.982, alto: 15 },
-  { lat: -37.864746, lon: -58.075545, rot: 2.237, alto: 20 },
-  { lat: -34.866241, lon: -58.074888, rot: 2.237, alto: 25 },
-  { lat: -34.859884, lon: -58.070084, rot: 0, alto: 30 },
-  { lat: -34.86269, lon: -58.070715, rot: -2.237, alto: 35 },
+  { lat: -34.860557, lon: -58.070826, rot: 0, alto: 7 },
+  { lat: -34.861402, lon: -58.072457, rot: 2.237, alto: 7 },
+  { lat: -37.862722, lon: -58.073874, rot: 5.982, alto: 7 },
+  { lat: -37.864746, lon: -58.075545, rot: 2.237, alto: 7 },
+  { lat: -34.866241, lon: -58.074888, rot: 2.237, alto: 7 },
+  { lat: -34.859884, lon: -58.070084, rot: 0, alto: 7 },
+  { lat: -34.86269, lon: -58.070715, rot: -2.237, alto: 7 },
 ];
 
 for (let l of listaDePosiciones) {
   l.lat = -34.903076;
   l.lon = -57.968118;
 }
-let posGaleria = { lat: -34.903076, lon: -57.968118, rot: -2.237 };
+let posGaleria = { lat: -34.903076, lon: -57.968118, rot: -2.237, alto: 7 };
 let posGotas = { lat: -34.903076, lon: -57.968118, rot: 3.845 }; //claro
 let posFlor = { lat: -34.903076, lon: -57.968118, rot: 2.237 }; //punto
 let posColibri = { lat: -34.903076, lon: -57.968118, rot: 1.47 }; // mirador
@@ -358,7 +358,7 @@ async function setupObjects(longitude, latitude) {
     threex.add(modelos[m], listaDePosiciones[m].lon, listaDePosiciones[m].lat, listaDePosiciones[m].alto);
   }
   threex.add(galeria, posGaleria.lon, posGaleria.lat, posGaleria.alto); //galeria mi casa
-  threex.add(gotas, posGotas.lon, posGotas.lat, 35); //galeria mi casa
+  threex.add(gotas, posGotas.lon, posGotas.lat, 15); //galeria mi casa
   threex.add(flor, posFlor.lon, posFlor.lat, -40); //galeria mi casa
   threex.add(colibri, posColibri.lon, posColibri.lat, posColibri.alto); //galeria mi casa
 
