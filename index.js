@@ -281,7 +281,6 @@ let listaCuadros = [
 
 //----- POSICIONES DEBUG CIRCUNVALACION
 let listaDePosiciones = [
-<<<<<<< HEAD
   // -34.895982, -57.964274
   // -34.896786, -57.965229
   // -34.897413, -57.965891
@@ -302,15 +301,6 @@ let listaDePosiciones = [
   { lat: -34.866241, lon: -58.074888, rot: 2.237, alto: 0 },
   { lat: -34.859884, lon: -58.070084, rot: 0, alto: 0 },
   { lat: -34.86269, lon: -58.070715, rot: -2.237, alto: 0 },
-=======
-  { lat: -34.860557, lon: -58.070826, rot: 0, alto: 20 },
-  { lat: -34.861402, lon: -58.072457, rot: 2.237, alto: 25 },
-  { lat: -37.862722, lon: -58.073874, rot: 5.982, alto: 20 },
-  { lat: -37.864746, lon: -58.075545, rot: 2.237, alto: 15},
-  { lat: -34.866241, lon: -58.074888, rot: 2.237, alto: 20 },
-  { lat: -34.859884, lon: -58.070084, rot: 0, alto: 30 },
-  { lat: -34.86269, lon: -58.070715, rot: -2.237, alto: 15 },
->>>>>>> 895a2b66dcf966e9276bae0239b33eab8c66817e
 ];
 
 for (let l of listaDePosiciones) {
