@@ -76,7 +76,7 @@ export function setTextura(texturaArchivo, objeto, rotX, rotY, rotZ, randmSize =
         let nombre = obj.name.split("_")[0];
         let esFrente = obj.name.split("_")[1] == 1;
         // console.log(nombre);
-        if (nombre === "capa1" && esFrente) {
+        if (nombre === "capa1" && !esFrente) {
           obj.material = capa1;
         }
       }
@@ -104,7 +104,7 @@ export function setTextura(texturaArchivo, objeto, rotX, rotY, rotZ, randmSize =
         let nombre = obj.name.split("_")[0];
         let esFrente = obj.name.split("_")[1] == 1;
         // console.log(nombre);
-        if (nombre === "capa1" && !esFrente) {
+        if (nombre === "capa1" && esFrente) {
           obj.material = capa1;
         }
       }
