@@ -88,7 +88,7 @@ export function setTextura(texturaArchivo, objeto, rotX, rotY, rotZ, randmSize =
   );
 
   loader.load(
-    `./imagenes/cuadros/${texturaArchivo.archivo.split(".")[0]}_b.png`,
+    `./imagenes/cuadros/${texturaArchivo.archivo.split(".")[0]}_c.png`,
     (texture) => {
       let modificacionRandom = 1.0 + Math.random(randmSize);
       let textoDimension = texturaArchivo.tam.split("x");

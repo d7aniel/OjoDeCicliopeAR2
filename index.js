@@ -237,6 +237,41 @@ let listaCuadros = [
   { nombre: "Copia de Laguna brava", tipo: "óleo sobre tela", tam: "1x1", artista: "Miquelarena", archivo: "c12r.jpg", rotacion: 0 },
   // { nombre: "Primavera en la sierra", tipo: "óleo sobre tela", tam: "80x59", artista: "Erbeta", archivo: "cuadro1.png", rotacion: 0 },
 ];
+
+// let lista = [
+//   [-58.273678, -37.89309],
+//   [-58.275958, -37.894784],
+//   [-58.273308, -37.895227],
+//   [-58.275049, -37.896478],
+//   [-58.277343, -37.898115],
+//   [-58.2798, -37.900977],
+//   [-58.27863, -37.896355],
+
+//   [-58.27863, -37.896355],
+//   [-58.271919, -37.894275],
+//   [-58.278456, -37.898779],
+//   [-58.278526, -37.902247],
+// ];
+// let t = "";
+// for (let i = 0; i < lista.length; i++) {
+//   let l = lista[i];
+//   t += `{
+//   "type": "Feature",
+//   "properties": {
+//     "marker-color": "${i > 6 ? "#0080ff" : "#ffbb11"}",
+//     "marker-size": "${i > 6 ? "#0080ff" : "#ffbb11"}"
+//   },
+//   "geometry": {
+//     "coordinates": [
+//       ${l[0]},
+//       ${l[1]}
+//     ],
+//     "type": "Point"
+//   }
+// },`;
+//   t += "\n";
+// }
+// console.log(t);
 //---- POSICIONES REALES
 // let listaDePosiciones = [
 //   { lat: -37.89309, lon: -58.273678, rot: 0, alto: 0 },
@@ -265,48 +300,36 @@ let listaCuadros = [
 // -34.864368, -58.071961 //medio de la nada
 // -34.867738, -58.078479 //camino atras de la cancha
 //----- POSICIONES DEBUG PARQUE ECOLOGICO
-// let listaDePosiciones = [
-//   { lat: -34.860557, lon: -58.070826, rot: 0, alto: 0 },
-//   { lat: -34.861402, lon: -58.072457, rot: 2.237, alto: 0 },
-//   { lat: -37.862722, lon: -58.073874, rot: 5.982, alto: 0 },
-//   { lat: -37.864746, lon: -58.075545, rot: 2.237, alto: 0 },
-//   { lat: -34.866241, lon: -58.074888, rot: 2.237, alto: 0 },
-//   { lat: -34.859884, lon: -58.070084, rot: 0, alto: 0 },
-//   { lat: -34.86269, lon: -58.070715, rot: -2.237, alto: 0 },
-// ];
-// let posGaleria = { lat: -34.867738, lon: -58.078479, rot: -2.237 };
-// let posGotas = { lat: -34.868863, lon: -58.076021, rot: 3.845 }; //claro
-// let posFlor = { lat: -34.864848, lon: -58.074397, rot: 2.237 }; //punto
-// let posColibri = { lat: -34.861081, lon: -58.071994, rot: 1.47 }; // mirador
+let listaDePosiciones = [
+  // { lat: -34.860557, lon: -58.070826, rot: 0, alto: 7 },
+  { lat: -34.903066, lon: -57.968722, rot: 0, alto: 7 },
+  { lat: -34.861402, lon: -58.072457, rot: 2.237, alto: 7 },
+  { lat: -37.862722, lon: -58.073874, rot: 5.982, alto: 7 },
+  { lat: -37.864746, lon: -58.075545, rot: 2.237, alto: 7 },
+  { lat: -34.866241, lon: -58.074888, rot: 2.237, alto: 7 },
+  { lat: -34.859884, lon: -58.070084, rot: 0, alto: 7 },
+  { lat: -34.86269, lon: -58.070715, rot: -2.237, alto: 7 },
+];
+let posGaleria = { lat: -34.867738, lon: -58.078479, rot: -2.237, alto: 7 };
+let posGotas = { lat: -34.868863, lon: -58.076021, rot: 3.845 }; //claro
+let posFlor = { lat: -34.864848, lon: -58.074397, rot: 2.237 }; //punto
+let posColibri = { lat: -34.861081, lon: -58.071994, rot: 1.47 }; // mirador
 
 //----- POSICIONES DEBUG CIRCUNVALACION
-let listaDePosiciones = [
-  // -34.895982, -57.964274//
-  // -34.896786, -57.965229//galeria
-  // -34.897413, -57.965891//
-  // -34.897893, -57.966437//
-  // -34.898479, -57.967096//gotas
-  // -34.899327, -57.968007//
-  // -34.899836, -57.968580//flor
-  // -34.901211, -57.970010//
-  // -34.901761, -57.970671//colibri
-  // -34.904855, -57.974063//
-  // -34.905778, -57.975101
+// let listaDePosiciones = [
+//   { lat: -34.895982, lon: -57.964274, rot: Math.PI + 0, alto: 7 },
+//   { lat: -34.897413, lon: -57.965891, rot: Math.PI + 2.237, alto: 7 },
+//   { lat: -34.897893, lon: -57.966437, rot: Math.PI + 5.982, alto: 7 },
+//   { lat: -34.899327, lon: -57.968007, rot: Math.PI + 2.237, alto: 7 },
+//   { lat: -34.901211, lon: -57.97001, rot: Math.PI + 2.237, alto: 7 },
+//   { lat: -34.904855, lon: -57.974063, rot: Math.PI + 0, alto: 7 },
+//   { lat: -34.905778, lon: -57.975101, rot: Math.PI - 2.237, alto: 7 },
+// ];
 
-  // -34.903076, -57.968118
-  { lat: -34.895982, lon: -57.964274, rot: Math.PI + 0, alto: 7 },
-  { lat: -34.897413, lon: -57.965891, rot: Math.PI + 2.237, alto: 7 },
-  { lat: -34.897893, lon: -57.966437, rot: Math.PI + 5.982, alto: 7 },
-  { lat: -34.899327, lon: -57.968007, rot: Math.PI + 2.237, alto: 7 },
-  { lat: -34.901211, lon: -57.97001, rot: Math.PI + 2.237, alto: 7 },
-  { lat: -34.904855, lon: -57.974063, rot: Math.PI + 0, alto: 7 },
-  { lat: -34.905778, lon: -57.975101, rot: Math.PI - 2.237, alto: 7 },
-];
-
-let posGaleria = { lat: -34.896786, lon: -57.965229, rot: -2.237, alto: 7 };
-let posGotas = { lat: -34.898479, lon: -57.967096, rot: 3.845 }; //claro
-let posFlor = { lat: -34.899836, lon: -57.96858, rot: 2.237 }; //punto
-let posColibri = { lat: -34.901761, lon: -57.970671, rot: 1.47 }; // mirador
+// let posGaleria = { lat: -34.896786, lon: -57.965229, rot: -2.237, alto: 7 };
+// let posGotas = { lat: -34.898479, lon: -57.967096, rot: 3.845 }; //claro
+// let posFlor = { lat: -34.899836, lon: -57.96858, rot: 2.237 }; //punto
+// let posColibri = { lat: -34.901761, lon: -57.970671, rot: 1.47 }; // mirador
 
 async function setupObjects(longitude, latitude) {
   if (first) {
