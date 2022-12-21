@@ -301,8 +301,8 @@ let listaCuadros = [
 // -34.867738, -58.078479 //camino atras de la cancha
 //----- POSICIONES DEBUG PARQUE ECOLOGICO
 let listaDePosiciones = [
-  // { lat: -34.860557, lon: -58.070826, rot: 0, alto: 7 },
-  { lat: -34.903066, lon: -57.968722, rot: Math.PI * -0.5, alto: 7 },
+  { lat: -34.860557, lon: -58.070826, rot: 0, alto: 7 },
+  // { lat: -34.903066, lon: -57.968722, rot: Math.PI * -0.5, alto: 7 },
   { lat: -34.861402, lon: -58.072457, rot: 2.237, alto: 7 },
   { lat: -37.862722, lon: -58.073874, rot: 5.982, alto: 7 },
   { lat: -37.864746, lon: -58.075545, rot: 2.237, alto: 7 },
