@@ -301,10 +301,13 @@ let listaCuadros = [
 // -34.867738, -58.078479 //camino atras de la cancha
 //----- POSICIONES DEBUG PARQUE ECOLOGICO
 let listaDePosiciones = [
-  { lat: -34.860557, lon: -58.070826, rot: 0, alto: 7 },
-  // { lat: -34.903066, lon: -57.968722, rot: Math.PI * -0.5, alto: 7 },
-  { lat: -34.861402, lon: -58.072457, rot: 2.237, alto: 7 },
-  { lat: -37.862722, lon: -58.073874, rot: 5.982, alto: 7 },
+  // real { lat: -34.860557, lon: -58.070826, rot: 0, alto: 7 },
+  { lat: -34.860210, lon: -58.077920, rot: 0, alto: 7 }, // false
+  // { lat: -34.903066, lon: -57.968722, rot: Math.PI * -0.5, alto: 7 },// false
+  //real { lat: -34.861402, lon: -58.072457, rot: 2.237, alto: 7 },
+  //real { lat: -37.862722, lon: -58.073874, rot: 5.982, alto: 7 },
+  { lat: -34.859983, lon: -58.078134, rot: 2.237, alto: 7 },//false
+  { lat: -37.859844, lon: -58.077973, rot: 5.982, alto: 7 },//false
   { lat: -37.864746, lon: -58.075545, rot: 2.237, alto: 7 },
   { lat: -34.866241, lon: -58.074888, rot: 2.237, alto: 7 },
   { lat: -34.859884, lon: -58.070084, rot: 0, alto: 7 },
