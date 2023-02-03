@@ -302,25 +302,25 @@ let listaCuadros = [
 //----- POSICIONES DEBUG PARQUE ECOLOGICO
 let listaDePosiciones = [
   { lat: -34.860557, lon: -58.070826, rot: 0, alto: 7 },
-  //{ lat: -34.860210, lon: -58.077920, rot: 0, alto: 7 }, // false
-  // { lat: -34.903066, lon: -57.968722, rot: Math.PI * -0.5, alto: 7 },// false
+  { lat: -34.860210, lon: -58.077920, rot: 0, alto: 7 }, // false
+  { lat: -34.903066, lon: -57.968722, rot: Math.PI * -0.5, alto: 7 },// false
   { lat: -34.861402, lon: -58.072457, rot: 2.237, alto: 7 },
   { lat: -34.862722, lon: -58.073874, rot: 5.982, alto: 7 },
-  //{ lat: -34.859983, lon: -58.078134, rot: 2.237, alto: 7 },//false casa marcela
-  //{ lat: -34.859844, lon: -58.077973, rot: 5.982, alto: 7 },//false casa marcela
+  { lat: -34.859983, lon: -58.078134, rot: 2.237, alto: 7 },//false casa marcela
+  { lat: -34.859844, lon: -58.077973, rot: 5.982, alto: 7 },//false casa marcela
   { lat: -37.864746, lon: -58.075545, rot: 2.237, alto: 7 },
   { lat: -34.866241, lon: -58.074888, rot: 2.237, alto: 7 },
   { lat: -34.859884, lon: -58.070084, rot: 0, alto: 7 },
   { lat: -34.86269, lon: -58.070715, rot: -2.237, alto: 7 },
 ];
 let posGaleria = { lat: -34.867738, lon: -58.078479, rot: -2.237, alto: 7 };
-// real let posGotas = { lat: -34.868863, lon: -58.076021, rot: 3.845 }; //claro
-// real let posFlor = { lat: -34.864848, lon: -58.074397, rot: 2.237 }; //punto
-// real let posColibri = { lat: -34.861081, lon: -58.071994, rot: 1.47 }; // mirador
+real let posGotas = { lat: -34.868863, lon: -58.076021, rot: 3.845 }; //claro
+real let posFlor = { lat: -34.864848, lon: -58.074397, rot: 2.237 }; //punto
+real let posColibri = { lat: -34.861081, lon: -58.071994, rot: 1.47 }; // mirador
 
-let posGotas = { lat: -34.860210, lon: -58.077920, rot: 3.845 }; //claro falso
-let posFlor = { lat: -34.859983, lon: -58.078134, rot: 2.237 }; //punto falso
-let posColibri = { lat: -34.859844, lon: -58.077973, rot: 1.47 }; // mirador false
+// let posGotas = { lat: -34.860210, lon: -58.077920, rot: 3.845 }; //claro falso
+// let posFlor = { lat: -34.859983, lon: -58.078134, rot: 2.237 }; //punto falso
+// let posColibri = { lat: -34.859844, lon: -58.077973, rot: 1.47 }; // mirador false
 
 //----- POSICIONES DEBUG CIRCUNVALACION
 // let listaDePosiciones = [
