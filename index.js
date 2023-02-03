@@ -314,9 +314,9 @@ let listaDePosiciones = [
   { lat: -34.86269, lon: -58.070715, rot: -2.237, alto: 7 },
 ];
 let posGaleria = { lat: -34.867738, lon: -58.078479, rot: -2.237, alto: 7 };
-real let posGotas = { lat: -34.868863, lon: -58.076021, rot: 3.845 }; //claro
-real let posFlor = { lat: -34.864848, lon: -58.074397, rot: 2.237 }; //punto
-real let posColibri = { lat: -34.861081, lon: -58.071994, rot: 1.47 }; // mirador
+ let posGotas = { lat: -34.868863, lon: -58.076021, rot: 3.845 }; //claro real
+ let posFlor = { lat: -34.864848, lon: -58.074397, rot: 2.237 }; //punto real
+ let posColibri = { lat: -34.861081, lon: -58.071994, rot: 1.47 }; // mirador real
 
 // let posGotas = { lat: -34.860210, lon: -58.077920, rot: 3.845 }; //claro falso
 // let posFlor = { lat: -34.859983, lon: -58.078134, rot: 2.237 }; //punto falso
