@@ -275,7 +275,7 @@ for (let i = 0; i < lista.length; i++) {
 }
 // console.log(t);
 // ---- POSICIONES REALES
-console.log("act. 5");
+console.log("act. 6");
 //suma a la izq
 //resta a la der
 let listaDePosiciones = [
@@ -287,8 +287,8 @@ let listaDePosiciones = [
   { lat: -37.8949, lon: -58.27599, rot: 2.237, alto: 10 },
   // [-58.2779599, -37.8966535], //sierra chata desde descampado
 
-  { lat: -37.89289, lon: -58.27358, rot: Math.PI, alto: 11 },
-  { lon: -58.27365953785302, lat: -37.89359786626062, rot: -2.237 + Math.PI * 0.5, alto: 20 },
+  { lat: -37.89297, lon: -58.27378, rot: Math.PI * 0.4, alto: 11 },
+  { lon: -58.27365953785302, lat: -37.89359786626062, rot: -2.237 - Math.PI * 0.5, alto: 20 },
   { lon: -58.27331, lat: -37.89429304548791, rot: -2.237, alto: 14 },
 
   { lon: -58.273455, lat: -37.8946, rot: -2.237 - Math.PI * 0.3, alto: 10 },
