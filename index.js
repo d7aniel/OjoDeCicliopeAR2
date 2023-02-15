@@ -242,8 +242,8 @@ let listaCuadros = [
 let lista = [
   [-58.27464, -37.8932134],
   [-58.2776, -37.8965], //trigal
-  [-58.2751768, -37.8940744],
-  [-58.2768, -37.8957727],
+  [-58.2751768, -37.894],
+  [-58.2767, -37.8957727],
   [-58.2779599, -37.8966535], //sierra chata desde descampado
   [-58.27599, -37.8949],
 
@@ -276,20 +276,20 @@ for (let i = 0; i < lista.length; i++) {
 console.log(t);
 // ---- POSICIONES REALES
 let listaDePosiciones = [
-  { lat: -37.8932134, lon: -58.27464, rot: 0 - Math.PI * 0.5, alto: 10 },
-  { lat: -37.8965, lon: -58.2776, rot: 2.237 + Math.PI * 0.5, alto: 10 }, //trigal
-  { lat: -37.8940744, lon: -58.2751768, rot: 5.982 + Math.PI * 0.5, alto: 10 },
-  { lat: -37.8957727, lon: -58.2768, rot: 2.237 + Math.PI * 0.5, alto: 10 },
-  { lat: -37.8966535, lon: -58.2779599, rot: 3.1415 + Math.PI, alto: 10 }, //sierra chata desde descampado
+  { lat: -37.8932134, lon: -58.27464, rot: 0 + Math.PI * 0.5, alto: 10 },
+  { lat: -37.8965, lon: -58.2776, rot: 2.237 - Math.PI * 0.5, alto: 10 }, //trigal
+  { lat: -37.894, lon: -58.2751768, rot: 5.982 + Math.PI * 0.5, alto: 10 },
+  { lat: -37.8957727, lon: -58.2767, rot: 2.237 + Math.PI * 0.5, alto: 10 },
+  { lat: -37.8966535, lon: -58.2779599, rot: 3.1415 + Math.PI * 0.9, alto: 10 }, //sierra chata desde descampado
   { lat: -37.8949, lon: -58.27599, rot: 2.237, alto: 10 },
 
   { lat: -37.89289, lon: -58.27358, rot: Math.PI, alto: 13 },
-  { lon: -58.27365953785302, lat: -37.89359786626062, rot: -2.237 - Math.PI * 0.5, alto: 20 },
+  { lon: -58.27365953785302, lat: -37.89359786626062, rot: -2.237 + Math.PI * 0.5, alto: 20 },
   { lon: -58.27331, lat: -37.89429304548791, rot: -2.237, alto: 12 },
 
-  { lon: -58.27337, lat: -37.89515, rot: -2.237 + Math.PI * 0.2, alto: 10 },
+  { lon: -58.27337, lat: -37.89515, rot: -2.237 - Math.PI * 0.2, alto: 10 },
   { lon: -58.27255328815487, lat: -37.894692699616925, rot: -2.237, alto: 10 },
-  { lon: -58.273, lat: -37.8951, rot: -2.237 + Math.PI * 0.3, alto: 11 },
+  { lon: -58.273, lat: -37.8951, rot: -2.237 - Math.PI * 0.3, alto: 11 },
 ];
 // let posGaleria = { lon: -58.27863, lat: -37.896355, rot: -2.237, alto: 7 };
 // let posGotas = { lat: -37.894275, lon: -58.271919, rot: 3.845 }; //claro
