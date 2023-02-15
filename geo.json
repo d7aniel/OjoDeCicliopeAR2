@@ -1,0 +1,159 @@
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "marker-color": "#ffbb11",
+                "marker-size": "#ffbb11"
+            },
+            "geometry": {
+                "coordinates": [
+                -58.273678,
+                -37.89309
+                ],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "marker-color": "#ffbb11",
+                "marker-size": "#ffbb11"
+            },
+            "geometry": {
+                "coordinates": [
+                -58.275958,
+                -37.894784
+                ],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "marker-color": "#ffbb11",
+                "marker-size": "#ffbb11"
+            },
+            "geometry": {
+                "coordinates": [
+                -58.273308,
+                -37.895227
+                ],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "marker-color": "#ffbb11",
+                "marker-size": "#ffbb11"
+            },
+            "geometry": {
+                "coordinates": [
+                -58.275049,
+                -37.896478
+                ],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "marker-color": "#ffbb11",
+                "marker-size": "#ffbb11"
+            },
+            "geometry": {
+                "coordinates": [
+                -58.277343,
+                -37.898115
+                ],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "marker-color": "#ffbb11",
+                "marker-size": "#ffbb11"
+            },
+            "geometry": {
+                "coordinates": [
+                -58.2798,
+                -37.900977
+                ],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "marker-color": "#ffbb11",
+                "marker-size": "#ffbb11"
+            },
+            "geometry": {
+                "coordinates": [
+                -58.27863,
+                -37.896355
+                ],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "marker-color": "#0080ff",
+                "marker-size": "#0080ff"
+            },
+            "geometry": {
+                "coordinates": [
+                -58.27863,
+                -37.896355
+                ],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "marker-color": "#0080ff",
+                "marker-size": "#0080ff"
+            },
+            "geometry": {
+                "coordinates": [
+                -58.271919,
+                -37.894275
+                ],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "marker-color": "#0080ff",
+                "marker-size": "#0080ff"
+            },
+            "geometry": {
+                "coordinates": [
+                -58.278456,
+                -37.898779
+                ],
+                "type": "Point"
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": {
+                "marker-color": "#0080ff",
+                "marker-size": "#0080ff"
+            },
+            "geometry": {
+                "coordinates": [
+                -58.278526,
+                -37.902247
+                ],
+                "type": "Point"
+            }
+        }
+    ]
+  }

@@ -111,6 +111,7 @@ threex.on("gpserror", (code) => {
 // if (fake) {
 //   threex.fakeGps(fake.lon, fake.lat);
 // } else {
+console.log("--iniciamos--");
 threex.startGps();
 // }
 
@@ -163,20 +164,20 @@ function render(time) {
     }
   }
   // if (galeria.children[0])
-  if (flores.objetos != undefined) {
-    // modeloTmp.position.set(tamPanuelo * proporcion, 0, 0);
-    // proporcion += prop * 2.5;
-    // console.log(proporcion);
+  // if (flores.objetos != undefined) {
+  //   // modeloTmp.position.set(tamPanuelo * proporcion, 0, 0);
+  //   // proporcion += prop * 2.5;
+  //   // console.log(proporcion);
 
-    for (let f = 0; f < flores.objetos.length; f++) {
-      flores.objetos[f].rotarPetalos();
-    }
-  }
-  if (gotasCubes != null && gotasCubes != undefined) {
-    const delta = clock.getDelta();
-    tiempo += delta * 0.5;
-    actualizarGotas(gotasCubes, tiempo, 13, false, false, false);
-  }
+  //   for (let f = 0; f < flores.objetos.length; f++) {
+  //     flores.objetos[f].rotarPetalos();
+  //   }
+  // }
+  // if (gotasCubes != null && gotasCubes != undefined) {
+  //   const delta = clock.getDelta();
+  //   tiempo += delta * 0.5;
+  //   actualizarGotas(gotasCubes, tiempo, 13, false, false, false);
+  // }
   resizeUpdate();
   if (orientationControls) orientationControls.update();
   cam.update();
@@ -272,17 +273,17 @@ let listaCuadros = [
 //   t += "\n";
 // }
 // console.log(t);
-//---- POSICIONES REALES
-// let listaDePosiciones = [
-//   { lat: -37.89309, lon: -58.273678, rot: 0, alto: 0 },
-//   { lat: -37.894784, lon: -58.275958, rot: 2.237, alto: 0 },
-//   { lat: -37.895227, lon: -58.273308, rot: 5.982, alto: 0 },
-//   { lat: -37.896478, lon: -58.275049, rot: 2.237, alto: 0 },
-//   { lat: -37.898115, lon: -58.277343, rot: 2.237, alto: 0 },
-//   { lat: -37.900977, lon: -58.2798, rot: 0, alto: 0 },
-//   { lon: -58.27863, lat: -37.896355, rot: -2.237, alto: 0 },
-// ];
-// let posGaleria = { lon: -58.27863, lat: -37.896355, rot: -2.237 };
+// ---- POSICIONES REALES
+let listaDePosiciones = [
+  { lat: -37.89309, lon: -58.273678, rot: 0, alto: 7 },
+  { lat: -37.894784, lon: -58.275958, rot: 2.237, alto: 7 },
+  { lat: -37.895227, lon: -58.273308, rot: 5.982, alto: 7 },
+  { lat: -37.896478, lon: -58.275049, rot: 2.237, alto: 7 },
+  { lat: -37.898115, lon: -58.277343, rot: 2.237, alto: 7 },
+  { lat: -37.900977, lon: -58.2798, rot: 0, alto: 7 },
+  { lon: -58.27863, lat: -37.896355, rot: -2.237, alto: 7 },
+];
+let posGaleria = { lon: -58.27863, lat: -37.896355, rot: -2.237, alto: 7 };
 // let posGotas = { lat: -37.894275, lon: -58.271919, rot: 3.845 }; //claro
 // let posFlor = { lat: -37.898779, lon: -58.278456, rot: 2.237 }; //punto
 // let posColibri = { lat: -37.902247, lon: -58.278526, rot: 1.47 }; // mirador
@@ -300,20 +301,20 @@ let listaCuadros = [
 // -34.864368, -58.071961 //medio de la nada
 // -34.867738, -58.078479 //camino atras de la cancha
 //----- POSICIONES DEBUG PARQUE ECOLOGICO
-let listaDePosiciones = [
-  { lat: -34.860557, lon: -58.070826, rot: 0, alto: 7 },
-  // { lat: -34.903066, lon: -57.968722, rot: Math.PI * -0.5, alto: 7 },
-  { lat: -34.861402, lon: -58.072457, rot: 2.237, alto: 7 },
-  { lat: -37.862722, lon: -58.073874, rot: 5.982, alto: 7 },
-  { lat: -37.864746, lon: -58.075545, rot: 2.237, alto: 7 },
-  { lat: -34.866241, lon: -58.074888, rot: 2.237, alto: 7 },
-  { lat: -34.859884, lon: -58.070084, rot: 0, alto: 7 },
-  { lat: -34.86269, lon: -58.070715, rot: -2.237, alto: 7 },
-];
-let posGaleria = { lat: -34.867738, lon: -58.078479, rot: -2.237, alto: 7 };
-let posGotas = { lat: -34.868863, lon: -58.076021, rot: 3.845 }; //claro
-let posFlor = { lat: -34.864848, lon: -58.074397, rot: 2.237 }; //punto
-let posColibri = { lat: -34.861081, lon: -58.071994, rot: 1.47 }; // mirador
+// let listaDePosiciones = [
+//   { lat: -34.860557, lon: -58.070826, rot: 0, alto: 7 },
+//   // { lat: -34.903066, lon: -57.968722, rot: Math.PI * -0.5, alto: 7 },
+//   { lat: -34.861402, lon: -58.072457, rot: 2.237, alto: 7 },
+//   { lat: -37.862722, lon: -58.073874, rot: 5.982, alto: 7 },
+//   { lat: -37.864746, lon: -58.075545, rot: 2.237, alto: 7 },
+//   { lat: -34.866241, lon: -58.074888, rot: 2.237, alto: 7 },
+//   { lat: -34.859884, lon: -58.070084, rot: 0, alto: 7 },
+//   { lat: -34.86269, lon: -58.070715, rot: -2.237, alto: 7 },
+// ];
+// let posGaleria = { lat: -34.867738, lon: -58.078479, rot: -2.237, alto: 7 };
+// let posGotas = { lat: -34.868863, lon: -58.076021, rot: 3.845 }; //claro
+// let posFlor = { lat: -34.864848, lon: -58.074397, rot: 2.237 }; //punto
+// let posColibri = { lat: -34.861081, lon: -58.071994, rot: 1.47 }; // mirador
 
 //----- POSICIONES DEBUG CIRCUNVALACION
 // let listaDePosiciones = [
@@ -366,20 +367,20 @@ async function setupObjects(longitude, latitude) {
     // console.log(galeria.children.filter((e) => e.name.split("_")[0] === "Cuadro")[indice].children[0].children.filter((e) => e.name.split("_")[0] === "capa1")[0].material.map);
     // console.log(galeria.children[0].children[0].material);
   });
-  let colibri = new THREE.Object3D();
-  cargarColibri(colibri);
-  let flor = new THREE.Object3D();
-  cargarFlor(flor, flores);
-  let gotas = new THREE.Object3D();
-  gotasCubes = await cargarGotas(gotas);
+  // let colibri = new THREE.Object3D();
+  // cargarColibri(colibri);
+  // let flor = new THREE.Object3D();
+  // cargarFlor(flor, flores);
+  // let gotas = new THREE.Object3D();
+  // gotasCubes = await cargarGotas(gotas);
 
   for (let m = 0; m < listaTexturasAisladas.length; m++) {
     threex.add(modelos[m], listaDePosiciones[m].lon, listaDePosiciones[m].lat, listaDePosiciones[m].alto);
   }
   threex.add(galeria, posGaleria.lon, posGaleria.lat, posGaleria.alto); //galeria mi casa
-  threex.add(gotas, posGotas.lon, posGotas.lat, 15); //galeria mi casa
-  threex.add(flor, posFlor.lon, posFlor.lat, -40); //galeria mi casa
-  threex.add(colibri, posColibri.lon, posColibri.lat, posColibri.alto); //galeria mi casa
+  // threex.add(gotas, posGotas.lon, posGotas.lat, 15); //galeria mi casa
+  // threex.add(flor, posFlor.lon, posFlor.lat, -40); //galeria mi casa
+  // threex.add(colibri, posColibri.lon, posColibri.lat, posColibri.alto); //galeria mi casa
 
   // let lista = [
   //   { lt: -37.892693, lg: -58.273934 },
