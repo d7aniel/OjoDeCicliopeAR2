@@ -275,13 +275,13 @@ for (let i = 0; i < lista.length; i++) {
 }
 // console.log(t);
 // ---- POSICIONES REALES
-console.log("act. 2");
+console.log("act. 3");
 let listaDePosiciones = [
   { lat: -37.8932134, lon: -58.27464, rot: 0 + Math.PI * 0.7, alto: 10 },
-  { lat: -37.89659, lon: -58.27779, rot: 2.237 - Math.PI * 0.3, alto: 10 }, //trigal
+  { lat: -37.89659, lon: -58.27779, rot: 2.237 - Math.PI * 0.2, alto: 10 }, //trigal
   { lat: -37.894, lon: -58.2751768, rot: 5.982 + Math.PI * 0.5, alto: 10 },
   { lat: -37.8957727, lon: -58.2767, rot: 2.237 + Math.PI * 0.5, alto: 10 },
-  { lat: -37.8968, lon: -58.27825, rot: 2.237 - Math.PI * 0.3, alto: 10 }, //sierra chata desde descampado
+  { lat: -37.8968, lon: -58.27801, rot: 2.237 - Math.PI * 0.1, alto: 10 }, //el del final sierra chata desde descampado
   { lat: -37.8949, lon: -58.27599, rot: 2.237, alto: 10 },
   // [-58.2779599, -37.8966535], //sierra chata desde descampado
 
