@@ -6,7 +6,7 @@ import { cargarModelo, setTextura } from "./CargarModelo.js";
 // import { cargarFlor } from "./Flor.js";
 // import { cargarGotas, actualizarGotas } from "./Gotas.js";
 // import { Particula } from "./Particula.js";
-console.log("v.2");
+console.log("v.3");
 let d = 60;
 // var poss = [
 //   new THREE.Vector2(0, 0),
@@ -37,7 +37,7 @@ function isMobile() {
 }
 
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(80, 2, 0.1, 5000);
+const camera = new THREE.PerspectiveCamera(80, 2, 0.1, 50);
 const renderer = new THREE.WebGLRenderer({
   canvas: document.querySelector("#canvas1"),
   preserveDrawingBuffer: true,
