@@ -6,7 +6,7 @@ import { cargarModelo, setTextura } from "./CargarModelo.js";
 // import { cargarFlor } from "./Flor.js";
 // import { cargarGotas, actualizarGotas } from "./Gotas.js";
 // import { Particula } from "./Particula.js";
-console.log("v.1");
+console.log("v.2");
 let d = 60;
 // var poss = [
 //   new THREE.Vector2(0, 0),
@@ -273,7 +273,7 @@ for (let i = 0; i < lista.length; i++) {
 },`;
   t += "\n";
 }
-console.log(t);
+// console.log(t);
 // ---- POSICIONES REALES
 let listaDePosiciones = [
   { lat: -37.8932134, lon: -58.27464, rot: 0 + Math.PI * 0.7, alto: 10 },
