@@ -2,29 +2,29 @@ import * as THREE from "https://unpkg.com/three@0.122.0/build/three.module.js";
 // import { lista } from "./lista.js";
 import { texto } from "./texto.js";
 import { cargarModelo, setTextura } from "./CargarModelo.js";
-import { cargarColibri } from "./Colibri.js";
-import { cargarFlor } from "./Flor.js";
-import { cargarGotas, actualizarGotas } from "./Gotas.js";
+// import { cargarColibri } from "./Colibri.js";
+// import { cargarFlor } from "./Flor.js";
+// import { cargarGotas, actualizarGotas } from "./Gotas.js";
 // import { Particula } from "./Particula.js";
 console.log("v.1");
 let d = 60;
-var poss = [
-  new THREE.Vector2(0, 0),
-  new THREE.Vector2(d, d),
-  new THREE.Vector2(-d, d),
-  new THREE.Vector2(d, -d),
-  new THREE.Vector2(-d, -d),
-  new THREE.Vector2(d, 0),
-  new THREE.Vector2(-d, 0),
-  new THREE.Vector2(0, -d),
-  new THREE.Vector2(0, d),
-];
+// var poss = [
+//   new THREE.Vector2(0, 0),
+//   new THREE.Vector2(d, d),
+//   new THREE.Vector2(-d, d),
+//   new THREE.Vector2(d, -d),
+//   new THREE.Vector2(-d, -d),
+//   new THREE.Vector2(d, 0),
+//   new THREE.Vector2(-d, 0),
+//   new THREE.Vector2(0, -d),
+//   new THREE.Vector2(0, d),
+// ];
 
-let flores = {};
-let galeria = new THREE.Object3D();
-let gotasCubes;
+// let flores = {};
+// let galeria = new THREE.Object3D();
+// let gotasCubes;
 let tamPanuelo = 3;
-let tiempo = 0;
+// let tiempo = 0;
 console.log(texto);
 
 const clock = new THREE.Clock();
@@ -37,7 +37,7 @@ function isMobile() {
 }
 
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(80, 2, 0.1, 50000);
+const camera = new THREE.PerspectiveCamera(80, 2, 0.1, 5000);
 const renderer = new THREE.WebGLRenderer({
   canvas: document.querySelector("#canvas1"),
   preserveDrawingBuffer: true,
@@ -149,20 +149,20 @@ if (!isMobile()) {
 
 let tamGaleriaAjustado = false;
 function render(time) {
-  if (galeria.children[0] && !tamGaleriaAjustado) {
-    let capaTex = galeria.children.filter((e) => e.name.split("_")[0] === "Cuadro")[0].children[0].children.filter((e) => e.name.split("_")[0] === "capa1")[0];
-    if (capaTex && capaTex.material) {
-      if (capaTex.material.map) {
-        tamGaleriaAjustado = true;
-        let objetos = galeria.children.filter((e) => e.name.split("_")[0] === "Cuadro");
-        let sum = 0;
-        for (let i = 1; i < objetos.length; i++) {
-          sum += objetos[i - 1].children[0].scale.x * 0.5 + objetos[i].children[0].scale.x * 0.5;
-          objetos[i].children[0].position.set(3 * sum, 0, 0);
-        }
-      }
-    }
-  }
+  // if (galeria.children[0] && !tamGaleriaAjustado) {
+  //   let capaTex = galeria.children.filter((e) => e.name.split("_")[0] === "Cuadro")[0].children[0].children.filter((e) => e.name.split("_")[0] === "capa1")[0];
+  //   if (capaTex && capaTex.material) {
+  //     if (capaTex.material.map) {
+  //       tamGaleriaAjustado = true;
+  //       let objetos = galeria.children.filter((e) => e.name.split("_")[0] === "Cuadro");
+  //       let sum = 0;
+  //       for (let i = 1; i < objetos.length; i++) {
+  //         sum += objetos[i - 1].children[0].scale.x * 0.5 + objetos[i].children[0].scale.x * 0.5;
+  //         objetos[i].children[0].position.set(3 * sum, 0, 0);
+  //       }
+  //     }
+  //   }
+  // }
   // if (galeria.children[0])
   // if (flores.objetos != undefined) {
   //   // modeloTmp.position.set(tamPanuelo * proporcion, 0, 0);
@@ -239,51 +239,59 @@ let listaCuadros = [
   // { nombre: "Primavera en la sierra", tipo: "óleo sobre tela", tam: "80x59", artista: "Erbeta", archivo: "cuadro1.png", rotacion: 0 },
 ];
 
-// let lista = [
-//   [-58.273678, -37.89309],
-//   [-58.275958, -37.894784],
-//   [-58.273308, -37.895227],
-//   [-58.275049, -37.896478],
-//   [-58.277343, -37.898115],
-//   [-58.2798, -37.900977],
-//   [-58.27863, -37.896355],
+let lista = [
+  [-58.27464, -37.8932134],
+  [-58.2776, -37.8965], //trigal
+  [-58.2751768, -37.8940744],
+  [-58.2768, -37.8957727],
+  [-58.2779599, -37.8966535], //sierra chata desde descampado
+  [-58.27599, -37.8948075],
 
-//   [-58.27863, -37.896355],
-//   [-58.271919, -37.894275],
-//   [-58.278456, -37.898779],
-//   [-58.278526, -37.902247],
-// ];
-// let t = "";
-// for (let i = 0; i < lista.length; i++) {
-//   let l = lista[i];
-//   t += `{
-//   "type": "Feature",
-//   "properties": {
-//     "marker-color": "${i > 6 ? "#0080ff" : "#ffbb11"}",
-//     "marker-size": "${i > 6 ? "#0080ff" : "#ffbb11"}"
-//   },
-//   "geometry": {
-//     "coordinates": [
-//       ${l[0]},
-//       ${l[1]}
-//     ],
-//     "type": "Point"
-//   }
-// },`;
-//   t += "\n";
-// }
-// console.log(t);
+  [-58.27358, -37.89289],
+  [-58.27365953785302, -37.89359786626062],
+  [-58.273429298045514, -37.89429304548791],
+  [-58.27324070336047, -37.895145574063974],
+  [-58.27255328815487, -37.894692699616925],
+  [-58.2728324414294, -37.89491299057718],
+];
+let t = "";
+for (let i = 0; i < lista.length; i++) {
+  let l = lista[i];
+  t += `{
+  "type": "Feature",
+  "properties": {
+    "marker-color": "${i < 3 ? "#0000ff" : i < 6 ? "#ffbb11" : i < 9 ? "#ffbbFF" : "#00eeff"}",
+    "marker-size": "${i < 3 ? "#0080ff" : "#ffbb11"}"
+  },
+  "geometry": {
+    "coordinates": [
+      ${l[0]},
+      ${l[1]}
+    ],
+    "type": "Point"
+  }
+},`;
+  t += "\n";
+}
+console.log(t);
 // ---- POSICIONES REALES
 let listaDePosiciones = [
-  { lat: -37.89309, lon: -58.273678, rot: 0, alto: 7 },
-  { lat: -37.894784, lon: -58.275958, rot: 2.237, alto: 7 },
-  { lat: -37.895227, lon: -58.273308, rot: 5.982, alto: 7 },
-  { lat: -37.896478, lon: -58.275049, rot: 2.237, alto: 7 },
-  { lat: -37.898115, lon: -58.277343, rot: 2.237, alto: 7 },
-  { lat: -37.900977, lon: -58.2798, rot: 0, alto: 7 },
-  { lon: -58.27863, lat: -37.896355, rot: -2.237, alto: 7 },
+  { lat: -37.8932134, lon: -58.27464, rot: 0, alto: 7 },
+  { lat: -37.8965, lon: -58.2776, rot: 2.237, alto: 7 }, //trigal
+  { lat: -37.8940744, lon: -58.2751768, rot: 5.982, alto: 7 },
+  { lat: -37.8957727, lon: -58.2768, rot: 2.237, alto: 7 },
+  { lat: -37.8966535, lon: -58.2779599, rot: 3.1415, alto: 7 }, //sierra chata desde descampado
+  { lat: -37.8948075, lon: -58.27599, rot: 2.237, alto: 7 },
+
+  { lat: -37.89289, lon: -58.27358, rot: 0, alto: 7 },
+  { lon: -58.27365953785302, lat: -37.89359786626062, rot: -2.237, alto: 7 },
+  { lon: -58.273429298045514, lat: -37.89429304548791, rot: -2.237, alto: 7 },
+
+  { lon: -58.27324070336047, lat: -37.895145574063974, rot: -2.237, alto: 7 },
+  { lon: -58.27255328815487, lat: -37.894692699616925, rot: -2.237, alto: 7 },
+  { lon: -58.2728324414294, lat: -37.89491299057718, rot: -2.237, alto: 7 },
 ];
-let posGaleria = { lon: -58.27863, lat: -37.896355, rot: -2.237, alto: 7 };
+// let posGaleria = { lon: -58.27863, lat: -37.896355, rot: -2.237, alto: 7 };
 // let posGotas = { lat: -37.894275, lon: -58.271919, rot: 3.845 }; //claro
 // let posFlor = { lat: -37.898779, lon: -58.278456, rot: 2.237 }; //punto
 // let posColibri = { lat: -37.902247, lon: -58.278526, rot: 1.47 }; // mirador
@@ -348,11 +356,11 @@ async function setupObjects(longitude, latitude) {
   let listaTexturasAisladas = [];
   let listaTexturasGaleria = [];
   for (let i = 0; i < listaCuadros.length; i++) {
-    if (i < 5) {
-      listaTexturasGaleria.push(listaCuadros[i]);
-    } else {
-      listaTexturasAisladas.push(listaCuadros[i]);
-    }
+    // if (i < 5) {
+    //   listaTexturasGaleria.push(listaCuadros[i]);
+    // } else {
+    listaTexturasAisladas.push(listaCuadros[i]);
+    // }
   }
   let modeloBase = new THREE.Object3D();
 
@@ -363,13 +371,13 @@ async function setupObjects(longitude, latitude) {
       setTextura(listaTexturasAisladas[i], modelos[i], 0, listaDePosiciones[i].rot, 0);
       modelos[i].scale.set(tamPanuelo, tamPanuelo, tamPanuelo);
     }
-    for (let i = 0; i < listaTexturasGaleria.length; i++) {
-      let modeloTmp = modeloBase.clone();
-      modeloTmp.name = `Cuadro_${listaTexturasGaleria[i].nombre}`;
-      setTextura(listaTexturasGaleria[i], modeloTmp, 0, 0, 0, 0.1);
-      modeloTmp.scale.set(tamPanuelo, tamPanuelo, tamPanuelo);
-      galeria.add(modeloTmp);
-    }
+    // for (let i = 0; i < listaTexturasGaleria.length; i++) {
+    //   let modeloTmp = modeloBase.clone();
+    //   modeloTmp.name = `Cuadro_${listaTexturasGaleria[i].nombre}`;
+    //   setTextura(listaTexturasGaleria[i], modeloTmp, 0, 0, 0, 0.1);
+    //   modeloTmp.scale.set(tamPanuelo, tamPanuelo, tamPanuelo);
+    //   galeria.add(modeloTmp);
+    // }
     // let indice = 0;
     // console.log(galeria.children.filter((e) => e.name.split("_")[0] === "Cuadro")[indice].children[0].children.filter((e) => e.name.split("_")[0] === "capa1")[0].material.map);
     // console.log(galeria.children[0].children[0].material);
@@ -384,7 +392,7 @@ async function setupObjects(longitude, latitude) {
   for (let m = 0; m < listaTexturasAisladas.length; m++) {
     threex.add(modelos[m], listaDePosiciones[m].lon, listaDePosiciones[m].lat, listaDePosiciones[m].alto);
   }
-  threex.add(galeria, posGaleria.lon, posGaleria.lat, posGaleria.alto); //galeria mi casa
+  // threex.add(galeria, posGaleria.lon, posGaleria.lat, posGaleria.alto); //galeria mi casa
   // threex.add(gotas, posGotas.lon, posGotas.lat, 15); //galeria mi casa
   // threex.add(flor, posFlor.lon, posFlor.lat, -40); //galeria mi casa
   // threex.add(colibri, posColibri.lon, posColibri.lat, posColibri.alto); //galeria mi casa
