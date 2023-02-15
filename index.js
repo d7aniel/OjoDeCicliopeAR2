@@ -276,7 +276,7 @@ for (let i = 0; i < lista.length; i++) {
 console.log(t);
 // ---- POSICIONES REALES
 let listaDePosiciones = [
-  { lat: -37.8932134, lon: -58.27464, rot: 0 + Math.PI * 0.4, alto: 10 },
+  { lat: -37.8932134, lon: -58.27464, rot: 0 + Math.PI * 0.2, alto: 10 },
   { lat: -37.8965, lon: -58.2776, rot: 2.237 - Math.PI * 0.5, alto: 10 }, //trigal
   { lat: -37.894, lon: -58.2751768, rot: 5.982 + Math.PI * 0.5, alto: 10 },
   { lat: -37.8957727, lon: -58.2767, rot: 2.237 + Math.PI * 0.5, alto: 10 },
