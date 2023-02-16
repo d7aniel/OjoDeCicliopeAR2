@@ -37,7 +37,7 @@ function isMobile() {
 }
 
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(80, 2, 0.1, 50);
+const camera = new THREE.PerspectiveCamera(80, 2, 0.1, 70);
 const renderer = new THREE.WebGLRenderer({
   canvas: document.querySelector("#canvas1"),
   preserveDrawingBuffer: true,
