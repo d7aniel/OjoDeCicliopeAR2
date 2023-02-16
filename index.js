@@ -219,23 +219,122 @@ function resizeUpdate() {
   camera.updateProjectionMatrix();
 }
 
+let getNombre = function () {
+  let a = "paisaje";
+  let dMin = 99999999;
+  const id = Math.random().toString(16).slice(2);
+  for (let i = 0; i < modelos.length; i++) {
+    if (modelos[i].position.distanceTo(camera.position) < dMin) {
+      a = modelos[i].textoDescarga + "_" + modelos[i].textoDescarga_nom + "_" + modelos[i].textoDescarga_a + "_" + id;
+      dMin = modelos[i].position.distanceTo(camera.position);
+    }
+  }
+  return a;
+};
+
+window.getNombre = getNombre;
+
 // let particulas = [];
 let modelos = []; //new THREE.Object3D();
 let cuenta = 0;
-let listaModelos = ["./modelo/cuadroVacio2.glb"];
+let listaModelos = ["./modelo/cuadroVacio3.glb"];
 let listaCuadros = [
-  { nombre: "Primavera en la sierra", tipo: "óleo sobre tela", tam: "80x59", artista: "Erbeta", archivo: "c1r.png", rotacion: 0 },
-  { nombre: "Trigal", tipo: "óleo sobre tela", tam: "67x49", artista: "Erbeta", archivo: "c2r.png", rotacion: 0 },
-  { nombre: "Puerta del abra", tipo: "óleo sobre tela", tam: "67x49", artista: "Erbeta", archivo: "c3r.png", rotacion: 0 },
-  { nombre: "Campo don Francisco", tipo: "óleo sobre tela", tam: "35x45", artista: "Lobato", archivo: "c4r.png", rotacion: 0 },
-  { nombre: "Sierra chata II", tipo: "óleo sobre tela", tam: "40x60", artista: "Lobato", archivo: "c5r.png", rotacion: 0 },
-  { nombre: "Sierra del monte", tipo: "óleo sobre tela", tam: "40x60", artista: "Lobato", archivo: "c6r.png", rotacion: 0 },
-  { nombre: "Laguna brava", tipo: "óleo sobre tela", tam: "80x59", artista: "Manzanares", archivo: "c7r.png", rotacion: 0 },
-  { nombre: "Ranchito", tipo: "óleo sobre tela", tam: "80x59", artista: "Manzanares", archivo: "c8r.png", rotacion: 0 },
-  { nombre: "Volver", tipo: "óleo sobre tela", tam: "80x59", artista: "Manzanares", archivo: "c9r.png", rotacion: 0 },
-  { nombre: "Copia de Cerro el Paulino", tipo: "óleo sobre tela", tam: "1x1", artista: "Miquelarena", archivo: "c10r.jpg", rotacion: 0 },
-  { nombre: "Copia de La Capilla del Cerro", tipo: "óleo sobre tela", tam: "1x1", artista: "Miquelarena", archivo: "c11r.jpg", rotacion: 0 },
-  { nombre: "Copia de Laguna brava", tipo: "óleo sobre tela", tam: "1x1", artista: "Miquelarena", archivo: "c12r.jpg", rotacion: 0 },
+  {
+    tipo: "óleo sobre tela",
+    tam: "80x59",
+    artista: "Erbetta",
+    archivo: "c1r.png",
+    nombre: "Primavera en la sierra",
+    anio: "1980",
+  },
+  {
+    tipo: "óleo sobre tela",
+    tam: "67x49",
+    artista: "Erbetta",
+    archivo: "c2r.png",
+    nombre: "Trigal",
+    anio: "1982",
+  },
+  {
+    tipo: "óleo sobre tela",
+    tam: "67x49",
+    artista: "Erbetta",
+    archivo: "c3r.png",
+    nombre: "Puerta del abra",
+    anio: "1983",
+  },
+  {
+    tipo: "óleo sobre tela",
+    tam: "35x45",
+    artista: "Lobato",
+    archivo: "c4r.png",
+    nombre: "Campo Don Francisco",
+    anio: "2007",
+  },
+  {
+    tipo: "óleo sobre tela",
+    tam: "40x60",
+    artista: "Lobato",
+    archivo: "c5r.png",
+    nombre: "Sierra chata II",
+    anio: "1997",
+  },
+  {
+    tipo: "óleo sobre tela",
+    tam: "40x60",
+    artista: "Lobato",
+    archivo: "c6r.png",
+    nombre: "Sierra del monte",
+    anio: "2000",
+  },
+  {
+    tipo: "óleo sobre tela",
+    tam: "80x59",
+    artista: "Manzanares",
+    archivo: "c7r.png",
+    nombre: "Laguna brava",
+    anio: "1960",
+  },
+  {
+    tipo: "óleo sobre tela",
+    tam: "80x59",
+    artista: "Manzanares",
+    archivo: "c8r.png",
+    nombre: "Ranchito",
+    anio: "1981",
+  },
+  {
+    tipo: "óleo sobre tela",
+    tam: "80x59",
+    artista: "Manzanares",
+    archivo: "c9r.png",
+    nombre: "Volver",
+    anio: "1981",
+  },
+  {
+    tipo: "ótecnica mixta",
+    tam: "17x13",
+    artista: "Miquelarena",
+    archivo: "c10r.jpg",
+    nombre: "Cerro El Paulino",
+    anio: "2002",
+  },
+  {
+    tipo: "óleo sobre tela",
+    tam: "23x18",
+    artista: "Miquelarena",
+    archivo: "c11r.jpg",
+    nombre: "La Capilla del Cerro",
+    anio: "2002",
+  },
+  {
+    tipo: "óleo sobre tela",
+    tam: "21x15",
+    artista: "Miquelarena",
+    archivo: "c12r.jpg",
+    nombre: "Laguna brava",
+    anio: "2002",
+  },
   // { nombre: "Primavera en la sierra", tipo: "óleo sobre tela", tam: "80x59", artista: "Erbeta", archivo: "cuadro1.png", rotacion: 0 },
 ];
 
@@ -279,12 +378,14 @@ console.log("act. 6");
 //suma a la izq
 //resta a la der
 let listaDePosiciones = [
-  { lat: -37.8932134, lon: -58.27464, rot: 0 + Math.PI * 0.7, alto: 10 },
+  //real 1 { lat: -37.8932134, lon: -58.27464, rot: 0 + Math.PI * 0.7, alto: 10 },
+  { lat: -37.84629, lon: -58.257911, rot: 0 + Math.PI * 0.7, alto: 10 }, //false 1
   { lat: -37.89659, lon: -58.27779, rot: 2.237 - Math.PI * 0.4, alto: 10 }, //trigal
   { lat: -37.894, lon: -58.2754, rot: 5.982 + Math.PI * 0.5, alto: 10 },
   { lat: -37.8957727, lon: -58.2766, rot: 2.237 + Math.PI * 0.5, alto: 10 },
   { lat: -37.8968, lon: -58.27801, rot: 2.237 - Math.PI * 0.5, alto: 10 }, //el del final sierra chata desde descampado
-  { lat: -37.8949, lon: -58.27599, rot: 2.237, alto: 10 },
+  //real 2 { lat: -37.8949, lon: -58.27599, rot: 2.237, alto: 10 },
+  { lat: -37.84609712581195, lon: -58.25736178094868, rot: 2.237, alto: 10 }, //false 2
   // [-58.2779599, -37.8966535], //sierra chata desde descampado
 
   { lat: -37.89297, lon: -58.27378, rot: Math.PI * 0.4, alto: 11 },
@@ -372,6 +473,9 @@ async function setupObjects(longitude, latitude) {
     for (let i = 0; i < listaTexturasAisladas.length; i++) {
       modelos[i] = modeloBase.clone();
       modelos[i].name = `Cuadro_${listaTexturasAisladas[i].nombre}`;
+      modelos[i].textoDescarga = `${listaTexturasAisladas[i].artista}`;
+      modelos[i].textoDescarga_nom = `${listaTexturasAisladas[i].nombre}`;
+      modelos[i].textoDescarga_a = `${listaTexturasAisladas[i].anio}`;
       setTextura(listaTexturasAisladas[i], modelos[i], 0, listaDePosiciones[i].rot, 0);
       modelos[i].scale.set(tamPanuelo, tamPanuelo, tamPanuelo);
     }
