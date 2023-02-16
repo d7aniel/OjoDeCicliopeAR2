@@ -382,7 +382,7 @@ let listaDePosiciones = [
   { lat: -37.89659, lon: -58.27779, rot: 2.237 - Math.PI * 0.4, alto: 10 }, //trigal
   { lat: -37.894, lon: -58.2754, rot: 5.982 + Math.PI * 0.5, alto: 10 },
   { lat: -37.8957727, lon: -58.2766, rot: 2.237 + Math.PI * 0.5, alto: 10 },
-  { lat: -37.89656, lon: -58.2781, rot: 2.237 - Math.PI * 0.5, alto: 10 }, //el del final sierra chata desde descampado
+  { lat: -37.8966, lon: -58.2782, rot: 2.237 - Math.PI * 0.5, alto: 10 }, //el del final sierra chata desde descampado
   { lat: -37.8949, lon: -58.27599, rot: 2.237, alto: 10 },
   // [-58.2779599, -37.8966535], //sierra chata desde descampado
 
