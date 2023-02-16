@@ -273,7 +273,7 @@ let listaCuadros = [
   },
   {
     tipo: "óleo sobre tela",
-    tam: "40x60",
+    tam: "60x40",
     artista: "Lobato",
     archivo: "c5r.png",
     nombre: "Sierra chata II",
@@ -281,7 +281,7 @@ let listaCuadros = [
   },
   {
     tipo: "óleo sobre tela",
-    tam: "40x60",
+    tam: "60x40",
     artista: "Lobato",
     archivo: "c6r.png",
     nombre: "Sierra del monte",
@@ -289,7 +289,7 @@ let listaCuadros = [
   },
   {
     tipo: "óleo sobre tela",
-    tam: "80x59",
+    tam: "73x53",
     artista: "Manzanares",
     archivo: "c7r.png",
     nombre: "Laguna brava",
@@ -297,7 +297,7 @@ let listaCuadros = [
   },
   {
     tipo: "óleo sobre tela",
-    tam: "80x59",
+    tam: "50x40",
     artista: "Manzanares",
     archivo: "c8r.png",
     nombre: "Ranchito",
@@ -305,7 +305,7 @@ let listaCuadros = [
   },
   {
     tipo: "óleo sobre tela",
-    tam: "80x59",
+    tam: "60x37",
     artista: "Manzanares",
     archivo: "c9r.png",
     nombre: "Volver",
@@ -313,7 +313,7 @@ let listaCuadros = [
   },
   {
     tipo: "ótecnica mixta",
-    tam: "17x13",
+    tam: "1x1", //"17x13",
     artista: "Miquelarena",
     archivo: "c10r.jpg",
     nombre: "Cerro El Paulino",
@@ -321,7 +321,7 @@ let listaCuadros = [
   },
   {
     tipo: "óleo sobre tela",
-    tam: "23x18",
+    tam: "1x1", //"23x18",
     artista: "Miquelarena",
     archivo: "c11r.jpg",
     nombre: "La Capilla del Cerro",
@@ -329,7 +329,7 @@ let listaCuadros = [
   },
   {
     tipo: "óleo sobre tela",
-    tam: "21x15",
+    tam: "1x1", //"21x15",
     artista: "Miquelarena",
     archivo: "c12r.jpg",
     nombre: "Laguna brava",
@@ -379,7 +379,7 @@ console.log("act. 6");
 //resta a la der
 let listaDePosiciones = [
   //real 1 { lat: -37.8932134, lon: -58.27464, rot: 0 + Math.PI * 0.7, alto: 10 },
-  { lat: -37.84629, lon: -58.257911, rot: 0 + Math.PI * 0.7, alto: 10 }, //false 1
+  { lat: -37.846276783021715, lon: -58.25761250836327, rot: 0 + Math.PI * 0.7, alto: 10 }, //false 1
   { lat: -37.89659, lon: -58.27779, rot: 2.237 - Math.PI * 0.4, alto: 10 }, //trigal
   { lat: -37.894, lon: -58.2754, rot: 5.982 + Math.PI * 0.5, alto: 10 },
   { lat: -37.8957727, lon: -58.2766, rot: 2.237 + Math.PI * 0.5, alto: 10 },
