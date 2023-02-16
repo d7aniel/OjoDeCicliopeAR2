@@ -378,14 +378,12 @@ console.log("act. 6");
 //suma a la izq
 //resta a la der
 let listaDePosiciones = [
-  //real 1 { lat: -37.8932134, lon: -58.27464, rot: 0 + Math.PI * 0.7, alto: 10 },
-  { lat: -37.846276783021715, lon: -58.25761250836327, rot: 0 + Math.PI * 0.7, alto: 10 }, //false 1
+  { lat: -37.8932134, lon: -58.27464, rot: 0 + Math.PI * 0.7, alto: 10 },
   { lat: -37.89659, lon: -58.27779, rot: 2.237 - Math.PI * 0.4, alto: 10 }, //trigal
   { lat: -37.894, lon: -58.2754, rot: 5.982 + Math.PI * 0.5, alto: 10 },
   { lat: -37.8957727, lon: -58.2766, rot: 2.237 + Math.PI * 0.5, alto: 10 },
   { lat: -37.8968, lon: -58.27801, rot: 2.237 - Math.PI * 0.5, alto: 10 }, //el del final sierra chata desde descampado
-  //real 2 { lat: -37.8949, lon: -58.27599, rot: 2.237, alto: 10 },
-  { lat: -37.84609712581195, lon: -58.25736178094868, rot: 2.237, alto: 10 }, //false 2
+  { lat: -37.8949, lon: -58.27599, rot: 2.237, alto: 10 },
   // [-58.2779599, -37.8966535], //sierra chata desde descampado
 
   { lat: -37.89297, lon: -58.27378, rot: Math.PI * 0.4, alto: 11 },
