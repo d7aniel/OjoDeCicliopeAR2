@@ -374,7 +374,7 @@ for (let i = 0; i < lista.length; i++) {
 }
 // console.log(t);
 // ---- POSICIONES REALES
-console.log("act. 6");
+console.log("act. 9");
 //suma a la izq
 //resta a la der  2781
 let listaDePosiciones = [
