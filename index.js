@@ -289,27 +289,11 @@ let listaCuadros = [
   },
   {
     tipo: "óleo sobre tela",
-    tam: "73x53",
-    artista: "Manzanares",
-    archivo: "c7r.png",
-    nombre: "Laguna brava",
-    anio: "1960",
-  },
-  {
-    tipo: "óleo sobre tela",
-    tam: "50x40",
-    artista: "Manzanares",
-    archivo: "c8r.png",
-    nombre: "Ranchito",
-    anio: "1981",
-  },
-  {
-    tipo: "óleo sobre tela",
-    tam: "60x37",
-    artista: "Manzanares",
-    archivo: "c9r.png",
-    nombre: "Volver",
-    anio: "1981",
+    tam: "1x1", //"23x18",
+    artista: "Miquelarena",
+    archivo: "c11r.jpg",
+    nombre: "La Capilla del Cerro",
+    anio: "2002",
   },
   {
     tipo: "ótecnica mixta",
@@ -321,14 +305,6 @@ let listaCuadros = [
   },
   {
     tipo: "óleo sobre tela",
-    tam: "1x1", //"23x18",
-    artista: "Miquelarena",
-    archivo: "c11r.jpg",
-    nombre: "La Capilla del Cerro",
-    anio: "2002",
-  },
-  {
-    tipo: "óleo sobre tela",
     tam: "1x1", //"21x15",
     artista: "Miquelarena",
     archivo: "c12r.jpg",
@@ -336,6 +312,30 @@ let listaCuadros = [
     anio: "2002",
   },
   // { nombre: "Primavera en la sierra", tipo: "óleo sobre tela", tam: "80x59", artista: "Erbeta", archivo: "cuadro1.png", rotacion: 0 },
+  {
+    tipo: "óleo sobre tela",
+    tam: "73x53",
+    artista: "Manzanares",
+    archivo: "c7r.png",
+    nombre: "Laguna brava",
+    anio: "1960",
+  },
+  {
+    tipo: "óleo sobre tela",
+    tam: "60x37",
+    artista: "Manzanares",
+    archivo: "c9r.png",
+    nombre: "Volver",
+    anio: "1981",
+  },
+  {
+    tipo: "óleo sobre tela",
+    tam: "50x40",
+    artista: "Manzanares",
+    archivo: "c8r.png",
+    nombre: "Ranchito",
+    anio: "1981",
+  },
 ];
 
 let lista = [
@@ -384,17 +384,20 @@ let listaDePosiciones = [
   { lat: -37.8932134, lon: -58.27464, rot: 0 + Math.PI * 0.7, alto: 10 },
   { lat: -37.8964, lon: -58.27765, rot: 2.237 - Math.PI * 0.7, alto: 10 }, //trigal
   { lat: -37.894, lon: -58.2754, rot: 5.982 + Math.PI * 0.5, alto: 10 },
+  ///////////////////
   { lat: -37.8957727, lon: -58.2766, rot: 2.237 + Math.PI * 0.5, alto: 10 },
   { lat: -37.89676, lon: -58.2783, rot: 2.237 - Math.PI * 0.4, alto: 10 }, //el del final sierra chata desde descampado
   { lat: -37.8949, lon: -58.27599, rot: 2.237, alto: 10 },
   // [-58.2779599, -37.8966535], //sierra chata desde descampado
-  { lat: -37.89332, lon: -58.27334, rot: Math.PI * 1.03, alto: 11 },
-  { lon: -58.27365953785302, lat: -37.89359786626062, rot: -2.237 - Math.PI * 0.5, alto: 20 },
-  { lon: -58.27331, lat: -37.89429304548791, rot: -2.237, alto: 14 },
-
-  { lon: -58.273455, lat: -37.8946, rot: -2.237 - Math.PI * 0.3, alto: 10 },
-  { lon: -58.2725, lat: -37.89457, rot: -2.237, alto: 10 },
-  { lon: -58.2731, lat: -37.89481, rot: -2.237 - Math.PI * 0.5, alto: 11 },
+  { lat: -37.89328, lon: -58.2736, rot: Math.PI, alto: 11 },
+  { lon: -58.2724, lat: -37.89433, rot: -2.237 - Math.PI * 0.5, alto: 15 },
+  // { lon: -58.27365953785302, lat: -37.89359786626062, rot: -2.237 - Math.PI * 0.5, alto: 20 },
+  { lon: -58.2736, lat: -37.8942, rot: -2.237, alto: 14 },
+  /////////////////////
+  // { lon: -58.27379, lat: -37.89467, rot: -2.237 - Math.PI * 0.3, alto: 10 },
+  { lon: -58.2736, lat: -37.8942, rot: -2.237, alto: 10 },
+  { lon: -58.27335, lat: -37.8947, rot: -2.237, alto: 10 },
+  { lon: -58.2724, lat: -37.89433, rot: -2.237 - Math.PI * 0.5, alto: 11 },
 ];
 // let posGaleria = { lon: -58.27863, lat: -37.896355, rot: -2.237, alto: 7 };
 // let posGotas = { lat: -37.894275, lon: -58.271919, rot: 3.845 }; //claro
