@@ -388,8 +388,7 @@ let listaDePosiciones = [
   { lat: -37.89676, lon: -58.2783, rot: 2.237 - Math.PI * 0.4, alto: 10 }, //el del final sierra chata desde descampado
   { lat: -37.8949, lon: -58.27599, rot: 2.237, alto: 10 },
   // [-58.2779599, -37.8966535], //sierra chata desde descampado
-
-  { lat: -37.89317, lon: -58.2733, rot: Math.PI * 0.9, alto: 11 },
+  { lat: -37.89332, lon: -58.27334, rot: Math.PI * 1.03, alto: 11 },
   { lon: -58.27365953785302, lat: -37.89359786626062, rot: -2.237 - Math.PI * 0.5, alto: 20 },
   { lon: -58.27331, lat: -37.89429304548791, rot: -2.237, alto: 14 },
 
