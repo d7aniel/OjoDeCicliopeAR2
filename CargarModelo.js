@@ -62,7 +62,7 @@ export function setTextura(texturaArchivo, objeto, rotX, rotY, rotZ, randmSize =
   loader.load(
     `./imagenes/cuadros/${texturaArchivo.archivo}`,
     (texture) => {
-      let modificacionRandom = 1.0 + Math.random(randmSize);
+      let modificacionRandom = 1.0;
       let textoDimension = texturaArchivo.tam.split("x");
       let tx = parseInt(textoDimension[0]);
       let ty = parseInt(textoDimension[1]);
