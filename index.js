@@ -287,30 +287,6 @@ let listaCuadros = [
     nombre: "Sierra del monte",
     anio: "2000",
   },
-  {
-    tipo: "óleo sobre tela",
-    tam: "1x1", //"23x18",
-    artista: "Miquelarena",
-    archivo: "c11r.jpg",
-    nombre: "La Capilla del Cerro",
-    anio: "2002",
-  },
-  {
-    tipo: "ótecnica mixta",
-    tam: "1x1", //"17x13",
-    artista: "Miquelarena",
-    archivo: "c10r.jpg",
-    nombre: "Cerro El Paulino",
-    anio: "2002",
-  },
-  {
-    tipo: "óleo sobre tela",
-    tam: "1x1", //"21x15",
-    artista: "Miquelarena",
-    archivo: "c12r.jpg",
-    nombre: "Laguna brava",
-    anio: "2002",
-  },
   // { nombre: "Primavera en la sierra", tipo: "óleo sobre tela", tam: "80x59", artista: "Erbeta", archivo: "cuadro1.png", rotacion: 0 },
   {
     tipo: "óleo sobre tela",
@@ -335,6 +311,30 @@ let listaCuadros = [
     archivo: "c8r.png",
     nombre: "Ranchito",
     anio: "1981",
+  },
+  {
+    tipo: "óleo sobre tela",
+    tam: "1x1", //"21x15",
+    artista: "Miquelarena",
+    archivo: "c12r.jpg",
+    nombre: "Laguna brava",
+    anio: "2002",
+  },
+  {
+    tipo: "ótecnica mixta",
+    tam: "1x1", //"17x13",
+    artista: "Miquelarena",
+    archivo: "c10r.jpg",
+    nombre: "Cerro El Paulino",
+    anio: "2002",
+  },
+  {
+    tipo: "óleo sobre tela",
+    tam: "1x1", //"23x18",
+    artista: "Miquelarena",
+    archivo: "c11r.jpg",
+    nombre: "La Capilla del Cerro",
+    anio: "2002",
   },
 ];
 
@@ -388,16 +388,14 @@ let listaDePosiciones = [
   { lat: -37.8957727, lon: -58.2766, rot: 2.237 + Math.PI * 0.5, alto: 10 },
   { lat: -37.89676, lon: -58.2783, rot: 2.237 - Math.PI * 0.4, alto: 10 }, //el del final sierra chata desde descampado
   { lat: -37.8949, lon: -58.27599, rot: 2.237, alto: 10 },
-  // [-58.2779599, -37.8966535], //sierra chata desde descampado
+  //////////////////
   { lat: -37.89328, lon: -58.2736, rot: Math.PI, alto: 11 },
-  { lon: -58.2724, lat: -37.89433, rot: -2.237 - Math.PI * 0.5, alto: 15 },
-  // { lon: -58.27365953785302, lat: -37.89359786626062, rot: -2.237 - Math.PI * 0.5, alto: 20 },
-  { lon: -58.2736, lat: -37.8942, rot: -2.237, alto: 14 },
+  { lon: -58.89403, lat: -37.27356, rot: Math.PI, alto: 18 },
+  { lon: -58.89403, lat: -37.27356, rot: Math.PI, alto: 9 },
   /////////////////////
-  // { lon: -58.27379, lat: -37.89467, rot: -2.237 - Math.PI * 0.3, alto: 10 },
+  { lon: -58.2736, lat: -37.8942, rot: -2.237, alto: 14 },
   { lon: -58.2736, lat: -37.8942, rot: -2.237, alto: 10 },
   { lon: -58.27335, lat: -37.8947, rot: -2.237, alto: 10 },
-  { lon: -58.2724, lat: -37.89433, rot: -2.237 - Math.PI * 0.5, alto: 11 },
 ];
 // let posGaleria = { lon: -58.27863, lat: -37.896355, rot: -2.237, alto: 7 };
 // let posGotas = { lat: -37.894275, lon: -58.271919, rot: 3.845 }; //claro
