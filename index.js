@@ -336,14 +336,6 @@ let listaCuadros = [
     nombre: "La Capilla del Cerro",
     anio: "2002",
   },
-  {
-    tipo: "óleo sobre tela",
-    tam: "1x1", //"23x18",
-    artista: "Miquelarena",
-    archivo: "c11r.jpg",
-    nombre: "La Capilla del Cerro",
-    anio: "2002",
-  },
 ];
 
 let lista = [
@@ -397,16 +389,16 @@ let listaDePosiciones = [
   { lat: -37.89676, lon: -58.2783, rot: 2.237 - Math.PI * 0.4, alto: 10 }, //el del final sierra chata desde descampado
   { lat: -37.8949, lon: -58.27599, rot: 2.237, alto: 10 },
   //////////////////
-  { lat: -37.89328, lon: -58.27363022250347, rot: Math.PI, alto: 11 },
-  { lat: -37.8938238, lon: -58.2736164, rot: Math.PI * 0.95, alto: 24 }, //18
-  { lat: -37.8938238, lon: -58.2736164, rot: Math.PI * 0.95, alto: 9 }, //9
+  { lat: -37.89329651172384, lon: -58.2736594246788, rot: Math.PI, alto: 11 },
+  { lat: -37.8938238, lon: -58.2736164, rot: Math.PI * 0.95, alto: 11 }, //24
+  { lon: -58.27363002290141, lat: -37.8944581574287, rot: Math.PI * 0.85, alto: 11 }, //11
+  // { lat: -37.8938238, lon: -58.2736164, rot: Math.PI * 0.95, alto: 9 }, //9
   /////////////////////
-  { lon: -58.2735571, lat: -37.8945416, rot: Math.PI * 0.85, alto: 11 },
+  { lon: -58.27350726567757, lat: -37.89503621415675, rot: Math.PI * 0.95, alto: 10 },
   { lon: -58.27279249079763, lat: -37.89459799399449, rot: -2.237 + Math.PI * 0.25, alto: 11 },
-  { lon: -58.27332114570316, lat: -37.8950264225422, rot: Math.PI * 0.95, alto: 10 },
-  { lon: -58.27250790678563, lat: -37.89411024930051, rot: Math.PI * 1.13, alto: 10 },
+  { lon: -58.27245835555467, lat: -37.89412725069708, rot: Math.PI * 1.0, alto: 10 },
 ];
-
+// -58.27363002290141, -37.8944581574287;
 // -58.27279249079763,
 // -37.89459799399449
 // -58.27332114570316,
