@@ -18,7 +18,7 @@ class Texto {
     this.titulo.style.textAlign = "center";
     this.subtitulo.style.textAlign = "center";
 
-    this.titulo.innerText = "Cargando...";
+    this.titulo.innerText = "Abriendo...";
     this.subtitulo.innerText = "Espere unos segundos por favor";
 
     this.texto.append(this.titulo);
