@@ -336,6 +336,14 @@ let listaCuadros = [
     nombre: "La Capilla del Cerro",
     anio: "2002",
   },
+  {
+    tipo: "óleo sobre tela",
+    tam: "1x1", //"23x18",
+    artista: "Miquelarena",
+    archivo: "c11r.jpg",
+    nombre: "La Capilla del Cerro",
+    anio: "2002",
+  },
 ];
 
 let lista = [
