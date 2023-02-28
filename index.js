@@ -381,7 +381,8 @@ console.log("act. 10");
 //suma a la izq
 //resta a la der  2781
 let listaDePosiciones = [
-  { lat: -37.8932134, lon: -58.27464, rot: 0 + Math.PI * 0.7, alto: 10 },
+  { lat: -34.903066, lon: -57.968722, rot: 0 + Math.PI * 0.7, alto: 10 },
+  // { lat: -37.8932134, lon: -58.27464, rot: 0 + Math.PI * 0.7, alto: 10 },
   { lat: -37.8964, lon: -58.27765, rot: 2.237 - Math.PI * 0.7, alto: 10 }, //trigal
   { lat: -37.894, lon: -58.2754, rot: 5.982 + Math.PI * 0.5, alto: 10 },
   ///////////////////
