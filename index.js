@@ -262,21 +262,21 @@ function render(time) {
   //   texto.actualizar(a, dMin);
   // }
   // console.log(modelos, modelos.length);
-  if (modelos && modelos.length > 0) {
-    // texto.actualizar(`${camera.position.x.toFixed(1)}`);
-    texto.actualizar(
-      `${camera.rotation.x.toFixed(2)},${camera.rotation.y.toFixed(2)},${camera.rotation.z.toFixed(2)}`,
-      `${(modelos[0].position.x - camera.position.x).toFixed(2)}, 
-      ${(modelos[0].position.y - camera.position.y).toFixed(2)}, 
-      ${(modelos[0].position.z - camera.position.z).toFixed(2)},
-      ${modelos[0].position.distanceTo(camera.position).toFixed(2)}
-      
-      ${(modelos[1].position.x - camera.position.x).toFixed(2)}, 
-      ${(modelos[1].position.y - camera.position.y).toFixed(2)}, 
-      ${(modelos[1].position.z - camera.position.z).toFixed(2)},
-      ${modelos[1].position.distanceTo(camera.position).toFixed(2)}`
-    );
-  }
+  // if (modelos && modelos.length > 0) {
+  //   // texto.actualizar(`${camera.position.x.toFixed(1)}`);
+  //   texto.actualizar(
+  //     `${camera.rotation.x.toFixed(2)},${camera.rotation.y.toFixed(2)},${camera.rotation.z.toFixed(2)}`,
+  //     `${(modelos[0].position.x - camera.position.x).toFixed(2)},
+  //     ${(modelos[0].position.y - camera.position.y).toFixed(2)},
+  //     ${(modelos[0].position.z - camera.position.z).toFixed(2)},
+  //     ${modelos[0].position.distanceTo(camera.position).toFixed(2)}
+
+  //     ${(modelos[1].position.x - camera.position.x).toFixed(2)},
+  //     ${(modelos[1].position.y - camera.position.y).toFixed(2)},
+  //     ${(modelos[1].position.z - camera.position.z).toFixed(2)},
+  //     ${modelos[1].position.distanceTo(camera.position).toFixed(2)}`
+  //   );
+  // }
 }
 
 // function mover() {
@@ -479,7 +479,7 @@ let listaDePosiciones = [
   { lat: -34.903066, lon: -57.968722, rot: 0 + Math.PI * 0.7, alto: 10 },
   // { lat: -37.8932134, lon: -58.27464, rot: 0 + Math.PI * 0.7, alto: 10 },//real
   // -34.90356440168241, -57.96781789655587
-  { lat: -34.90356440168241, lon: -57.96781789655587, rot: 2.237 - Math.PI * 0.7, alto: 10 }, //trigal
+  { lat: -34.859983, lon: -58.078134, rot: 2.237 - Math.PI * 0.7, alto: 10 }, //trigal
   // { lat: -37.8964, lon: -58.27765, rot: 2.237 - Math.PI * 0.7, alto: 10 }, //trigal real
   { lat: -37.894, lon: -58.2754, rot: 5.982 + Math.PI * 0.5, alto: 10 },
   ///////////////////
@@ -576,7 +576,7 @@ let listaDePosiciones = [
 
 async function setupObjects(longitude, latitude) {
   if (first) {
-    // texto.remove();
+    texto.remove();
   }
 
   //--- cuadros aislados
