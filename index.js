@@ -7,6 +7,7 @@ import { cargarModelo, setTextura } from "./CargarModelo.js";
 // import { cargarGotas, actualizarGotas } from "./Gotas.js";
 // import { Particula } from "./Particula.js";
 console.log("v.3");
+let es_iphone = window.DeviceOrientationEvent !== undefined && typeof window.DeviceOrientationEvent.requestPermission === "function";
 let d = 60;
 // var poss = [
 //   new THREE.Vector2(0, 0),
@@ -86,8 +87,25 @@ document.addEventListener("mousemove", onPointerMove);
 iluminarConFoto("./hdr/fondoRedu.png", false);
 
 let orientationControls;
-if (isMobile()) {
-  orientationControls = new THREEx.DeviceOrientationControls(camera);
+if (!es_iphone) {
+  if (isMobile()) {
+    orientationControls = new THREEx.DeviceOrientationControls(camera);
+  }
+  document.getElementById("botonPermisos").style.display = "none";
+  document.getElementById("botones").style.display = "flex";
+} else {
+  document.getElementById("botPermiso").addEventListener("click", (e) => conectar());
+
+  function conectar() {
+    console.log("conectar orientacion");
+    if (isMobile()) {
+      orientationControls = new THREEx.DeviceOrientationControls(camera);
+    }
+    document.getElementById("botonPermisos").style.display = "none";
+    document.getElementById("botones").style.display = "flex";
+  }
+  // document.getElementById("botonPermisos").style.display = "flex";
+  // document.getElementById("botones").style.display = "flex";
 }
 
 const oneDegAsRad = THREE.MathUtils.degToRad(1);
@@ -147,6 +165,25 @@ if (!isMobile()) {
   });
 }
 
+// const setObjectQuaternion = function (quaternion, alpha, beta, gamma, orient) {
+//   _euler.set(beta, alpha, -gamma, "YXZ"); // 'ZXY' for the device, but 'YXZ' for us
+
+//   quaternion.setFromEuler(_euler); // orient the device
+
+//   quaternion.multiply(_q1); // camera looks out the back of the device, not the top
+
+//   quaternion.multiply(_q0.setFromAxisAngle(_zee, -orient)); // adjust for screen orientation
+// };
+
+// const _zee = new THREE.Vector3(0, 0, 1);
+// const _euler = new THREE.Euler();
+// const _q0 = new THREE.Quaternion();
+// const _q1 = new THREE.Quaternion(-Math.sqrt(0.5), 0, 0, Math.sqrt(0.5)); // - PI/2 around the x-axis
+
+function cambiaRotacion() {
+  console.log("lalalalalala");
+}
+
 let tamGaleriaAjustado = false;
 function render(time) {
   // if (galeria.children[0] && !tamGaleriaAjustado) {
@@ -179,10 +216,67 @@ function render(time) {
   //   actualizarGotas(gotasCubes, tiempo, 13, false, false, false);
   // }
   resizeUpdate();
-  if (orientationControls) orientationControls.update();
+  if (orientationControls) {
+    orientationControls.update();
+    // orientationControls.update();
+    // orientationControls.addEventListener("change", cambiaRotacion);
+    if (es_iphone) camera.rotation.set(camera.rotation.x, camera.rotation.y + Math.PI * 0.5, camera.rotation.z);
+
+    // const orient = orientationControls.screenOrientation ? MathUtils.degToRad(orientationControls.screenOrientation) : 0; // O
+
+    // let alpha = THREE.MathUtils.degToRad(orientationControls.deviceOrientation.alpha);
+    // let beta = THREE.MathUtils.degToRad(orientationControls.deviceOrientation.beta);
+    // let gamma = THREE.MathUtils.degToRad(orientationControls.deviceOrientation.gamma);
+
+    // beta -= orientationControls.HALF_PI;
+    // // console.log(orientationControls);
+    // // console.log(orientationControls.setObjectQuaternion);
+    // // console.log(orientationControls.object.quaternion);
+
+    // setObjectQuaternion(
+    //   orientationControls.object.quaternion,
+    //   alpha,
+    //   orientationControls.smoothingFactor < 1 ? beta - Math.PI : beta,
+    //   orientationControls.smoothingFactor < 1 ? gamma - orientationControls.HALF_PI : gamma,
+    //   orient
+    // );
+
+    // if (8 * (1 - lastQuaternion.dot(orientationControls.object.quaternion)) > EPS) {
+    //   lastQuaternion.copy(orientationControls.object.quaternion);
+    //   orientationControls.dispatchEvent(_changeEvent);
+    // }
+  }
   cam.update();
   renderer.render(scene, camera);
   requestAnimationFrame(render);
+  // if (modelos && modelos.length > 0) {
+  //   let a = "paisaje";
+  //   let dMin = 99999999;
+  //   const id = 0;
+  //   for (let i = 0; i < modelos.length; i++) {
+  //     if (modelos[i].position.distanceTo(camera.position) < dMin) {
+  //       a = modelos[i].textoDescarga + "_" + modelos[i].textoDescarga_nom + "_" + modelos[i].textoDescarga_a + "_" + id;
+  //       dMin = modelos[i].position.distanceTo(camera.position);
+  //     }
+  //   }
+  //   texto.actualizar(a, dMin);
+  // }
+  // console.log(modelos, modelos.length);
+  if (modelos && modelos.length > 0) {
+    // texto.actualizar(`${camera.position.x.toFixed(1)}`);
+    texto.actualizar(
+      `${camera.rotation.x.toFixed(2)},${camera.rotation.y.toFixed(2)},${camera.rotation.z.toFixed(2)}`,
+      `${(modelos[0].position.x - camera.position.x).toFixed(2)}, 
+      ${(modelos[0].position.y - camera.position.y).toFixed(2)}, 
+      ${(modelos[0].position.z - camera.position.z).toFixed(2)},
+      ${modelos[0].position.distanceTo(camera.position).toFixed(2)}
+      
+      ${(modelos[1].position.x - camera.position.x).toFixed(2)}, 
+      ${(modelos[1].position.y - camera.position.y).toFixed(2)}, 
+      ${(modelos[1].position.z - camera.position.z).toFixed(2)},
+      ${modelos[1].position.distanceTo(camera.position).toFixed(2)}`
+    );
+  }
 }
 
 // function mover() {
@@ -380,10 +474,13 @@ console.log(t);
 console.log("act. 10");
 //suma a la izq
 //resta a la der  2781
+// -57.968722, -34.903066;
 let listaDePosiciones = [
   { lat: -34.903066, lon: -57.968722, rot: 0 + Math.PI * 0.7, alto: 10 },
-  // { lat: -37.8932134, lon: -58.27464, rot: 0 + Math.PI * 0.7, alto: 10 },
-  { lat: -37.8964, lon: -58.27765, rot: 2.237 - Math.PI * 0.7, alto: 10 }, //trigal
+  // { lat: -37.8932134, lon: -58.27464, rot: 0 + Math.PI * 0.7, alto: 10 },//real
+  // -34.90356440168241, -57.96781789655587
+  { lat: -34.90356440168241, lon: -57.96781789655587, rot: 2.237 - Math.PI * 0.7, alto: 10 }, //trigal
+  // { lat: -37.8964, lon: -58.27765, rot: 2.237 - Math.PI * 0.7, alto: 10 }, //trigal real
   { lat: -37.894, lon: -58.2754, rot: 5.982 + Math.PI * 0.5, alto: 10 },
   ///////////////////
   { lat: -37.8957727, lon: -58.2766, rot: 2.237 + Math.PI * 0.5, alto: 10 },
@@ -479,7 +576,7 @@ let listaDePosiciones = [
 
 async function setupObjects(longitude, latitude) {
   if (first) {
-    texto.remove();
+    // texto.remove();
   }
 
   //--- cuadros aislados
@@ -504,6 +601,7 @@ async function setupObjects(longitude, latitude) {
       setTextura(listaTexturasAisladas[i], modelos[i], 0, listaDePosiciones[i].rot, 0);
       modelos[i].scale.set(tamPanuelo, tamPanuelo, tamPanuelo);
     }
+    // console.log("crear modelo");
     // for (let i = 0; i < listaTexturasGaleria.length; i++) {
     //   let modeloTmp = modeloBase.clone();
     //   modeloTmp.name = `Cuadro_${listaTexturasGaleria[i].nombre}`;

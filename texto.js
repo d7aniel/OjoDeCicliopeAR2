@@ -35,5 +35,10 @@ class Texto {
   remove() {
     this.texto.remove();
   }
+
+  actualizar(nuevoText, nuevoOtro = "") {
+    this.titulo.innerText = nuevoText;
+    this.subtitulo.innerText = nuevoOtro;
+  }
 }
 export let texto = new Texto();

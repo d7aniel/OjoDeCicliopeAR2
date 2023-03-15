@@ -181,7 +181,9 @@
     </div>
     <script src='./three/three.js'></script>
    
-    <script src="./three/threear.js"></script>
+    <!-- <script src="./three/threear.js"></script> -->
+    
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/three.js/build/ar-threex-location-only.js"></script>
     <script type='module' src="index.js"></script>
     
 
@@ -214,7 +216,10 @@
             ReImg.fromCanvas(document.querySelector('canvas')).downloadPng();
         }
     </script>
-    <a style="position: absolute;display: flex; justify-content: center; bottom: 7vw; width: 100%;">
+    <a id="botonPermisos" style="position: absolute;display: flex; justify-content: center; bottom: 7vw; width: 100%;">
+        <button id="botPermiso" type="button" ><i id="share_location" class="material-icons icono">share_location</i></button>
+    </a>;
+    <a id="botones" style="position: absolute;display: none; justify-content: center; bottom: 7vw; width: 100%;">
         <button id="botCamara" type="button" onClick="downloadCanvasAsPng()"><i id="iconoCamara" class="material-icons icono">photo_camera</i></button>
         <button id="goFS"><i id="iconoPantalla" class="material-icons icono">fullscreen</i></button>
     </a>;
