@@ -220,7 +220,8 @@ function render(time) {
     orientationControls.update();
     // orientationControls.update();
     // orientationControls.addEventListener("change", cambiaRotacion);
-    if (es_iphone) camera.rotation.set(camera.rotation.x, camera.rotation.y + Math.PI * 0.5, camera.rotation.z);
+
+    // if (es_iphone) camera.rotation.set(camera.rotation.x, camera.rotation.y + Math.PI * 0.5, camera.rotation.z);
 
     // const orient = orientationControls.screenOrientation ? MathUtils.degToRad(orientationControls.screenOrientation) : 0; // O
 
